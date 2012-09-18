@@ -77,6 +77,7 @@ catalog={
         name:'',
         category:'',
         description:'',
+        emulateuseragent='True',
         url:'',
         version:{
             url:'',
@@ -101,6 +102,7 @@ catalog={
         name:'Mozart',
         category:'Programming',
         description:'Mozart implements Oz, a concurrent object-oriented language with dataflow synchronization',
+        emulateuseragent='True',
         url:'http://www.mozart-oz.org/',
         version:{
             url:'http://www.mozart-oz.org/',
@@ -125,6 +127,7 @@ catalog={
         name:'Bison for Windows',
         category:'Programming',
         description:'General purpose parser generator. Converts a grammar description into a C program to parse the grammar.',
+        emulateuseragent='True',
         url:'http://gnuwin32.sourceforge.net/packages/bison.htm',
         version:{
             url:'http://gnuwin32.sourceforge.net/packages/bison.htm',
@@ -149,6 +152,7 @@ catalog={
         name:'Low Level Virtual Machine',
         category:'Programming',
         description:'collection of modular and reusable compiler and toolchain technologies',
+        emulateuseragent='True',
         url:'http://llvm.org/',
         version:{
             url:'http://llvm.org/',
@@ -173,6 +177,7 @@ catalog={
         name:'ImgBurn',
         category:'Multimedia',
         description:'allows the recording of many types of CD/DVD images to recordable media',
+        emulateuseragent='True',
         url:'http://www.imgburn.com/index.php?act=download',
         version:{
             url:'http://www.imgburn.com/index.php?act=download',
@@ -197,6 +202,7 @@ catalog={
         name:'GPG4Win',
         category:'Encryption',
         description:'installation package with software tools and manuals for email and file encryption',
+        emulateuseragent='True',
         url:'http://www.gpg4win.org/index.html',
         version:{
             url:'http://www.gpg4win.org/index.html',
@@ -221,6 +227,7 @@ catalog={
         name:'Cygwin',
         category:'',
         description:'collection of tools which provide a Linux look and feel environment for Windows',
+        emulateuseragent='True',
         url:'http://cygwin.com/',
         version:{
             url:'http://cygwin.com/',
@@ -293,6 +300,7 @@ catalog={
         name:'Fast Light Tool Kit',
         category:'Programming',
         description:'provides modern GUI functionality without the bloat and supports 3D graphics via OpenGL',
+        emulateuseragent='True',
         url:'http://www.fltk.org/',
         version:{
             url:'http://www.fltk.org/',
@@ -317,6 +325,7 @@ catalog={
         name:'Visualization Toolkit ',
         category:'Programming',
         description:'software system for 3D computer graphics, image processing and visualization',
+        emulateuseragent='True',
         url:'http://www.vtk.org/',
         version:{
             url:'http://www.vtk.org/VTK/resources/software.html',
@@ -366,6 +375,7 @@ catalog={
         name:'Glasgow Haskell compiler',
         category:'Programming',
         description:'Cross-platform environment for the writing and testing of Haskell code',
+        emulateuseragent='True',
         url:'http://www.haskell.org/ghc/download',
         version:{
             url:'http://www.haskell.org/ghc/download',
@@ -390,6 +400,7 @@ catalog={
         name:'Unicon',
         category:'Programming',
         description:'Unified exteded dialect of Icon',
+        emulateuseragent='True',
         url:'http://unicon.sourceforge.net/index.html',
         version:{
             url:'http://sourceforge.net/projects/unicon/files/',
@@ -414,6 +425,7 @@ catalog={
         name:'Scala',
         category:'Programming',
         description:'Scala is a general purpose programming language.',
+        emulateuseragent='True',
         url:'http://www.scala-lang.org/',
         version:{
             url:'http://www.scala-lang.org/downloads/',
@@ -438,6 +450,7 @@ catalog={
         name:'GLUT OpenGL Utility Toolkit ',
         category:'Utility',
         description:'A window system independent toolkit for writing OpenGL programs',
+        emulateuseragent='True',
         url:'',
         version:{
             url:'http://www.opengl.org/resources/libraries/glut/',
@@ -462,6 +475,7 @@ catalog={
         name:'SciLab',
         category:'Utility',
         description:'Free Open Source Software for Numerical Computation',
+        emulateuseragent='True',
         url:'http://www.scilab.org/products/scilab/download',
         version:{
             url:'http://www.scilab.org/products/scilab/download',
@@ -486,6 +500,7 @@ catalog={
         name:'Maxima',
         category:'Utility',
         description:'Computer algebra system',
+        emulateuseragent='True',
         url:'http://sourceforge.net/projects/maxima/files/',
         version:{
             url:'http://sourceforge.net/projects/maxima/files/',
@@ -510,6 +525,7 @@ catalog={
         name:'LibreOffice',
         category:'Editors and Viewers',
         description:'Ffree, libre and open source personal productivity suite.',
+        emulateuseragent='True',
         url:'http://www.libreoffice.org/',
         version:{
             url:'http://www.libreoffice.org/download/',
@@ -531,6 +547,7 @@ catalog={
         name:'TightVNCViewer',
         category:'Internet Tools',
         description:'TightVNC is a free remote control software package.',
+        emulateuseragent='True',
         url:'http://www.tightvnc.com/',
         version:{
             url:'http://www.tightvnc.com/download.html',
@@ -555,6 +572,7 @@ catalog={
         name:'Emacs',
         category:'Editors and Viewers',
         description:'GNU Emacs is an extensible, customizable text editor and more.',
+        emulateuseragent='True',
         url:'http://www.gnu.org/software/emacs/',
         version:{
             url:'http://www.gnu.org/software/emacs/',
@@ -575,6 +593,7 @@ catalog={
         name:'Git for Windows',
         category:'Programming Tools',
         description:'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.',
+        emulateuseragent='True',
         url:'http://git-scm.com/',
         version:{
             url:'http://git-scm.com/download/win',
@@ -623,6 +642,7 @@ catalog={
         name:'',
         category:'',
         description:'',
+        emulateuseragent='True',
         url:'',
         version:{
             url:'',
@@ -647,6 +667,7 @@ catalog={
         name:'NASM',
         category:'Programming tool',
         description:'an assembler and disassembler for the Intel x86 architecture.',
+        emulateuseragent='True',
         url:'http://www.nasm.us/',
         version:{
             url:'http://www.nasm.us/',
@@ -671,6 +692,7 @@ catalog={
         name:'Jarnal',
         category:'Editor',
         description:'Open-source cross-platform notetaking and sketching application similar to Windows Journal',
+        emulateuseragent='True',
         url:'http://jarnal.wikispaces.com/Downloads',
         version:{
             url:'http://jarnal.wikispaces.com/Downloads',
@@ -695,6 +717,7 @@ catalog={
         name:'Dia Diagram Editor',
         category:'Editor',
         description:'',
+        emulateuseragent='True',
         url:'Dia is a program to draw structured diagrams',
         version:{
             url:'http://dia-installer.de/',
@@ -719,6 +742,7 @@ catalog={
         name:'Paint.Net',
         category:'Editor',
         description:'Proprietary freeware raster graphics editor',
+        emulateuseragent='True',
         url:'http://www.getpaint.net/download.html',
         version:{
             url:'http://www.getpaint.net/download.html',
@@ -742,6 +766,7 @@ catalog={
         name:'PdfCreator',
         category:'ulility',
         description:'convert documents to pdf',
+        emulateuseragent='True',
         url:'http://www.pdfforge.org/',
         version:{
             url:'http://www.pdfforge.org/pdfcreator',
@@ -766,6 +791,7 @@ catalog={
         name:'LibreOffice',
         category:'Editors and Viewers',
         description:'Ffree, libre and open source personal productivity suite.',
+        emulateuseragent='True',
         url:'http://www.libreoffice.org/',
         version:{
             url:'http://www.libreoffice.org/download/',
@@ -787,6 +813,7 @@ catalog={
         name:'TightVNCViewer',
         category:'Internet Tools',
         description:'TightVNC is a free remote control software package.',
+        emulateuseragent='True',
         url:'http://www.tightvnc.com/',
         version:{
             url:'http://www.tightvnc.com/download.html',
@@ -811,6 +838,7 @@ catalog={
         name:'Emacs',
         category:'Editors and Viewers',
         description:'GNU Emacs is an extensible, customizable text editor and more.',
+        emulateuseragent='True',
         url:'http://www.gnu.org/software/emacs/',
         version:{
             url:'http://www.gnu.org/software/emacs/',
@@ -831,6 +859,7 @@ catalog={
         name:'Git for Windows',
         category:'Programming Tools',
         description:'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.',
+        emulateuseragent='True',
         url:'http://git-scm.com/',
         version:{
             url:'http://git-scm.com/download/win',
@@ -855,6 +884,7 @@ catalog={
         name:'AdobeReader',
         category:'Editors and Viewers',
         description:'PDF viewer',
+        emulateuseragent='True',
         url:'http://get.adobe.com/reader/',
         version:{
             url:'',
@@ -880,6 +910,7 @@ catalog={
         name:'Scribus',
         category:'Editors and Viewers',
         description:'Opensource Page Layout',
+        emulateuseragent='True',
         url:'http://www.scribus.net/',
         version:{
             url:'http://wiki.scribus.net/canvas/Download',
@@ -903,6 +934,7 @@ catalog={
         name:'Inkscape',
         category:'Multimedia',
         description:'Opensource Vector Graphics Editor',
+        emulateuseragent='True',
         url:'http://inkscape.org/',
         version:{
             url:'http://inkscape.org/download/',
@@ -927,6 +959,7 @@ catalog={
         name:'Gimp',
         category:'Multimedia',
         description:'GNU Image Manipulation Program.',
+        emulateuseragent='True',
         url:'http://www.gimp.org/',
         version:{
             url:'http://www.gimp.org/downloads/',
@@ -951,6 +984,7 @@ catalog={
         name:'TrueCrypt',
         category:'Encryption',
         description:'Virtual disk encryption',
+        emulateuseragent='True',
         url:'http://www.truecrypt.org/',
         version:{
             url:'http://www.truecrypt.org/downloads',
@@ -975,6 +1009,7 @@ catalog={
         name:'ImageMagick',
         category:'Multimedia',
         description:'A software suite to create, edit, compose, or convert bitmap images.',
+        emulateuseragent='True',
         url:'http://www.imagemagick.org',
         version:{
             url:'http://www.imagemagick.org/www/binary-releases.html',
@@ -999,6 +1034,7 @@ catalog={
         name:'GSview 32bit',
         category:'Utilities',
         description:'GSview is a graphical interface for Ghostscript',
+        emulateuseragent='True',
         url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
         version:{
             url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
@@ -1022,6 +1058,7 @@ catalog={
         name:'Ghostscript',
         category:'Utilities',
         description:'An interpreter for the PostScript language and for PDF.',
+        emulateuseragent='True',
         url:'http://www.ghostscript.com/',
         version:{
             url:'http://www.ghostscript.com/download/',
@@ -1045,6 +1082,7 @@ catalog={
         name:'7-Zip',
         category:'Utilities',
         description:'Multiple format file compression and decompression',
+        emulateuseragent='True',
         url:'http://7-zip.org',
         version:{
             url:'http://7-zip.org',
@@ -1069,6 +1107,7 @@ catalog={
         name:'Firefox',
         category:'Internet Tools',
         description:'The Mozilla Firefox browser',
+        emulateuseragent='True',
         url:'http://www.mozilla.org/en-US/firefox/new/',
         version:{
             url:'http://www.mozilla.org/en-US/firefox/new/',
@@ -1093,6 +1132,7 @@ catalog={
         name:'Notepad++',
         category:'Multimedia',
         description:'An Editor that knows about \\n',
+        emulateuseragent='True',
         url:'http://notepad-plus-plus.org/',
         version:{
             url:'http://notepad-plus-plus.org/download/',
@@ -1117,6 +1157,7 @@ catalog={
         name:'GNU Vim',
         category:'Editors',
         description:'Vi Improved Editing Environment',
+        emulateuseragent='True',
         url:'http://www.vim.org',
         version:{
             url:'http://www.vim.org/download.php',
@@ -1142,6 +1183,7 @@ catalog={
         name:'Adobe Flash Player (Firefox)',
         category:'Multimedia',
         description:'Web Plugin Framework for Firefox',
+        emulateuseragent='True',
         url:'http://www.adobe.com/products/flashplayer.html ',
         version:{
             url:'http://get.adobe.com/flashplayer/',
@@ -1164,6 +1206,7 @@ catalog={
         name:'Pidgin',
         category:'Internet tool',
         description:'Universal chat program ',
+        emulateuseragent='True',
         url:'http://pidgin.im/',
         version:{
             url:'http://pidgin.im/',
@@ -1186,6 +1229,7 @@ catalog={
         name:'Adobe Flash Player (IE)',
         category:'Multimedia',
         description:'Virus Plugin Framework for IE',
+        emulateuseragent='True',
         url:'http://www.adobe.com/products/flashplayer.html ',
         version:{
             url:'http://get.adobe.com/flashplayer/',
@@ -1208,6 +1252,7 @@ catalog={
         name:'Thunderbird',
         category:'Internet Tools',
         description:'Bayes Classifier Spam Detector',
+        emulateuseragent='True',
         url:'http://www.mozilla.org/en-US/thunderbird/',
         version:{
             url:'http://www.mozilla.org/en-US/thunderbird/15.0.1/releasenotes/',
@@ -1232,6 +1277,7 @@ catalog={
         name:'VirtualBox',
         category:'Virtual Machine',
         description:'x86 and AMD64/Intel64 virtualization product',
+        emulateuseragent='True',
         url:'https://www.virtualbox.org/',
         version:{
             url:'https://www.virtualbox.org/wiki/Downloads',
@@ -1256,6 +1302,7 @@ catalog={
         name:'Python 2',
         category:'Programming',
         description:'T3h l337t3st Programming Language Yo',
+        emulateuseragent='True',
         url:'python.org',
         version:{
             url:'http://python.org/download/',
@@ -1280,6 +1327,7 @@ catalog={
         name:'Python 3',
         category:'Programming',
         description:'If you are into that New Age Stuff',
+        emulateuseragent='True',
         url:'',
         version:{
             url:'http://python.org/download/',
@@ -1304,6 +1352,7 @@ catalog={
         name:'SmartGit',
         category:'Source Control Management',
         description:'The Smart way to git',
+        emulateuseragent='True',
         url:'http://www.syntevo.com/smartgit/index.html',
         version:{
             url:'http://www.syntevo.com/smartgit/index.html',
@@ -1328,6 +1377,7 @@ catalog={
         name:'Windows R Who Daemon',
         category:'Utilities',
         description:'Answers linux rwho requests for finding people on your network',
+        emulateuseragent='True',
         url:'http://matthew.loar.name/software/rwho/',
         version:{
             url:'http://matthew.loar.name/software/rwho/',
@@ -1352,6 +1402,7 @@ catalog={
         name:'Screen Recorder',
         category:'Utilities',
         description:'For Recording Screens',
+        emulateuseragent='True',
         url:'http://technet.microsoft.com/en-us/magazine/2009.03.utilityspotlight2.aspx?pr=blog',
         version:{
             url:'http://technet.microsoft.com/en-us/magazine/2009.03.utilityspotlight2.aspx?pr=blog',
@@ -1376,6 +1427,7 @@ catalog={
         name:'Sysinternals Suite',
         category:'Utilities',
         description:'Collection of Mark Russinovich system utilities',
+        emulateuseragent='True',
         url:'http://technet.microsoft.com/en-us/sysinternals',
         version:{
             url:'http://technet.microsoft.com/en-us/sysinternals/bb842062',
@@ -1400,6 +1452,7 @@ catalog={
         name:'CamStudio Video Codec',
         category:'Multimedia',
         description:'The Codec for Camstudio',
+        emulateuseragent='True',
         url:'http://camstudio.org/',
         version:{
             url:'http://camstudio.org/',
@@ -1424,6 +1477,7 @@ catalog={
         name:'Putty',
         category:'Utilties',
         description:'Windows SSH and telenet client',
+        emulateuseragent='True',
         url:'http://www.chiark.greenend.org.uk/~sgtatham/putty/',
         version:{
             url:'http://www.chiark.greenend.org.uk/~sgtatham/putty/',
@@ -1448,6 +1502,7 @@ catalog={
         name:'WinSCP',
         category:'Utilties',
         description:'Secure Copy for Windows',
+        emulateuseragent='True',
         url:'http://winscp.net/eng/index.php',
         version:{
             url:'http://winscp.net/eng/download.php',
@@ -1472,6 +1527,7 @@ catalog={
         name:'Windows System Control Center',
         category:'Utilities ',
         description:'Utility Organizer',
+        emulateuseragent='True',
         url:'http://www.kls-soft.com/wscc/index.php',
         version:{
             url:'http://www.kls-soft.com/wscc/index.php',
@@ -1496,6 +1552,7 @@ catalog={
         name:'Violet UML Editor',
         category:'Programming',
         description:'A UML editor with nice benefits',
+        emulateuseragent='True',
         url:'http://alexdp.free.fr/violetumleditor/page.php',
         version:{
             url:'http://sourceforge.net/projects/violet/',
@@ -1503,7 +1560,7 @@ catalog={
             regexpos:0},
         download:{
             downloadtype:'directurl',
-            url:'http://superb-dca2.dl.sourceforge.net/project/violet/violetumleditor/##VERSION##/com.horstmann.violet-##VERSION.jar',
+            url:'http://sourceforge.net/projects/violet/files/latest/download',
             regex:'',
             regexpos:0},
         silentflags:'/verysilent',
@@ -1520,6 +1577,7 @@ catalog={
         name:'Racket',
         category:'Programming',
         description:'A Lisp',
+        emulateuseragent='True',
         url:'http://racket-lang.org/',
         version:{
             url:'http://racket-lang.org/download/',
@@ -1544,6 +1602,7 @@ catalog={
         name:'Netbeans',
         category:'Programming',
         description:'Java IDE',
+        emulateuseragent='True',
         url:'netbeans.org',
         version:{
             url:'http://netbeans.org/features/index.html',
@@ -1568,6 +1627,7 @@ catalog={
         name:'MySQLJDBC',
         category:'Database',
         description:'Java Database Connector for Mysql',
+        emulateuseragent='True',
         url:'http://www.mysql.com/downloads/connector/j/?product=c-j',
         version:{   
             url:'http://www.mysql.com/downloads/connector/j/?product=c-j',
@@ -1592,6 +1652,7 @@ catalog={
         name:'MySQL Workbench',
         category:'Database',
         description:'GUI Mysql editor',
+        emulateuseragent='True',
         url:'http://www.mysql.com/products/workbench/',
         version:{
             url:'http://dev.mysql.com/downloads/workbench/',
@@ -1616,6 +1677,7 @@ catalog={
         name:'Squeak',
         category:'http://www.squeak.org ',
         description:'',
+        emulateuseragent='True',
         url:'',
         version:{
             url:'http://www.squeakvm.org/win32/',
@@ -1640,6 +1702,7 @@ catalog={
         name:'Lyx',
         category:'Editor',
         description:'Latex Editor',
+        emulateuseragent='True',
         url:'http://wiki.lyx.org/LyX/Welcome',
         version:{
             url:'http://wiki.lyx.org/Windows/Windows',
@@ -1664,6 +1727,7 @@ catalog={
         name:'R',
         category:'Programming',
         description:'Statistical and Graphical Computing',
+        emulateuseragent='True',
         url:'http://cran.cs.wwu.edu/',
         version:{
             url:'http://www.r-project.org/main.shtml',
@@ -1688,6 +1752,7 @@ catalog={
         name:'Clisp',
         category:'Programming',
         description:'A GNU ANSI C Common Lisp',
+        emulateuseragent='True',
         url:'http://www.clisp.org/',
         version:{
             url:'http://sourceforge.net/projects/clisp/',
@@ -1712,6 +1777,7 @@ catalog={
         name:'PHP',
         category:'Programming',
         description:'A Great! Programming Language',
+        emulateuseragent='True',
         url:'http://windows.php.net',
         version:{
             url:'http://windows.php.net/download/',
@@ -1736,6 +1802,7 @@ catalog={
         name:'PHP',
         category:'Programming',
         description:'A Great! Programming Language',
+        emulateuseragent='True',
         url:'http://windows.php.net',
         version:{
             url:'http://windows.php.net/download/',
@@ -1760,6 +1827,7 @@ catalog={
         name:'Standard ML New Jersey',
         category:'Programming',
         description:'A non Lazy Functional Programming Language',
+        emulateuseragent='True',
         url:'http://www.smlnj.org/',
         version:{
             url:'http://www.smlnj.org/dist/working/index.html',
@@ -1784,6 +1852,7 @@ catalog={
         name:'GNU Prolog (Microsoft Visual C Compiler)',
         category:'Programming',
         description:'GNU implementation of the declarative language Prolog',
+        emulateuseragent='True',
         url:'http://www.gprolog.org',
         version:{
             url:'http://www.gprolog.org/#download',
@@ -1808,6 +1877,7 @@ catalog={
         name:'GNU Prolog (MinGW Compiler)',
         category:'Programming',
         description:'GNU implementation of the declarative language Prolog',
+        emulateuseragent='True',
         url:'http://www.gprolog.org',
         version:{
             url:'http://www.gprolog.org/#download',
@@ -1832,6 +1902,7 @@ catalog={
         name:'GNU Prolog (MSCV Compiler) 64 bit',
         category:'Programming',
         description:'GNU implementation of the declarative language Prolog',
+        emulateuseragent='True',
         url:'http://www.gprolog.org',
         version:{
             url:'http://www.gprolog.org/#download',
@@ -1856,6 +1927,7 @@ catalog={
         name:'GNU Prolog (MinGW Compiler) 64 bit',
         category:'Programming',
         description:'GNU implementation of the declarative language Prolog',
+        emulateuseragent='True',
         url:'http://www.gprolog.org',
         version:{
             url:'http://www.gprolog.org/#download',
@@ -1880,6 +1952,7 @@ catalog={
         name:'Groovy',
         category:'Programming',
         description:'Dynamic Langauge for the JRE',
+        emulateuseragent='True',
         url:'http://groovy.codehaus.org/',
         version:{
             url:'http://groovy.codehaus.org/Download',
@@ -1904,6 +1977,7 @@ catalog={
         name:'Lua For Windows',
         category:'Programming',
         description:'Installation of Lua for the Windows OS including many lua libraries',
+        emulateuseragent='True',
         url:'http://code.google.com/p/luaforwindows/',
         version:{
             url:'http://code.google.com/p/luaforwindows/',
@@ -1928,6 +2002,7 @@ catalog={
         name:'Wings 3D',
         category:'Multimedia',
         description:'Wings 3D is an advanced subdivision modeler that is both powerful and easy to use',
+        emulateuseragent='True',
         url:'http://www.wings3d.com/index.php',
         version:{
             url:'http://www.wings3d.com/index.php',
@@ -1952,6 +2027,7 @@ catalog={
         name:'Synergy 2',
         category:'Utility',
         description:'Screen Sharing Utility',
+        emulateuseragent='True',
         url:'http://synergy-foss.org/',
         version:{
             url:'http://synergy-foss.org/download/?list',
@@ -1976,6 +2052,7 @@ catalog={
         name:'Synergy 2',
         category:'Utility',
         description:'Screen Sharing Utility',
+        emulateuseragent='True',
         url:'http://synergy-foss.org/',
         version:{
             url:'http://synergy-foss.org/download/?list',
@@ -2000,6 +2077,7 @@ catalog={
         name:'Doxygen',
         category:'Programming',
         description:'Generate documentation from source code',
+        emulateuseragent='True',
         url:'http://www.stack.nl/~dimitri/doxygen/',
         version:{
             url:'http://www.stack.nl/~dimitri/doxygen/download.html',
@@ -2024,6 +2102,7 @@ catalog={
         name:'Graphviz',
         category:'Utility',
         description:'Graph and Digraph layout engine',
+        emulateuseragent='True',
         url:'http://www.graphviz.org',
         version:{
             url:'http://www.graphviz.org/Download_windows.php',
@@ -2048,6 +2127,7 @@ catalog={
         name:'LeJOS',
         category:'Firmware',
         description:'leJOS is replacement firmware for LEGO Mindstorms RCX and NXT bricks. Yes, you can program a LEGO robot with Java',
+        emulateuseragent='True',
         url:'http://sourceforge.net/projects/lejos/',
         version:{
             url:'http://sourceforge.net/projects/lejos/',
@@ -2072,6 +2152,7 @@ catalog={
         name:'Open Dynamics Engine',
         category:'Simulation',
         description:'An open source, high performance library for simulating rigid body dynamics',
+        emulateuseragent='True',
         url:'http://www.ode.org/',
         version:{
             url:'http://sourceforge.net/projects/opende/',
@@ -2096,6 +2177,7 @@ catalog={
         name:'UMLet',
         category:'Utility',
         description:'Free UML Tool for fast UML diagrams',
+        emulateuseragent='True',
         url:'http://www.umlet.com/',
         version:{
             url:'http://www.umlet.com/changes.htm',
@@ -2120,6 +2202,7 @@ catalog={
         name:'Alice',
         category:'Programming',
         description:'An educational software that teaches students computer programming in a 3D Environment',
+        emulateuseragent='True',
         url:'http://www.alice.org/',
         version:{
             url:'http://www.alice.org/index.php?page=downloads/download_alice2.3',
@@ -2144,6 +2227,7 @@ catalog={
         name:'Alice',
         category:'Programming',
         description:'Alice 3D Modeling Plus Learning to Program with Alice',
+        emulateuseragent='True',
         url:'http://www.alice.org/',
         version:{
             url:'http://www.alice.org/index.php?page=downloads/download_alice2.3',
@@ -2168,6 +2252,7 @@ catalog={
         name:'Alice',
         category:'Programming',
         description:'An educational software that teaches students computer programming in a 3D Environment',
+        emulateuseragent='True',
         url:'http://www.alice.org/',
         version:{
             url:'http://www.alice.org/index.php?page=downloads/download_alice3.1    ',
@@ -2192,6 +2277,7 @@ catalog={
         name:'Skype',
         category:'Chat',
         description:'Peer to Peer Voice,Video,IM Client',
+        emulateuseragent='True',
         url:'http://www.skype.com',
         version:{
             url:'http://blogs.skype.com/garage/windows/',
@@ -2218,6 +2304,7 @@ catalog={
         name:'SketchUp',
         category:'Modeling',
         description:'Google 3d Modeling Program',
+        emulateuseragent='True',
         url:'http://www.sketchup.com/',
         version:{
             url:'http://www.sketchup.com/intl/en/download/gsu.html',
@@ -2242,6 +2329,7 @@ catalog={
         name:'Visual Prolog',
         category:'Programming',
         description:'Prolog that Targets Windows',
+        emulateuseragent='True',
         url:'http://www.visual-prolog.com/',
         version:{
             url:'http://www.visual-prolog.com/vip6/community/news.htm',
@@ -2266,6 +2354,7 @@ catalog={
         name:'Visual Prolog',
         category:'Programming',
         description:'Prolog that Targets Windows',
+        emulateuseragent='True',
         url:'http://www.visual-prolog.com/',
         version:{
             url:'http://www.visual-prolog.com/vip6/community/news.htm',
@@ -2290,6 +2379,7 @@ catalog={
         name:'ActiveTcl',
         category:'Programming',
         description:'Commerical Tcl Distribution',
+        emulateuseragent='True',
         url:'http://www.activestate.com/activetcl',
         version:{
             url:'http://www.activestate.com/activetcl/downloads',
@@ -2314,6 +2404,7 @@ catalog={
         name:'ActiveTcl',
         category:'Programming',
         description:'Commerical Tcl Distribution',
+        emulateuseragent='True',
         url:'http://www.activestate.com/activetcl',
         version:{
             url:'http://www.activestate.com/activetcl/downloads',
@@ -2338,6 +2429,7 @@ catalog={
         name:'Kinect SDK',
         category:'Programming',
         description:'Source Development Kit for the Microsoft Kinect',
+        emulateuseragent='True',
         url:'research.microsoft.com/en-us/um/redmond/projects/kinectsdk/',
         version:{
             url:'http://www.microsoft.com/en-us/kinectforwindows/develop/developer-downloads.aspx',
@@ -2362,6 +2454,7 @@ catalog={
         name:'Kinect for Windows Developer Toolkit',
         category:'Programming',
         description:'Contains source code samples, Kinect Studio, Face Tracking SDK, and other resources to simplify developing applications using the Kinect for Windows SDK',
+        emulateuseragent='True',
         url:'research.microsoft.com/en-us/um/redmond/projects/kinectsdk/',
         version:{
             url:'http://www.microsoft.com/en-us/kinectforwindows/develop/developer-downloads.aspx',
@@ -2386,6 +2479,7 @@ catalog={
         name:'VirtualDub',
         category:'Utility',
         description:'Video Capture and Processing Utility',
+        emulateuseragent='True',
         url:'http://virtualdub.sourceforge.net/',
         version:{
             url:'http://sourceforge.net/projects/virtualdub/files/virtualdub-win/',
@@ -2410,6 +2504,7 @@ catalog={
         name:'Mircosoft Robotics Studio',
         category:'Programming',
         description:'Robot Development Environment',
+        emulateuseragent='True',
         url:'http://www.microsoft.com/robotics/',
         version:{
             url:'http://www.microsoft.com/en-us/download/details.aspx?id=29081',
@@ -2434,6 +2529,7 @@ catalog={
         name:'Mysql Open  Database Connectivity',
         category:'Database',
         description:'ODBC Driver for Mysql',
+        emulateuseragent='True',
         url:'http://dev.mysql.com/downloads/connector/odbc',
         version:{
             url:'http://dev.mysql.com/downloads/connector/odbc',
@@ -2458,6 +2554,7 @@ catalog={
         name:'Mysql Open  Database Connectivity',
         category:'Database',
         description:'ODBC Driver for Mysql',
+        emulateuseragent='True',
         url:'http://dev.mysql.com/downloads/connector/odbc',
         version:{
             url:'http://dev.mysql.com/downloads/connector/odbc',
@@ -2482,6 +2579,7 @@ catalog={
         name:'Texnic Center',
         category:'Editor',
         description:'Latex Editor',
+        emulateuseragent='True',
         url:'http://www.texniccenter.org/',
         version:{
             url:'http://sourceforge.net/projects/texniccenter/',
@@ -2506,6 +2604,7 @@ catalog={
         name:'The Haskell Platform',
         category:'Programming',
         description:'The Best Way To Program, Obv',
+        emulateuseragent='True',
         url:'http://hackage.haskell.org/platform/',
         version:{
             url:'http://hackage.haskell.org/platform/',
@@ -2530,6 +2629,7 @@ catalog={
         name:'Unreal Development Kit',
         category:'Programming',
         description:'3D Game Environment',
+        emulateuseragent='True',
         url:'http://www.unrealengine.com/udk/',
         version:{
             url:'http://www.unrealengine.com/en/udk/downloads/',
@@ -2554,6 +2654,7 @@ catalog={
         name:'Unity Game Engine',
         category:'Programming',
         description:'Game Engine',
+        emulateuseragent='True',
         url:'http://unity3d.com',
         version:{
             url:'http://unity3d.com/unity/download/',
@@ -2578,6 +2679,7 @@ catalog={
         name:'Ruby',
         category:'Programming',
         description:'A Programming Langauge that your roommate is always telling you about but you really do not care',
+        emulateuseragent='True',
         url:'http://www.ruby-lang.org',
         version:{
             url:'http://rubyinstaller.org/downloads/',
@@ -2602,6 +2704,7 @@ catalog={
         name:'Uncrustify',
         category:'Utility',
         description:'Code Beautification Utility',
+        emulateuseragent='True',
         url:'http://uncrustify.sourceforge.net/',
         version:{
             url:'http://sourceforge.net/projects/uncrustify/',
@@ -2627,6 +2730,7 @@ catalog={
         name:'SQlite Database Browser',
         category:'database',
         description:'Graphical Sqlite Editor',
+        emulateuseragent='True',
         url:'http://sqlitebrowser.sourceforge.net/',
         version:{
             url:'http://sourceforge.net/projects/sqlitebrowser/',
@@ -2651,6 +2755,7 @@ catalog={
         name:'CMake',
         category:'Programming',
         description:'Cross Platform Make',
+        emulateuseragent='True',
         url:'http://www.cmake.org/',
         version:{
             url:'http://www.cmake.org/cmake/resources/software.html',
@@ -2675,6 +2780,7 @@ catalog={
         name:'AviSynth',
         category:'Programming',
         description:'Scripting langauge for non linear video editing',
+        emulateuseragent='True',
         url:'http://sourceforge.net/projects/avisynth2/',
         version:{
             url:'http://sourceforge.net/projects/avisynth2/files/',
@@ -2699,6 +2805,7 @@ catalog={
         name:'Sping',
         category:'Programming',
         description:'Formal Verification of Distributed Software Systems',
+        emulateuseragent='True',
         url:'spinroot.com/spin/whatispin.html',
         version:{
             url:'http://spinroot.com/spin/Bin/index.html',
@@ -2723,6 +2830,7 @@ catalog={
         name:'XNA Game Studio',
         category:'Programming',
         description:'Xbox DevelopmentE nvironment',
+        emulateuseragent='True',
         url:'http://msdn.microsoft.com/en-us/aa937791.aspx',
         version:{
             url:'http://www.microsoft.com/en-us/download/details.aspx?id=23714',
@@ -2746,6 +2854,7 @@ catalog={
         name:'irfanview',
         category:'Multimedia',
         description:'Graphics View',
+        emulateuseragent='True',
         url:'http://www.irfanview.com/',
         version:{
             url:'http://download.cnet.com/IrfanView/3000-2192_4-10021962.html?part=dl-IrfanView&subj=dl&tag=button',
@@ -2770,6 +2879,7 @@ catalog={
         name:'Hugs',
         category:'Programming',
         description:'The best programming that hugs you',
+        emulateuseragent='True',
         url:'http://cvs.haskell.org/Hugs',
         version:{
             url:'http://cvs.haskell.org/Hugs/pages/downloading.htm',
@@ -2794,6 +2904,7 @@ catalog={
         name:'Strawberry Perl',
         category:'Programming',
         description:'A programming language with a lot of operators',
+        emulateuseragent='True',
         url:'http://strawberryperl.com/',
         version:{
             url:'http://strawberryperl.com/',
@@ -2818,6 +2929,7 @@ catalog={
         name:'Strawberry Perl',
         category:'Programming',
         description:'A programming language with a lot of operators',
+        emulateuseragent='True',
         url:'http://strawberryperl.com/',
         version:{
             url:'http://strawberryperl.com/',
@@ -2842,6 +2954,7 @@ catalog={
         name:'DXSDK',
         category:'Programming',
         description:'Direct X SDK',
+        emulateuseragent='True',
         url:'http://www.microsoft.com/en-us/download/details.aspx?id=6812',
         version:{
             url:'http://www.microsoft.com/en-us/download/details.aspx?id=6812',
@@ -2866,6 +2979,7 @@ catalog={
         name:'Povray',
         category:'Graphics',
         description:'Persistence of Vision Raytracer',
+        emulateuseragent='True',
         url:'http://www.povray.org/',
         version:{
             url:'http://www.povray.org/download/',
@@ -2890,6 +3004,7 @@ catalog={
         name:'Povray',
         category:'Graphics',
         description:'Persistence of Vision Raytracer',
+        emulateuseragent='True',
         url:'http://www.povray.org/',
         version:{
             url:'http://www.povray.org/download/',
@@ -2914,6 +3029,7 @@ catalog={
         name:'Windows Server 2003 Resource Kit Tools ',
         category:'Utility',
         description:'Manage AD',
+        emulateuseragent='True',
         url:'http://www.microsoft.com/en-us/download/details.aspx?id=17657',
         version:{
             url:'http://www.microsoft.com/en-us/download/details.aspx?id=17657',
@@ -2938,6 +3054,7 @@ catalog={
         name:'VLC',
         category:'multimedia',
         description:'Multimedia player for files, DVD, Audio, CD, VCD and streaming products',
+        emulateuseragent='True',
         url:'http://www.videolan.org/',
         version:{
             url:'http://www.videolan.org/',
@@ -2962,6 +3079,7 @@ catalog={
         name:'XEmacs',
         category:'Editor',
         description:'XEmacs',
+        emulateuseragent='True',
         url:'http://www.xemacs.org/Download/index.html',
         version:{
             url:'http://www.xemacs.org/Download/win32/index.html#InnoSetup-Stable-Download',
@@ -2986,6 +3104,7 @@ catalog={
         name:'TortoiseGit-x64',
         category:'Version Controle',
         description:'Version Controle',
+        emulateuseragent='True',
         url:'http://code.google.com/p/tortoisegit/',
         version:{
             url:'http://code.google.com/p/tortoisegit/wiki/ReleaseNotes',
@@ -3010,6 +3129,7 @@ catalog={
         name:'TortoiseHG-64',
         category:'Shell extention',
         description:'Windows shell extension',
+        emulateuseragent='True',
         url:'http://tortoisehg.bitbucket.org/',
         version:{
             url:'http://tortoisehg.bitbucket.org/',
@@ -3034,6 +3154,7 @@ catalog={
         name:'Windows System Control Center',
         category:'Utilities',
         description:'WSCC is a free, portable program that allows you to install, update, execute and organize the utilities from various system utility suites',
+        emulateuseragent='True',
         url:'url=http://www.kls-soft.com/wscc/downloads.php',
         version:{
             url:'http://www.kls-soft.com/wscc/index.php',
@@ -3057,6 +3178,7 @@ catalog={
         name:'CamStudio',
         category:'Multimedia',
         description:'Free streaming video software',
+        emulateuseragent='True',
         url:'url=http://camstudio.org/',
         version:{
             url:'http://camstudio.org/',
@@ -3081,6 +3203,7 @@ catalog={
         name:'League Of Legends',
         category:'Games',
         description:'HUEHUEHUEHUEHUEHUEHUEHUEHUEHUE',
+        emulateuseragent='True',
         url:'pvp.net',
         version:{
             url:'http://na.leagueoflegends.com/news/release-notes',
@@ -3105,6 +3228,7 @@ catalog={
         name:'Eric Integrated Development Environment',
         category:'Programming',
         description:'Python3 IDE',
+        emulateuseragent='True',
         url:'http://sourceforge.net/projects/eric-ide/',
         version:{
             url:'http://sourceforge.net/projects/eric-ide/',
@@ -3129,6 +3253,7 @@ catalog={
         name:'Scratch',
         category:'Programming',
         description:'Graphical Programming Language',
+        emulateuseragent='True',
         url:'http://scratch.mit.edu/',
         version:{
             url:'http://scratch.mit.edu/download',
@@ -3153,6 +3278,7 @@ catalog={
         name:'Inform7',
         category:'Programming',
         description:'Interactive Fiction Programming CYOA',
+        emulateuseragent='True',
         url:'http://inform7.com/',
         version:{
             url:'http://inform7.com/download/',
@@ -3177,6 +3303,7 @@ catalog={
         name:'Windif',
         category:'Utility',
         description:'Diff in Windows    ',
+        emulateuseragent='True',
         url:'',
         version:{
             url:'',
@@ -3201,6 +3328,7 @@ catalog={
         name:'Love2d',
         category:'Programming',
         description:'Lua 2d engine',
+        emulateuseragent='True',
         url:'https://love2d.org/',
         version:{
             url:'https://love2d.org/',
@@ -3225,6 +3353,7 @@ catalog={
         name:'Love2d',
         category:'Programming',
         description:'Lua 2d engine',
+        emulateuseragent='True',
         url:'https://love2d.org/',
         version:{
             url:'https://love2d.org/',
@@ -3249,6 +3378,7 @@ catalog={
         name:'Simple DirectMedia Layer',
         category:'Programming',
         description:'Low Level Peripheral Library',
+        emulateuseragent='True',
         url:'http://www.libsdl.org/index.php',
         version:{
             url:'http://www.libsdl.org/download-1.2.php',
@@ -3273,6 +3403,7 @@ catalog={
         name:'Simple DirectMedia Layer',
         category:'Programming',
         description:'Low Level Peripheral Library',
+        emulateuseragent='True',
         url:'http://www.libsdl.org/index.php',
         version:{
             url:'http://www.libsdl.org/download-1.2.php',
@@ -3345,6 +3476,7 @@ catalog={
         name:'Argo UML',
         category:'Utilities',
         description:'UML Drawing',
+        emulateuseragent='True',
         url:'http://argouml-downloads.tigris.org/',
         version:{
             url:'http://argouml-downloads.tigris.org/',
@@ -3369,6 +3501,7 @@ catalog={
         name:'Interactive C',
         category:'Programming',
         description:'C Interpreter',
+        emulateuseragent='True',
         url:'http://www.botball.org/ic',
         version:{
             url:'http://www.botball.org/ic',
@@ -3393,6 +3526,7 @@ catalog={
         name:'MPlayer',
         category:'Multimedia',
         description:'Movie Player',
+        emulateuseragent='True',
         url:'http://sourceforge.net/projects/smplayer/',
         version:{
             url:'http://sourceforge.net/projects/smplayer/',
@@ -3417,6 +3551,7 @@ catalog={
         name:'Boost',
         category:'Programming',
         description:'Fast C++ SDL',
+        emulateuseragent='True',
         url:'http://www.boost.org',
         version:{
             url:'http://www.boost.org/users/download/',
@@ -3441,6 +3576,7 @@ catalog={
         name:'MyPaint',
         category:'Multimedia',
         description:'Open Source Graphics Editor',
+        emulateuseragent='True',
         url:'http://mypaint.intilinux.com/',
         version:{
             url:'http://mypaint.intilinux.com/?page_id=6',
@@ -3465,6 +3601,7 @@ catalog={
         name:'MyPaint',
         category:'Multimedia',
         description:'Open Source Graphics Editor',
+        emulateuseragent='True',
         url:'http://mypaint.intilinux.com/',
         version:{
             url:'http://mypaint.intilinux.com/?page_id=6',
@@ -3489,6 +3626,7 @@ catalog={
         name:'Blender',
         category:'Multipedia',
         description:'3d Modeling',
+        emulateuseragent='True',
         url:'http://www.blender.org',
         version:{
             url:'http://www.blender.org/download/get-blender/',
@@ -3513,6 +3651,7 @@ catalog={
         name:'Blender',
         category:'Multipedia',
         description:'3d Modeling',
+        emulateuseragent='True',
         url:'http://www.blender.org',
         version:{
             url:'http://www.blender.org/download/get-blender/',
@@ -3537,6 +3676,7 @@ catalog={
         name:'Mscgen',
         category:'Utility',
         description:'Message Seqence Chart Visualizer',
+        emulateuseragent='True',
         url:'http://www.mcternan.me.uk/mscgen/',
         version:{
             url:'http://www.mcternan.me.uk/mscgen/',
@@ -3561,6 +3701,7 @@ catalog={
         name:'Audacity',
         category:'Multimedia',
         description:'Audio Editor',
+        emulateuseragent='True',
         url:'http://audacity.sourceforge.net',
         version:{
             url:'http://audacity.sourceforge.net',
@@ -3585,6 +3726,7 @@ catalog={
         name:'Vuze',
         category:'BitTorrent',
         description:'Heavyweight Torrent Client',
+        emulateuseragent='True',
         url:'http://www.vuze.com/',
         version:{
             url:'http://www.vuze.com/',
@@ -3609,6 +3751,7 @@ catalog={
         name:'wxWidgits',
         category:'Programming',
         description:'GUI Library',
+        emulateuseragent='True',
         url:'http://www.wxwidgets.org/',
         version:{
             url:'http://www.wxwidgets.org/downloads/',
@@ -3633,6 +3776,7 @@ catalog={
         name:'Iron Python',
         category:'Programming',
         description:'Python JiT For CLR',
+        emulateuseragent='True',
         url:'http://ironpython.codeplex.com/',
         version:{
             url:'http://ironpython.codeplex.com/releases/view/81726',
@@ -3657,6 +3801,7 @@ catalog={
         name:'Free Pascal',
         category:'Programming',
         description:'Implementation of Pascal',
+        emulateuseragent='True',
         url:'http://www.freepascal.org',
         version:{
             url:'http://www.freepascal.org/download.var',
@@ -3681,6 +3826,7 @@ catalog={
         name:'Smart Eiffel',
         category:'Programming',
         description:'A GNU Eiffel compiler',
+        emulateuseragent='True',
         url:'https://gforge.inria.fr/projects/smarteiffel/',
         version:{
             url:'https://gforge.inria.fr/frs/?group_id=184',
@@ -3705,6 +3851,7 @@ catalog={
         name:'Erlang',
         category:'Programming',
         description:'Soft Realtime systems language',
+        emulateuseragent='True',
         url:'http://www.erlang.org/',
         version:{
             url:'http://www.erlang.org/download.html',
@@ -3729,6 +3876,7 @@ catalog={
         name:'Erlang',
         category:'Programming',
         description:'Soft Realtime systems language',
+        emulateuseragent='True',
         url:'http://www.erlang.org/',
         version:{
             url:'http://www.erlang.org/download.html',
@@ -3753,6 +3901,7 @@ catalog={
         name:'Steel Bank Common Lisp',
         category:'Programming',
         description:'Lisp Implementation',
+        emulateuseragent='True',
         url:'http://www.sbcl.org/',
         version:{
             url:'http://sourceforge.net/projects/sbcl/',
@@ -3777,6 +3926,7 @@ catalog={
         name:'Octave',
         category:'Programming',
         description:'Programming Language',
+        emulateuseragent='True',
         url:'http://sourceforge.net/projects/octave',
         version:{
             url:'http://sourceforge.net/projects/octave',
@@ -3802,6 +3952,7 @@ catalog={
         name:'',
         category:'',
         description:'',
+        emulateuseragent='True',
         url:'',
         version:{
             url:'',
