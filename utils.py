@@ -34,10 +34,14 @@ import _winreg
 import copy
 import sys
 import catalog
+import cookielib
 
 #We emulate Mozilla Firefox on Windows 7 64 bit as our UA
 
 userAgent=[('User-Agent',' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20100101 Firefox/15.0')]
+cj = cookielib.CookieJar()
+opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+opener.addheaders=userAgent
 
 def getPage(url):
     """Returns the contents of a url as a string.
@@ -48,8 +52,7 @@ def getPage(url):
     @return A string containing the page contents of url.
     """
     try:
-        opener=urllib2.build_opener()
-        opener.addheaders=userAgent
+        opener.addheaders=userAgent + [('Referer', url)]
         f=opener.open(url)
         page = f.read()
         f.close()
@@ -165,14 +168,12 @@ def getDownloadURL(d):
     try:
         expandedVersion=expandVersion(d)
         downurl=expandedVersion['download']['url']
-
         
         #Here is a switch to determine action based on download type. Default is direct download
         if d['download']['downloadtype']=='pagesearch':
             downurl = scrapePageDict(expandedVersion['download'])
 
-        opener=urllib2.build_opener()
-        opener.addheaders=userAgent
+        opener.addheaders=userAgent + [('Referer', downurl)]
         fredirectedurl = opener.open(downurl)
         
         redirectedurl = fredirectedurl.geturl()
@@ -207,15 +208,15 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
         name = d['name']
         version = getWebVersion(d)
         downurl = getDownloadURL(d)
-        opener=urllib2.build_opener()
-        opener.addheaders=userAgent
         
+        opener.addheaders=userAgent + [('Referer', downurl)]
         furl = opener.open(downurl)
 
         parsed=urllib2.urlparse.urlparse(furl.geturl())
         pathname = urllib2.url2pathname(parsed.path)
         filename = pathname.split("\\")[-1]
         newfileloc = location + name + '---' + version + '---' + filename
+        print "Downloading: %s" % newfileloc
         # if the file doesn't exist or we allow overwriteing write the file
         if overwrite or not os.path.exists(newfileloc):
             #XXX This needs to be modified to be done in blocks.
@@ -403,7 +404,10 @@ def installPackage(d, location):
     @return The value returned by the installer
     """
     try:
-        ret = os.system('"' + location + '" ' + d['silentflags'])
+        print "installing: %s" % location
+        # no silent flags for now 
+		#ret = os.system('"' + location + '" ' + d['silentflags'])
+        ret = os.system('"' + location + '" ')
     except:
         print 'unknown error running installPackage(%s, %s)' %(d, location)
     else:
@@ -512,17 +516,25 @@ def getCollWebVersions(catalog, collection):
 def main(argv):
     
     if len(argv)<3:
-        print "Usage:python utils.py [version|localversion|fetch] {packagename|all}"
+        print "Usage:python utils.py [version|localversion|fetch|install] {packagename|all}"
         return -1
 
-    
+    package_name=argv[2]
+    everything=(package_name=="all")
+    if not everything:
+        package = catalog.catalog[package_name]
+
     if argv[1]=="version":
-        package = catalog.catalog[argv[2]]
         print getWebVersion(package)
     elif argv[1]=="localversion":
         print getInstalledVersion(package)
+    elif argv[1]=="install":
+        if everything:
+            installColl(catalog.catalog, sorted(catalog.catalog.keys()))
+        else:
+            downloadAndInstallLatest(package)
     elif argv[1]=="fetch":
-        if argv[2]=="all":
+        if everything:
             for i in catalog.catalog:
                 try:
                     package = catalog.catalog[i]
@@ -531,7 +543,6 @@ def main(argv):
                 except Exception:
                     print "Could not fetch:"+i
         else:
-            package = catalog.catalog[argv[2]]
             downloadLatest(package)        
             
 

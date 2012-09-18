@@ -60,6 +60,7 @@ full_list=['Git', 'Mscgen', 'XNAGameStudio', 'ActiveTcl-64',
 broken_localversion_minimal_list = [ 'Gimp', 'AdobeReader' ]
 broken_download_minimal_list = [ 'Inkscape', 'TrueCrypt', 'AdobeReader','Flash-InternetExplorer,OracleInstantBasic']
 broken_silent_minimal_list = [ 'GSview 32bit', 'AdobeReader' ]
+broken_list = ['TortoiseSVN-64']
 
 ########### Camille's work list ###########################################
 #Windodws System Control Center == Zipped, may have problems installing
@@ -67,6 +68,9 @@ broken_silent_minimal_list = [ 'GSview 32bit', 'AdobeReader' ]
               #due to dashes in dashed version of number
 #Paint.Net == Zipped, may have problems installing
 #Jarnal == JAR file may have problems installing
+#Lazarus == code commented out due to problems with source forge
+#MingGW == need to add
+#Console == Need to do. http://sourceforge.net/projects/console/
 ############################################################################
 catalog={
     'EMPTY':{
@@ -93,6 +97,198 @@ catalog={
             regexpos:0
             }
         },
+    'Mozart':{
+        name:'Mozart',
+        category:'Programming',
+        description:'Mozart implements Oz, a concurrent object-oriented language with dataflow synchronization',
+        url:'http://www.mozart-oz.org/',
+        version:{
+            url:'http://www.mozart-oz.org/',
+            regex:'Last released Mozart is ([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'pagesearch',
+            url:'http://www.mozart-oz.org/download/view.cgi?action=windows&version=##VERSION##',
+            regex:'a href=\'(.*[0-9]+(?:\.[0-9]+)+.*.exe)',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    'Bison':{
+        name:'Bison for Windows',
+        category:'Programming',
+        description:'General purpose parser generator. Converts a grammar description into a C program to parse the grammar.',
+        url:'http://gnuwin32.sourceforge.net/packages/bison.htm',
+        version:{
+            url:'http://gnuwin32.sourceforge.net/packages/bison.htm',
+            regex:'<p>([0-9]+(?:\.[0-9]+)+)</p>',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://superb-sea2.dl.sourceforge.net/project/gnuwin32/bison/##VERSION##/bison-##VERSION##-bin.zip',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    'LLVM':{
+        name:'Low Level Virtual Machine',
+        category:'Programming',
+        description:'collection of modular and reusable compiler and toolchain technologies',
+        url:'http://llvm.org/',
+        version:{
+            url:'http://llvm.org/',
+            regex:'LLVM ([0-9]+(?:\.[0-9]+)+) is now <a href="releases',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://llvm.org/releases/##VERSION##/clang+llvm-##VERSION##-i386-mingw32-EXPERIMENTAL.tar.bz2',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    'ImgBurn':{
+        name:'ImgBurn',
+        category:'Multimedia',
+        description:'allows the recording of many types of CD/DVD images to recordable media',
+        url:'http://www.imgburn.com/index.php?act=download',
+        version:{
+            url:'http://www.imgburn.com/index.php?act=download',
+            regex:'Current version: ([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://download.imgburn.com/SetupImgBurn_##VERSION##.exe',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    'GPG4Win':{
+        name:'GPG4Win',
+        category:'Encryption',
+        description:'installation package with software tools and manuals for email and file encryption',
+        url:'http://www.gpg4win.org/index.html',
+        version:{
+            url:'http://www.gpg4win.org/index.html',
+            regex:'Download<br />Gpg4win ([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://files.gpg4win.org/gpg4win-##VERSION##.exe',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    'Cygwin':{
+        name:'Cygwin',
+        category:'',
+        description:'collection of tools which provide a Linux look and feel environment for Windows',
+        url:'http://cygwin.com/',
+        version:{
+            url:'http://cygwin.com/',
+            regex:'[0-9]+(?:\.[0-9]+)+-[0-9]', 
+            regexpos:0},
+        download:{
+            downloadtype:'pagesearch',
+            url:'http://cygwin.com/',
+            regex:'http://cygwin.com/setup.exe',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    # 'MinGW':{
+        # name:'Minimalist GNU for Windows',
+        # category:'Programming',
+        # description:'Minimalist development environment for native Microsoft Windows applications.',
+        # url:'http://www.mingw.org/',
+        # version:{
+            # url:'http://sourceforge.net/projects/mingw/files/',
+            # regex:'',
+            # regexpos:0},
+        # download:{
+            # downloadtype:'pagesearch',
+            # url:'',
+            # regex:'',
+            # regexpos:0},
+        # silentflags:'/verysilent',
+        # installversion:{
+            # querytype:'',
+            # key:'HKLM',
+            # subkey:'SOFTWARE\\',
+            # value:'',
+            # regex:'([0-9]+(?:\.[0-9]+)+)',
+            # regexpos:0
+            # }
+        # },
+    # 'TortoiseSVN':{
+        # name:'TortoiseSVN',
+        # category:'Version Controle',
+        # description:'Subversion client implemented as a Microsoft Windows shell extension',
+        # url:'http://tortoisesvn.net/downloads.html',
+        # version:{
+            # url:'http://tortoisesvn.net/downloads.html',
+            # regex:'current version is ([0-9]+(?:\.[0-9]+)+)',
+            # regexpos:0},
+        # download:{
+            # downloadtype:'directurl',
+            # url:'http://superb-sea2.dl.sourceforge.net/project/tortoisesvn/1.7.9/Application/TortoiseSVN-1.7.9.23248-win32-svn-1.7.6.msi',
+            # regex:'',
+            # regexpos:0},
+        # silentflags:'/verysilent',
+        # installversion:{
+            # querytype:'',
+            # key:'HKLM',
+            # subkey:'SOFTWARE\\',
+            # value:'',
+            # regex:'([0-9]+(?:\.[0-9]+)+)',
+            # regexpos:0
+            # }
+        # },
     'FLTK':{
         name:'Fast Light Tool Kit',
         category:'Programming',
@@ -130,7 +326,6 @@ catalog={
             downloadtype:'pagesearch',
             url:'http://www.vtk.org/VTK/resources/software.html#latest',
             regex:'http://www.vtk.org/files/release/[0-9]+(?:\.[0-9]+)+/vtk-[0-9]+(?:\.[0-9]+)+-win32-x86.exe',
-               #   http://www.vtk.org/files/release/5.10/vtk-5.10.0-win32-x86.exe
 			regexpos:0},
         silentflags:'/verysilent',
         installversion:{
@@ -400,6 +595,54 @@ catalog={
             regexpos:0
             }
         },    
+#    'TortoiseSVN-64':{
+#        name:'TortoiseSVN',
+#        category:'Programming Tools',
+#        description:'TortoiseSVN is an Apache Subversion client, implemented as a windows shell extension.',
+#        url:'http://tortoisesvn.net/',
+#        version:{
+#            url:'http://tortoisesvn.net/downloads.html',
+#            regex:'The current version is ([0-9]+(?:\.[0-9]+)+)',
+#            regexpos:0},
+#        download:{
+#            downloadtype:'pagesearch',
+#            url:'http://sourceforge.net/projects/tortoisesvn/files/latest/download',
+#            regex:'url=(http://downloads.sourceforge.net/project/tortoisesvn/[0-9]+(?:\.[0-9]+)+/Application/TortoiseSVN-[0-9]+(?:\.[0-9]+)+-x64[^"]*)"',
+#            regexpos:0},
+#        silentflags:'/verysilent',
+#        installversion:{
+#            querytype:'',
+#            key:'HKLM',
+#            subkey:'SOFTWARE\\',
+#            value:'',
+#            regex:'([0-9]+(?:\.[0-9]+)+)',
+#            regexpos:0
+#            }
+#        },
+    'EMPTY':{
+        name:'',
+        category:'',
+        description:'',
+        url:'',
+        version:{
+            url:'',
+            regex:'',
+            regexpos:0},
+        download:{
+            downloadtype:'pagesearch',
+            url:'',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
     'NASM':{
         name:'NASM',
         category:'Programming tool',
