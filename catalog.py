@@ -3458,6 +3458,102 @@ catalog={
             regexpos:0
             }
         },
+    'Erlang':{
+        name:'Erlang',
+        category:'Programming',
+        description:'Soft Realtime systems language',
+        url:'http://www.erlang.org/',
+        version:{
+            url:'http://www.erlang.org/download.html',
+            regex:'Download Erlang/OTP ([A-Z0-9]+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://www.erlang.org/download/otp_win32_##VERSION##.exe',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    'Erlang-64':{
+        name:'Erlang',
+        category:'Programming',
+        description:'Soft Realtime systems language',
+        url:'http://www.erlang.org/',
+        version:{
+            url:'http://www.erlang.org/download.html',
+            regex:'Download Erlang/OTP ([A-Z0-9]+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://www.erlang.org/download/otp_win64_##VERSION##.exe',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    'SBCL':{
+        name:'Steel Bank Common Lisp',
+        category:'Programming',
+        description:'Lisp Implementation',
+        url:'http://www.sbcl.org/',
+        version:{
+            url:'http://sourceforge.net/projects/sbcl/',
+            regex:'sbcl-([0-9]+(?:\.[0-9]+)+)', 
+           regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://superb-dca2.dl.sourceforge.net/project/sbcl/sbcl/##VERSION##/sbcl-##VERSION##-x86-windows-binary.msi',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    'Octave-MinGW':{
+        name:'Octave',
+        category:'Programming',
+        description:'Programming Language',
+        url:'http://sourceforge.net/projects/octave',
+        version:{
+            url:'http://sourceforge.net/projects/octave',
+            regex:'mechanics-([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'pagesearch',
+            url:'http://sourceforge.net/projects/octave/files/Octave Windows binaries/Octave 3.6.2 for Windows Microsoft Visual Studio/octave-3.6.2-optiminterp-0.3.3-vs2010-setup.exe/download',
+            regex:'"a href=\"(http://.+) class=\"direct-download\""',   
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
     
     'EMPTYEND':{
         name:'',
