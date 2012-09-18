@@ -37,10 +37,10 @@ import catalog
 import cookielib
 
 #We emulate Mozilla Firefox on Windows 7 64 bit as our UA
-
+red=urllib2.HTTPRedirectHandler()
 userAgent=[('User-Agent',' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20100101 Firefox/15.0')]
 cj = cookielib.CookieJar()
-opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cj),red)
 opener.addheaders=userAgent
 
 def getPage(url):
@@ -208,10 +208,14 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
         name = d['name']
         version = getWebVersion(d)
         downurl = getDownloadURL(d)
-        
-        opener.addheaders=userAgent + [('Referer', downurl)]
-        furl = opener.open(downurl)
 
+        #Sourceforge Antibot Hack
+        if "sourceforge" in downurl:
+            opener.addheaders=[]
+        else:
+            opener.addheaders=userAgent + [('Referer', downurl)]
+        furl = opener.open(downurl)
+        furl=opener.open(furl.geturl())
         parsed=urllib2.urlparse.urlparse(furl.geturl())
         pathname = urllib2.url2pathname(parsed.path)
         filename = pathname.split("\\")[-1]
@@ -220,9 +224,27 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
         # if the file doesn't exist or we allow overwriteing write the file
         if overwrite or not os.path.exists(newfileloc):
             #XXX This needs to be modified to be done in blocks.
-            filecontents = furl.read()
+            
             with open(newfileloc, "wb") as f:
-                f.write(filecontents)
+                block=furl.read(2**20)
+                written=0.0
+                percent=0.01
+                if "Content-Length" in furl.headers:
+                    print "File Size:"+furl.headers["Content-Length"]
+                
+                while block:
+                    f.write(block)
+                    written+=len(block)
+                    if "Content-Length" in furl.headers:
+                         try:
+                             x=written/float(furl.headers["Content-Length"])
+                             if x>percent:
+                                 percent=round(x,2)+.01
+                                 sys.stdout.write("..."+str((percent-0.01)*100)+"%...")
+                         except Exception as e:
+                             print e
+                    block=furl.read(2**20)
+                print ""
         else:
             print 'File already exists and overwriting was not enabled'
             print 'when calling downloadLatest(%s, %s, %s)' %(d, location, overwrite)
