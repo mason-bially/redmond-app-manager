@@ -89,6 +89,31 @@ catalog={
             regexpos:0
             }
         },
+	    'EMPTY':{
+        name:'',
+        category:'',
+        description:'',
+        emulateuseragent:'True',
+        url:'',
+        version:{
+            url:'',
+            regex:'',
+            regexpos:0},
+        download:{
+            downloadtype:'pagesearch',
+            url:'',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },	
     'Console':{
         name:'Console',
         category:'Programming',
