@@ -70,7 +70,7 @@ broken_list = ['TortoiseSVN-64']
 #Paint.Net == Zipped, may have problems installing
 #Jarnal == JAR file may have problems installing
 #Lazarus == code commented out due to problems with source forge
-#MingGW == need to add
+#MingGW 
 ############################################################################
 catalog={
     'EMPTY':{
@@ -273,30 +273,30 @@ catalog={
             regexpos:0
             }
         },
-    # 'MinGW':{
-        # name:'Minimalist GNU for Windows',
-        # category:'Programming',
-        # description:'Minimalist development environment for native Microsoft Windows applications.',
-        # url:'http://www.mingw.org/',
-        # version:{
-            # url:'http://sourceforge.net/projects/mingw/files/',
-            # regex:'',
-            # regexpos:0},
-        # download:{
-            # downloadtype:'pagesearch',
-            # url:'',
-            # regex:'',
-            # regexpos:0},
-        # silentflags:'/verysilent',
-        # installversion:{
-            # querytype:'',
-            # key:'HKLM',
-            # subkey:'SOFTWARE\\',
-            # value:'',
-            # regex:'([0-9]+(?:\.[0-9]+)+)',
-            # regexpos:0
-            # }
-        # },
+    'MinGW':{
+        name:'Minimalist GNU for Windows',
+        category:'Programming',
+        description:'Minimalist development environment for native Microsoft Windows applications.',
+        url:'http://www.mingw.org/',
+        version:{
+            url:'http://sourceforge.net/projects/mingw/',
+            regex:'mingw-get-inst-([0-9]+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://sourceforge.net/projects/mingw/files/latest/download',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
     # 'TortoiseSVN':{
         # name:'TortoiseSVN',
         # category:'Version Controle',
