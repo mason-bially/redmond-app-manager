@@ -69,8 +69,6 @@ broken_list = ['TortoiseSVN-64']
               #due to dashes in dashed version of number
 #Paint.Net == Zipped, may have problems installing
 #Jarnal == JAR file may have problems installing
-#Lazarus == code commented out due to problems with source forge
-#MingGW 
 ############################################################################
 catalog={
     'EMPTY':{
@@ -371,31 +369,30 @@ catalog={
             regexpos:0
             }
         },
-	# fetch not working for Lazarus due to download URL.  --Camille	
-    # 'Lazarus':{
-        # name:'Lazarus',
-        # category:'Editor',
-        # description:'Lazarus IDE is a stable and feature rich visual programming environment for the FreePascal Compiler',
-        # url:'http://www.lazarus.freepascal.org/',
-        # version:{
-            # url:'http://sourceforge.net/projects/lazarus/files/',
-            # regex:'lazarus-([0-9]+(?:\.[0-9]+)+-fpc-[0-9]+(?:\.[0-9]+)+)',
-            # regexpos:0},
-        # download:{
-            # downloadtype:'directurl',
-            # url:'http://softlayer.dl.sourceforge.net/project/lazarus/Lazarus%20Windows%2032%20bits/Lazarus%201.0/lazarus-##VERSION##-win32.exe',
-            # regex:'',
-            # regexpos:0},
-        # silentflags:'/verysilent',
-        # installversion:{
-            # querytype:'',
-            # key:'HKLM',
-            # subkey:'SOFTWARE\\',
-            # value:'',
-            # regex:'([0-9]+(?:\.[0-9]+)+)',
-            # regexpos:0
-            # }
-        # },
+    'Lazarus':{
+        name:'Lazarus',
+        category:'Editor',
+        description:'Lazarus IDE is a stable and feature rich visual programming environment for the FreePascal Compiler',
+        url:'http://www.lazarus.freepascal.org/',
+        version:{
+            url:'http://sourceforge.net/projects/lazarus/files/',
+            regex:'Download lazarus-([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://sourceforge.net/projects/lazarus/files/latest/download',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
         'GHC':{
         name:'Glasgow Haskell compiler',
         category:'Programming',
