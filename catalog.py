@@ -63,13 +63,6 @@ broken_download_minimal_list = [ 'Inkscape', 'TrueCrypt', 'AdobeReader','Flash-I
 broken_silent_minimal_list = [ 'GSview 32bit', 'AdobeReader' ]
 broken_list = ['TortoiseSVN-64']
 
-########### Camille's work list ###########################################
-#Windodws System Control Center == Zipped, may have problems installing
-#PdfCreator == See download URL.  It works but may cause future problems
-              #due to dashes in dashed version of number
-#Paint.Net == Zipped, may have problems installing
-#Jarnal == JAR file may have problems installing
-############################################################################
 catalog={
     'EMPTY':{
         name:'',
@@ -295,30 +288,54 @@ catalog={
             regexpos:0
             }
         },
-    # 'TortoiseSVN':{
-        # name:'TortoiseSVN',
-        # category:'Version Controle',
-        # description:'Subversion client implemented as a Microsoft Windows shell extension',
-        # url:'http://tortoisesvn.net/downloads.html',
-        # version:{
-            # url:'http://tortoisesvn.net/downloads.html',
-            # regex:'current version is ([0-9]+(?:\.[0-9]+)+)',
-            # regexpos:0},
-        # download:{
-            # downloadtype:'directurl',
-            # url:'http://superb-sea2.dl.sourceforge.net/project/tortoisesvn/1.7.9/Application/TortoiseSVN-1.7.9.23248-win32-svn-1.7.6.msi',
-            # regex:'',
-            # regexpos:0},
-        # silentflags:'/verysilent',
-        # installversion:{
-            # querytype:'',
-            # key:'HKLM',
-            # subkey:'SOFTWARE\\',
-            # value:'',
-            # regex:'([0-9]+(?:\.[0-9]+)+)',
-            # regexpos:0
-            # }
-        # },
+    'TortoiseSVN-64':{
+        name:'TortoiseSVN-64',
+        category:'Version Controle',
+        description:'Subversion client implemented as a Microsoft Windows shell extension',
+        url:'http://tortoisesvn.net/downloads.html',
+        version:{
+            url:'http://tortoisesvn.net/downloads.html',
+            regex:'current version is ([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://voxel.dl.sourceforge.net/project/tortoisesvn/##VERSION##/Application/TortoiseSVN-##VERSION##.23248-x64-svn-1.7.6.msi',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+    'TortoiseSVN':{
+        name:'TortoiseSVN',
+        category:'Version Controle',
+        description:'Subversion client implemented as a Microsoft Windows shell extension',
+        url:'http://tortoisesvn.net/downloads.html',
+        version:{
+            url:'http://tortoisesvn.net/downloads.html',
+            regex:'current version is ([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://superb-sea2.dl.sourceforge.net/project/tortoisesvn/1.7.9/Application/TortoiseSVN-1.7.9.23248-win32-svn-1.7.6.msi',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
     'FLTK':{
         name:'Fast Light Tool Kit',
         category:'Programming',
@@ -3050,45 +3067,20 @@ catalog={
             regexpos:0
             }
         },
-    'TortoiseGit-64':{
-        name:'TortoiseGit-x64',
-        category:'Version Control',
-        description:'Version Control',
-        emulateuseragent:'True',
-        url:'http://code.google.com/p/tortoisegit/',
-        version:{
-            url:'https://code.google.com/p/tortoisegit/wiki/Download',
-            regex:'The current version is: ([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0},
-        download:{
-            downloadtype:'directurl',
-            url:'http://tortoisegit.googlecode.com/files/TortoiseGit-##VERSION##-64bit.msi',
-            regex:'',
-            regexpos:0},
-        silentflags:'/verysilent',
-        installversion:{
-            querytype:'',
-            key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0
-            }
-        },
     'TortoiseHG-64':{
         name:'TortoiseHG-64',
         category:'Shell extention',
         description:'Windows shell extension',
         emulateuseragent:'True',
-        url:'http://tortoisehg.bitbucket.org/',
+        url:'http://tortoisesvn.net/downloads.html',
         version:{
-            url:'http://tortoisehg.bitbucket.org/',
-            regex:'TortoiseHg ([0-9]+(?:\.[0-9]+)+)',
+            url:'http://tortoisesvn.net/downloads.html',
+            regex:'The current version is ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0},
         download:{
-            downloadtype:'pagesearch',
-            url:'http://tortoisehg.bitbucket.org/download/index.html',
-            regex:'http://bitbucket.org/tortoisehg/files/downloads/tortoisehg-[0-9]+(?:\.[0-9]+)+-hg-[0-9]+(?:\.[0-9]+)+-x64.msi',
+            downloadtype:'directurl',
+            url:'http://sourceforge.net/projects/tortoisesvn/files/latest/download',
+            regex:'',
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
