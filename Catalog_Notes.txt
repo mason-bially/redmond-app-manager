@@ -12,7 +12,6 @@
 
         4.2.1 Microsoft Windows Software Development Kit (at least .NET 4.0)*
         4.2.5 Microsoft Office*
-        4.2.16 Console *
 
         5.1.4 Gnat (GPL. ver.) * (counts as 1 point)
             5.1.4.1 Gnat - AUNIT

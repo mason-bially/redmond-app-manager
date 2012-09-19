@@ -71,7 +71,6 @@ broken_list = ['TortoiseSVN-64']
 #Jarnal == JAR file may have problems installing
 #Lazarus == code commented out due to problems with source forge
 #MingGW == need to add
-#Console == Need to do. http://sourceforge.net/projects/console/
 ############################################################################
 catalog={
     'EMPTY':{
@@ -111,7 +110,7 @@ catalog={
             regexpos:0},
         download:{
             downloadtype:'directurl',
-            url:'',
+            url:'http://iweb.dl.sourceforge.net/project/console/console-devel/##VERSION##/Console-##VERSION##b148-Beta_32bit.zip',
             regex:'',
             regexpos:0},
         silentflags:'/verysilent',
