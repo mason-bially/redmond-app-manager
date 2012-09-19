@@ -99,6 +99,31 @@ catalog={
             regexpos:0
             }
         },
+    'Console':{
+        name:'Console',
+        category:'Programming',
+        description:'Windows console window enhancement',
+        emulateuseragent:'True',
+        url:'http://sourceforge.net/projects/console/',
+        version:{
+            url:'http://sourceforge.net/projects/console/files/',
+            regex:'>Download Console-([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'',
+            regex:'',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
     'Mozart':{
         name:'Mozart',
         category:'Programming',
@@ -544,31 +569,6 @@ catalog={
             regexpos:-1
             }
         },
-    'Tightvncviewer-64':{
-        name:'TightVNCViewer',
-        category:'Internet Tools',
-        description:'TightVNC is a free remote control software package.',
-        emulateuseragent:'True',
-        url:'http://www.tightvnc.com/',
-        version:{
-            url:'http://www.tightvnc.com/download.html',
-            regex:'Download TightVNC Version ([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0},
-        download:{
-            downloadtype:'directurl',
-            url:'http://www.tightvnc.com/download/##VERSION##/tightvnc-##VERSION##-setup-64bit.msi',
-            regex:'',
-            regexpos:0},
-        silentflags:'/quiet',
-        installversion:{
-            querytype:'regval',
-            key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TightVNC',
-            value:'DisplayVersion',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0
-            }
-        },
     'Emacs':{
         name:'Emacs',
         category:'Editors and Viewers',
@@ -615,6 +615,7 @@ catalog={
             regexpos:0
             }
         },    
+
 #    'TortoiseSVN-64':{
 #        name:'TortoiseSVN',
 #        category:'Programming Tools',
@@ -811,6 +812,31 @@ catalog={
             regexpos:0
             }
         },
+		'Tightvncviewer-64':{
+        name:'TightVNCViewer',
+        category:'Internet Tools',
+        description:'TightVNC is a free remote control software package.',
+        emulateuseragent:'True',
+        url:'http://www.tightvnc.com/',
+        version:{
+            url:'http://www.tightvnc.com/download.html',
+            regex:'Download TightVNC Version ([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://www.tightvnc.com/download/##VERSION##/tightvnc-##VERSION##-setup-64bit.msi',
+            regex:'',
+            regexpos:0},
+        silentflags:'/quiet',
+        installversion:{
+            querytype:'regval',
+            key:'HKLM',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TightVNC',
+            value:'DisplayVersion',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
     'Emacs':{
         name:'Emacs',
         category:'Editors and Viewers',
@@ -832,31 +858,7 @@ catalog={
             regexpos:0
             }
         },
-    'Git':{
-        name:'Git for Windows',
-        category:'Programming Tools',
-        description:'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.',
-        emulateuseragent:'True',
-        url:'http://git-scm.com/',
-        version:{
-            url:'http://git-scm.com/download/win',
-            regex:'version <strong>([0-9]+(?:\.[0-9]+)+)</strong> ',
-            regexpos:0},
-        download:{
-            downloadtype:'pagesearch',
-            url:'http://git-scm.com/download/win',
-            regex:'a href="(.*[0-9]+(?:\.[0-9]+)+.*.exe)',
-            regexpos:0},
-        silentflags:'/verysilent',
-        installversion:{
-            querytype:'regval',
-            key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Git_is1',
-            value:'DisplayVersion',
-            regex:'([0-9]+(?:\.[0-9]+)+).*',
-            regexpos:0
-            }
-        },    
+ 
     'AdobeReader':{
         name:'AdobeReader',
         category:'Editors and Viewers',
@@ -2326,31 +2328,6 @@ catalog={
             regexpos:0
             }
         },
-        'ViProlog':{
-        name:'Visual Prolog',
-        category:'Programming',
-        description:'Prolog that Targets Windows',
-        emulateuseragent:'True',
-        url:'http://www.visual-prolog.com/',
-        version:{
-            url:'http://www.visual-prolog.com/vip6/community/news.htm',
-            regex:'Build ([0-9]+) has been released',
-            regexpos:0},
-        download:{
-            downloadtype:'directurl',
-            url:'http://download.pdc.dk/vip/vippe/vip##VERSION##pe.msi',
-            regex:'',
-            regexpos:0},
-        silentflags:'/verysilent',
-        installversion:{
-            querytype:'',
-            key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0
-            }
-        },
     'ActiveTcl':{
         name:'ActiveTcl',
         category:'Programming',
@@ -2826,7 +2803,8 @@ catalog={
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
-        },    'Iview':{
+        },    
+		'Iview':{
         name:'irfanview',
         category:'Multimedia',
         description:'Graphics View',

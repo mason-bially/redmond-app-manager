@@ -70,22 +70,12 @@
         5.2.21 Windows Live
         5.2.25 bricxcc
         5.2.28 miktex *
-
-    
-
-
-
         5.2.22 Silverlight *
         5.2.23 Microsoft Robotics Studio
         5.2.24 game maker
         5.2.25 bricxcc
         5.2.26 Mysql connector ODBC
-
-        5.2.28 miktex *
-
-  
-        5.2.31 QuickTime/itunes Installer *
- 
+      
       
 
  
