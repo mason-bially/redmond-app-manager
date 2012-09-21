@@ -231,10 +231,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\ImgBurn',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -946,6 +946,7 @@ catalog={
             regexpos:-1
             }
         },
+	#I tested this and localversion does not work on it. --Camille	
     'Inkscape':{
         name:'Inkscape',
         category:'Multimedia',
@@ -964,8 +965,8 @@ catalog={
         silentflags:'/S',
         installversion:{
             querytype:'regval',
-            key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Inkscape',
+            key:'HKLM',           
+		   subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Inkscape',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
