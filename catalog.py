@@ -1193,8 +1193,7 @@ catalog={
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
-        },
-   
+        }, 
    'Flash-Firefox':{
         name:'Adobe Flash Player (Firefox)',
         category:'Multimedia',
@@ -1210,10 +1209,10 @@ catalog={
             url:'http://aihdownload.adobe.com/bin/live/install_flashplayer11x32_mssd_aih.exe'},
         silentflags:'/verysilent',
         installversion:{    
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Adobe Flash Player Plugin',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1235,7 +1234,7 @@ catalog={
         installversion:{
             querytype:'',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            subkey:'',
             value:'',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
@@ -1256,10 +1255,10 @@ catalog={
             url:'http://aihdownload.adobe.com/bin/live/install_flashplayer11x32ax_mssd_aih.exe'},
         silentflags:'/verysilent',
         installversion:{    
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\Adobe Flash Player Plugin',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
