@@ -244,7 +244,8 @@ catalog={
         category:'Encryption',
         description:'installation package with software tools and manuals for email and file encryption',
         emulateuseragent:'True',
-        url:'http://www.gpg4win.org/index.html',
+        url:'htt
+		p://www.gpg4win.org/index.html',
         version:{
             url:'http://www.gpg4win.org/index.html',
             regex:'Download<br />Gpg4win ([0-9]+(?:\.[0-9]+)+)',
@@ -1864,7 +1865,7 @@ catalog={
             regexpos:0
             }
         },
-   'GPrologMSVC':{
+   ''GPrologMinGW':{
         name:'GNU Prolog (Microsoft Visual C Compiler)',
         category:'Programming',
         description:'GNU implementation of the declarative language Prolog',
@@ -1881,10 +1882,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GNU Prolog_is1',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1906,10 +1907,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GNU Prolog_is1',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1933,7 +1934,7 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GNU Prolog_is1',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GNU Prolog_is1',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
@@ -2784,11 +2785,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\AviSynth',
+            value:'DisplayName',
+            regex:'AviSynth ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
@@ -3456,10 +3457,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\ArgoUML',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -3631,11 +3632,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Blender',
+            value:'DisplayName',
+            regex:'([0-9]+(?:\.[0-9]+)+)-release',
             regexpos:0
             }
         },
@@ -3681,11 +3682,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Audacity_is1',
+            value:'DisplayName',
+            regex:'Audacity ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
