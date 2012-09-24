@@ -427,10 +427,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Lazarus_is1',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -3606,11 +3606,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Blender',
+            value:'DisplayVersion',
+            regex:'([0-9]+(?:\.[0-9]+)+)-release',
             regexpos:0
             }
         },
