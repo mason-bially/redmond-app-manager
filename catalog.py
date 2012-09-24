@@ -156,11 +156,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
             subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            value:'DisplayName',
+            regex:'Mozart([0-9]+(?:\.[0-9]+)+)', # can't tell if space between character and integer in the regsitry.  Camille.
             regexpos:0
             }
         },
@@ -404,10 +404,10 @@ catalog={
 			regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\VTK',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1146,7 +1146,7 @@ catalog={
             regexpos:0
             }
         },
-     'Notepad++':{
+     'Notepad++':{ 
         name:'Notepad++',
         category:'Multimedia',
         description:'An Editor that knows about \\n',
@@ -1165,8 +1165,8 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Mozilla\\Mozilla Firefox',
-            value:'CurrentVersion',
+            subkey:'SOFTWARE\\Mozilla\\Mozilla Firefox', # I found this...\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Notepad++ --Camille
+            value:'CurrentVersion', # I found this....DisplayVersion  --Camille
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1234,10 +1234,10 @@ catalog={
             url:'http://voxel.dl.sourceforge.net/project/pidgin/Pidgin/##VERSION##/pidgin-##VERSION##.exe'},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Pidgin',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1507,10 +1507,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',  
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\PuTTY_is1',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }   
@@ -2057,10 +2057,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Synergy',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -2082,10 +2082,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Synergy',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -2584,11 +2584,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
             subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            value:'DisplayVersion',
+            regex:'Version ([0-9]+(?:\.[0-9]+)+) Stable RC1',
             regexpos:0
             }
         },
@@ -3060,10 +3060,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\VLC media player',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -3085,11 +3085,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\XEmacs_is1',
+            value:'DisplayName',
+            regex:'Xemacs([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
@@ -3234,10 +3234,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Scratch',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -3507,10 +3507,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\SMPlayer',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -3657,10 +3657,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Mscgen',
+            value:'DisplayBersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -3732,11 +3732,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\wxWidgets_is1',
+            value:'DisplayName',
+            regex:'wxWidgets([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
