@@ -277,10 +277,21 @@ def getInstalledRegkeyVersion(d):
     least entries for 'key', 'subkey', 'regex', and 'regexpos'
     @return The version installed or None.
     """
+    if(platform.machine =='i386'):
+        if ("-64" in d['name']):
+            return None
+        else:
+            mask=_winreg.KEY_READ
+    else:
+            
+        if "-64" in d['name']:
+            mask= _winreg.KEY_READ|_winreg.KEY_WOW64_64KEY
+        else:
+            mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
     try:
         # should do a lookup table here
         if d['key'] == 'HKLM':
-            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'])
+            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'],0,mask)
         else:
             return None
         keys = _winreg.QueryInfoKey(tempkey)[0]
@@ -305,6 +316,79 @@ def getInstalledRegkeyVersion(d):
     else:
         return None
 
+
+def getInstalledRegvalsearchVersion(d):
+    """Get the version of the installed package from a registry value.
+
+    Use the information specified in the package d to lookup the installed
+    version on the computer.
+
+    @param d A installversion dictionary entry for a package containing at
+    least entries for 'key', 'subkey', 'regex', and 'regexpos'
+    @return The version installed or None.
+
+    This function also will search all of the subkeys of a key as well as the key itself
+    In order to handle the case of searching SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall
+    Where Key names themselves can be cryptic, making it hard to find installed Versions
+    """
+    if(platform.machine =='i386'):
+        if ("-64" in d['name']):
+            return None
+        else:
+            mask=_winreg.KEY_READ
+    else:
+            
+        if "-64" in d['name']:
+            mask= _winreg.KEY_READ|_winreg.KEY_WOW64_64KEY
+        else:
+            mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
+    try:
+    
+        # should do a lookup table here
+        if d['key'] == 'HKLM':
+            un = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, pak.regSubKey,0,mask)
+        else:
+            return None
+
+        unlen = _winreg.QueryInfoKey(un)[0]
+        for i in range(unlen):
+           
+            key=_winreg.OpenKey(un,_winreg.EnumKey(un,i))
+            #for each subkey of uninstall enum it's values
+            vallen=_winreg.QueryInfoKey(key)[1]
+            for j in range(vallen):
+                value=_winreg.EnumValue(key,j)
+                if value[0]==d['regex'] and re.search(d['regex'],value[1])!=None:
+                    version=re.search(d['regex'],value[1]).group(0)
+                    return version
+
+
+
+        #Do it again, in case it isn't a subkey
+        vallen=_winreg.QueryInfoKey(un)[1]
+        for j in range(vallen):
+            value=_winreg.EnumValue(un,j)
+            if value[0]==d['regex'] and re.search(d['regex'],value[1])!=None:
+                version=re.search(d['regex'],value[1]).group(0)
+            
+                return version
+        return None
+    except TypeError as strerror:
+        if strerror == 'first argument must be a string or compiled pattern':
+            print ('you are missing or have an invalid regex')
+        elif strerror == 'expected string or buffer':
+            print ('your have no value being pulled from the registry')
+          
+    except WindowsError:
+        print ('The registry key or value could not be found')
+      
+    except KeyError as strerror:
+        print ('did not contain a key entry')
+       
+    except Exception as e:
+        print (str(e))
+    else:
+        return None
 def getInstalledRegvalnameVersion(d):
     """Get the version of the installed package from a registry value.
 
@@ -315,10 +399,21 @@ def getInstalledRegvalnameVersion(d):
     least entries for 'key', 'subkey', 'regex', and 'regexpos'
     @return The version installed or None.
     """
+    if(platform.machine =='i386'):
+        if (if "-64" in d['name']):
+            return None
+        else:
+            mask=_winreg.KEY_READ
+    else:
+            
+        if "-64" in d['name']:
+            mask= _winreg.KEY_READ|_winreg.KEY_WOW64_64KEY
+        else:
+            mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
     try:
         # should do a lookup table here
         if d['key'] == 'HKLM':
-            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'])
+            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'],0,mask)
         else:
             return None
         vals = _winreg.QueryInfoKey(tempkey)[1]
@@ -354,10 +449,23 @@ def getInstalledRegvalVersion(d):
     least entries for 'key', 'subkey', 'value', 'regex', and 'regexpos'
     @return The version installed or None.
     """
+    if(platform.machine =='i386'):
+        if (pak.arch=='x86_64'):
+            return None
+        else:
+            mask=_winreg.KEY_READ
+    else:
+        if pak.arch=='x86_32':
+            mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
+        elif pak.arch=='x86_64':
+            mask= _winreg.KEY_READ|_winreg.KEY_WOW64_64KEY
+        else:
+            print "sorry not implemented"
+            return None
     try:
         # should do a lookup table here
         if d['key'] == 'HKLM':
-            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'])
+            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey']0,mask)
             value = str(_winreg.QueryValueEx(tempkey, d['value'])[0])
             version = re.findall(d['regex'], value)[d['regexpos']]
             return version
@@ -401,6 +509,8 @@ def getInstalledVersion(d):
             return getInstalledRegvalnameVersion(d['installversion'])
         elif querytype == 'regkey':
             return getInstalledRegkeyVersion(d['installversion'])
+        elif querytype=="regvalsearch":
+            return getInstalledRegvalsearchVersion(d['installversion'])
         else:
             print 'unknown querytype: %s' % querytype
             print 'when calling getInstalledVersion(%s)' %d

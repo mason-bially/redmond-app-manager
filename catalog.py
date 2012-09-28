@@ -16,7 +16,7 @@ subkey = 'subkey'
 value = 'value'
 querytype = "querytype"
 path = 'path'
-
+    
 
 #####ROLE YOUR OWN CAPTURING GROUPS
 months="Janurary|February|March|April|May|June|July|August|September|October|November|December"
@@ -89,31 +89,7 @@ catalog={
             regexpos:0
             }
         },
-	    'EMPTY':{
-        name:'',
-        category:'',
-        description:'',
-        emulateuseragent:'True',
-        url:'',
-        version:{
-            url:'',
-            regex:'',
-            regexpos:0},
-        download:{
-            downloadtype:'pagesearch',
-            url:'',
-            regex:'',
-            regexpos:0},
-        silentflags:'/verysilent',
-        installversion:{
-            querytype:'',
-            key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0
-            }
-        },	
+	
     'Console':{
         name:'Console',
         category:'Programming',
@@ -156,10 +132,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Mozart_is1',
+            value:'Inno Setup: Setup Version',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -647,7 +623,7 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Git_is1',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Git_is1',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+).*',
             regexpos:0
@@ -914,9 +890,9 @@ catalog={
             },
         silentflags:'',
         installversion:{
-            querytype:'',
+            querytype:'regkey',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            subkey:'SOFTWARE\\Adobe\\Acrobat Reader',
             value:'',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
