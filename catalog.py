@@ -244,8 +244,7 @@ catalog={
         category:'Encryption',
         description:'installation package with software tools and manuals for email and file encryption',
         emulateuseragent:'True',
-        url:'htt
-		p://www.gpg4win.org/index.html',
+        url:'http://www.gpg4win.org/index.html',
         version:{
             url:'http://www.gpg4win.org/index.html',
             regex:'Download<br />Gpg4win ([0-9]+(?:\.[0-9]+)+)',
@@ -1865,7 +1864,7 @@ catalog={
             regexpos:0
             }
         },
-   ''GPrologMinGW':{
+   'GPrologMinGW':{
         name:'GNU Prolog (Microsoft Visual C Compiler)',
         category:'Programming',
         description:'GNU implementation of the declarative language Prolog',
@@ -1959,7 +1958,7 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GNU Prolog_is1',,
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GNU Prolog_is1',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
