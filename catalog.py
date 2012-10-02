@@ -114,6 +114,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --cc	
     'Mozart':{
         name:'Mozart',
         category:'Programming',
@@ -133,9 +134,9 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Mozart_is1',
             value:'DisplayName',
-            regex:'Mozart([0-9]+(?:\.[0-9]+)+)', # can't tell if space between character and integer in the regsitry.  Camille.
+            regex:'Mozart ([0-9]+(?:\.[0-9]+)+)', 
             regexpos:0
             }
         },
@@ -189,6 +190,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --cc	
     'ImgBurn':{
         name:'ImgBurn',
         category:'Multimedia',
@@ -214,6 +216,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --cc	
     'GPG4Win':{
         name:'GPG4Win',
         category:'Encryption',
@@ -361,7 +364,8 @@ catalog={
             regexpos:0
             }
         },
- 'VTK':{
+	#local version works	
+	'VTK':{
         name:'Visualization Toolkit ',
         category:'Programming',
         description:'software system for 3D computer graphics, image processing and visualization',
@@ -386,6 +390,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion does not work	--Camille
     'Lazarus':{
         name:'Lazarus',
         category:'Editor',
@@ -560,6 +565,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --Camille	
     'LibreOffice':{
         name:'LibreOffice',
         category:'Editors and Viewers',
@@ -577,11 +583,12 @@ catalog={
         installversion:{
             querytype:'regkey',
             key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\LibreOffice\\LibreOffice',
+            subkey:'SOFTWARE\\LibreOffice\\LibreOffice',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:-1
             }
         },
+	#localversion DEBUG --Camille
     'Emacs':{
         name:'Emacs',
         category:'Editors and Viewers',
@@ -603,6 +610,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --cc	
     'Git':{
         name:'Git for Windows',
         category:'Programming Tools',
@@ -622,13 +630,14 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Git_is1',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Git_is1',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+).*',
             regexpos:0
             }
         },    
 
+		#Why is this commented out?  Camille
 #    'TortoiseSVN-64':{
 #        name:'TortoiseSVN',
 #        category:'Programming Tools',
@@ -778,6 +787,7 @@ catalog={
             regexpos:0
             }
         },
+	#this is a duplicate?  Camille	
     'LibreOffice':{
         name:'LibreOffice',
         category:'Editors and Viewers',
@@ -800,6 +810,7 @@ catalog={
             regexpos:-1
             }
         },
+	#registry key or value could not be found.  Possibly in programfiles? 	
     'Tightvncviewer':{
         name:'TightVNCViewer',
         category:'Internet Tools',
@@ -819,7 +830,7 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TightVNC',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TightVNC',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
@@ -850,6 +861,7 @@ catalog={
             regexpos:0
             }
         },
+	#need to write code to implement filepathname. --cc
     'Emacs':{
         name:'Emacs',
         category:'Editors and Viewers',
@@ -897,6 +909,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works	
     'Scribus':{
         name:'Scribus',
         category:'Editors and Viewers',
@@ -916,12 +929,12 @@ catalog={
         installversion:{
             querytype:'regkey',
             key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
             regex:'Scribus ([0-9]+(?:\.[0-9]+)+)',
             regexpos:-1
             }
         },
-
+    #localversion works-cc
     'Inkscape':{
         name:'Inkscape',
         category:'Multimedia',
@@ -966,12 +979,13 @@ catalog={
         installversion:{
             querytype:'regvalsearch', #not yet implemented
             key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
             value:'DisplayName',
             regex:'GIMP ([0-9]+(?:\.[0-9]+)+)',
             regexpos:-1
             }
         },
+		
     'TrueCrypt':{
         name:'TrueCrypt',
         category:'Encryption',
@@ -997,7 +1011,8 @@ catalog={
             regexpos:0
             }
         },
-    'ImageMagick':{
+    #Debug: local version does not work--Camille
+	'ImageMagick':{
         name:'ImageMagick',
         category:'Multimedia',
         description:'A software suite to create, edit, compose, or convert bitmap images.',
@@ -1022,6 +1037,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion okay --cc	
     'GSview32bit':{
         name:'GSview 32bit',
         category:'Utilities',
@@ -1043,9 +1059,10 @@ catalog={
             key:'HKLM',
             subkey:'SOFTWARE\\Ghostgum\\GSView',
             regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:-1
+            regexpos:0
             }
         },
+	#localversion okay --cc	
     'Ghostscript':{
         name:'Ghostscript',
         category:'Utilities',
@@ -1170,6 +1187,7 @@ catalog={
             regexpos:0
             }
         }, 
+	#localversion okay --cc	
    'Flash-Firefox':{
         name:'Adobe Flash Player (Firefox)',
         category:'Multimedia',
@@ -1193,6 +1211,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --camille	
     'Pidgin':{
         name:'Pidgin',
         category:'Internet tool',
@@ -1216,6 +1235,7 @@ catalog={
             regexpos:0
             }
         },
+		#localversion works --camille	
     'Flash-InternetExplorer':{
         name:'Adobe Flash Player (IE)',
         category:'Multimedia',

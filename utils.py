@@ -35,6 +35,9 @@ import copy
 import sys
 import catalog
 import cookielib
+#from IPython.Debugger import Pdb
+#from IPython.Shell import IPShell
+#from IPython import ipapi
 
 #We emulate Mozilla Firefox on Windows 7 64 bit as our UA
 red=urllib2.HTTPRedirectHandler()
@@ -394,6 +397,7 @@ def getInstalledVersion(d):
     @return The version installed or None.
     """
     try:
+        #import ipdb; ipdb.set_trace(); #Remove when debuging finished. --Camille
         querytype = d['installversion']['querytype']
         if querytype == 'regval':
             return getInstalledRegvalVersion(d['installversion'])
