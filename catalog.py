@@ -16,6 +16,7 @@ subkey = 'subkey'
 value = 'value'
 querytype = "querytype"
 path = 'path'
+valsearchregex = 'valsearchregex'
     
 
 #####ROLE YOUR OWN CAPTURING GROUPS
@@ -63,6 +64,7 @@ broken_download_minimal_list = [ 'Inkscape', 'TrueCrypt', 'AdobeReader','Flash-I
 broken_silent_minimal_list = [ 'GSview 32bit', 'AdobeReader' ]
 broken_list = ['TortoiseSVN-64']
 
+#### TODO major is add valsearchregex to all 
 catalog={
     'EMPTY':{
         name:'',
@@ -967,6 +969,7 @@ catalog={
         installversion:{
             querytype:'regvalsearch', #not yet implemented
             key:'HKLM',
+	    valsearchregex: 'GIMP',
             subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
             value:'DisplayName',
             regex:'GIMP ([0-9]+(?:\.[0-9]+)+)',
