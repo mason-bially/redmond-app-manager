@@ -343,25 +343,23 @@ def getInstalledRegvalsearchVersion(d):
         else:
             mask=_winreg.KEY_READ
     else:
-            
         if "-64" in d['name']:
             mask= _winreg.KEY_READ|_winreg.KEY_WOW64_64KEY
         else:
             mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
+            
     try:
-        #TODO JONAH ADD THIS TO ALL OF  THEM NO CHANGES GG
         d=d['installversion']
-        # should do a lookup table here
+        import pdb
+        pdb.set_trace()
+        #Open Uninstall
         if d['key'] == 'HKLM':
             un = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'],0,mask)
         else:
             return None
-
         unlen = _winreg.QueryInfoKey(un)[0]
-     
-        #LP Env: Enumerate all subkeys of uninstall
-        #import pdb
-        #pdb.set_trace()
+        
+        #LP Env: Enumerate all subkeys of uninstall   
         for i in range(unlen):
             key=_winreg.OpenKey(un,_winreg.EnumKey(un,i))
             vallen=_winreg.QueryInfoKey(key)[1]
@@ -371,7 +369,9 @@ def getInstalledRegvalsearchVersion(d):
                 #Check Value Name. If it matches d['value'] we have the correct node
                 value=_winreg.EnumValue(key,j)
                 if value[0] == 'DisplayName':
-                    if(re.findall(d['valsearchregex'],value[1])): #valsearchregex, what you want to find in the DisplayName
+                    print value[1]
+                    #If we are at the correct key. 
+                    if(re.findall('TortoiseSVN',value[1])): #valsearchregex, what you want to find in the DisplayName
                         #Gets a list of tuples to search through for DisplayVersion   
                         keynames = sorted([_winreg.EnumValue(key,l) for l in xrange(vallen)])
                         for key in keynames:
@@ -380,33 +380,7 @@ def getInstalledRegvalsearchVersion(d):
                                 return version
 
                     
-                    #We are at the correct key. 
-        #Open Uninstall
-        #For each key in uninstall
-        #Do a Regval to determine correct key
-        #Once the key is found do a second regval search for the version
-        #
-##        unlen = _winreg.QueryInfoKey(un)[0]
-##        for i in range(unlen):
-##           
-##            key=_winreg.OpenKey(un,_winreg.EnumKey(un,i))
-##            #for each subkey of uninstall enum it's values
-##            vallen=_winreg.QueryInfoKey(key)[1]
-##            for j in range(vallen):
-##                value=_winreg.EnumValue(key,j)
-##                if value[0]==d['regex'] and re.search(d['regex'],value[1])!=None:
-##                    version=re.search(d['regex'],value[1]).group(0)
-##                    return version
-##
-##        #Do it again, in case it isn't a subkey
-##        vallen=_winreg.QueryInfoKey(un)[1]
-##        for j in range(vallen):
-##            value=_winreg.EnumValue(un,j)
-##            if value[0]==d['regex'] and re.search(d['regex'],value[1])!=None:
-##                version=re.search(d['regex'],value[1]).group(0)
-##            
-##                return version
-##        return None
+ 
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
             print ('you are missing or have an invalid regex')
