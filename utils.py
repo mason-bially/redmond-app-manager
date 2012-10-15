@@ -381,6 +381,32 @@ def getInstalledRegvalVersion(d):
     else:
         return None
 
+#Pre: takes a catalog entry for a given package
+#Post: returns the version number
+def getInstalledFilePathVersion(d):
+    try:
+       tempPath = os.listdir(d['path'])
+       valnames = sorted(tempPath)
+       valnamesstr = "\n".join(valnames)
+       version =re.findall(d['regex'], valnamesstr) [d['regexpos']]
+       return version
+    except TypeError as strerror:
+        if strerror == 'first argument must be a string or compiled pattern':
+            print 'you are missing or have an invalid regex in %s' %d
+        elif strerror == 'expected string or buffer':
+            print 'your have no value being pulled from the registry'
+        print 'when calling getInstalledRegvalVersion(%s)' %d
+    except WindowsError:
+        print 'The registry key or value could not be found'
+        print 'when calling getInstalledRegvalVersion(%s)' %d
+    except KeyError as strerror:
+        print 'd did not contain a "%s" entry' % strerror
+        print 'when calling getInstalledRegvalVersion(%s)' %d
+    except:
+        print 'unkown error running getInstalledRegvalVersion(%s)' %d
+    else:
+        return None
+
 def getInstalledVersion(d):
     """Get the version of the installed package.
 
@@ -405,6 +431,8 @@ def getInstalledVersion(d):
             return getInstalledRegvalnameVersion(d['installversion'])
         elif querytype == 'regkey':
             return getInstalledRegkeyVersion(d['installversion'])
+        elif querytype == 'filepathname':
+            return getInstalledFilePathVersion(d['installversion']) # camille working on
         else:
             print 'unknown querytype: %s' % querytype
             print 'when calling getInstalledVersion(%s)' %d

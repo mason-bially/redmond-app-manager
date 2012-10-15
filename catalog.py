@@ -17,7 +17,6 @@ value = 'value'
 querytype = "querytype"
 path = 'path'
 
-
 #####ROLE YOUR OWN CAPTURING GROUPS
 months="Janurary|February|March|April|May|June|July|August|September|October|November|December"
 abmonths="Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
@@ -588,11 +587,11 @@ catalog={
             regexpos:-1
             }
         },
-	#localversion DEBUG --Camille
+	#localversion FIXED --Camille
     'Emacs':{
         name:'Emacs',
         category:'Editors and Viewers',
-        description:'GNU Emacs is an extensible, customizable text editor and more.',
+        description:'GNU Emacs is an extensible, customizable text editor and more...',
         emulateuseragent:'True',
         url:'http://www.gnu.org/software/emacs/',
         version:{
@@ -606,10 +605,11 @@ catalog={
         installversion:{
             querytype:'filepathname',
             path:'c:\\Program Files (x86)\\',
-            regex:'Emacs ([0-9]+(?:\.[0-9]+)+)',
+            regex:'emacs-([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+		
 	#localversion works --cc	
     'Git':{
         name:'Git for Windows',
@@ -858,28 +858,6 @@ catalog={
             subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TightVNC',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0
-            }
-        },
-	#need to write code to implement filepathname. --cc
-    'Emacs':{
-        name:'Emacs',
-        category:'Editors and Viewers',
-        description:'GNU Emacs is an extensible, customizable text editor and more.',
-        emulateuseragent:'True',
-        url:'http://www.gnu.org/software/emacs/',
-        version:{
-            url:'http://www.gnu.org/software/emacs/',
-            regex:'The current stable release is ([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0},
-        download:{
-            downloadtype:'directurl',
-            url:'http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-##VERSION##-bin-i386.zip'},
-        silentflags:'/verysilent',
-        installversion:{
-            querytype:'filepathname',
-            path:'c:\\Program Files (x86)\\',
-            regex:'Emacs ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
