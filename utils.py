@@ -36,6 +36,7 @@ import sys
 import catalog
 import cookielib
 import platform
+import ourlogging
 
 #We emulate Mozilla Firefox on Windows 7 64 bit as our UA
 red=urllib2.HTTPRedirectHandler()
@@ -43,6 +44,7 @@ userAgent=[('User-Agent',' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20
 cj = cookielib.CookieJar()
 opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cj),red)
 opener.addheaders=userAgent
+
 
 def getPage(url):
     """Returns the contents of a url as a string.
@@ -59,8 +61,8 @@ def getPage(url):
         f.close()
     except urllib2.URLError:
         print 'Couldn not connect to and read from %s' % url
-    except:
-        print 'unknown error running  getPage(%s)' % url
+    except Exception, e:
+        print ' %s while running  getPage(%s)' % (e,url)
         raise
     else:
         return page
@@ -87,8 +89,8 @@ def scrapePage(reg, url, pos=0):
     except IndexError:
         print 'regexpos entry larger then the number of results mathing regex '
         print 'when calling scrapePage(%s, %s, %d)' %(reg, url, pos)
-    except:
-        print 'unknown error running  scrapePage(%s, %s, %d)' % (reg, url, pos)
+    except Exception, e:
+        print '%s while running  scrapePage(%s, %s, %d)' % (e,reg, url, pos)
         raise
     else:
         return ret
@@ -119,8 +121,8 @@ def scrapePageDict(d):
     except KeyError as strerror:
         print 'd did not contain a "%s" entry' % strerror
         print 'when calling scrapePage(%s)' %d
-    except:
-        print 'unknown error running scrapePage(%s)' % d
+    except Exception, e:
+        print '%s while running scrapePage(%s)' % (e,d)
         raise
     else:
         return ret
@@ -144,8 +146,8 @@ def getWebVersion(d):
     except KeyError:
         print 'd did not contain a "version" entry'
         print 'when calling getWebVersion(%s)' %d
-    except:
-        print 'unknown error running getWebVersion(%s)' % d
+    except Exception, e:
+        print '%s while running getWebVersion(%s)' % (e,d)
         raise
     else:
         return ret
@@ -185,8 +187,8 @@ def getDownloadURL(d):
     except KeyError:
         print 'd did not contain a "download" entry'
         print 'when calling getDownloadURL(%s)' %d
-    except:
-        print 'unknown error running getDownloadURL(%s)' % d
+    except Exception, e:
+        print '%s while running getDownloadURL(%s)' % (e,d)
         raise
     else:
         return redirectedurl
@@ -262,8 +264,8 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
     except KeyError:
         print 'd did not contain a "name" entry'
         print 'when calling downloadLatest(%s, %s, %s)' %(d, location, overwrite)
-    except:
-        print 'unknown error running downloadLatest(%s, %s, %s)' %(d, location, overwrite)
+    except Exception, e:
+        print '%s while running downloadLatest(%s, %s, %s)' %(e,d, location, overwrite)
         raise
     else:
         return newfileloc
@@ -312,8 +314,8 @@ def getInstalledRegkeyVersion(d):
     except KeyError as strerror:
         print 'd did not contain a "%s" entry' % strerror
         print 'when calling getInstalledRegkeyVersion(%s)' %d
-    except:
-        print 'unkown error running getInstalledRegkeyVersion(%s)' %d
+    except Exception, e:
+        print '%s while running getInstalledRegkeyVersion(%s)' % (e,d)
     else:
         return None
 
@@ -393,8 +395,8 @@ def getInstalledRegvalsearchVersion(d):
     except KeyError as strerror:
         print ('did not contain a key entry')
        
-    #except Exception as e:
-     #   print (str(e))
+    except Exception, e:
+        print '%s while running getInstalledRegvalsearchVersion(%s)' % (e,d)
     else:
         return None
 def getInstalledRegvalnameVersion(d):
@@ -442,8 +444,8 @@ def getInstalledRegvalnameVersion(d):
     except KeyError as strerror:
         print 'd did not contain a "%s" entry' % strerror
         print 'when calling getInstalledRegvalnameVersion(%s)' %d
-    except:
-        print 'unkown error running getInstalledRegvalnameVersion(%s)' %d
+    except Exception, e:
+        print '%s while running getInstalledRegvalnameVersion(%s)' %(e,d)
     else:
         return None
 
@@ -489,8 +491,8 @@ def getInstalledRegvalVersion(d):
     except KeyError as strerror:
         print 'd did not contain a "%s" entry' % strerror
         print 'when calling getInstalledRegvalVersion(%s)' %d
-    except:
-        print 'unkown error running getInstalledRegvalVersion(%s)' %d
+    except Exception, e:
+        print '%s while running getInstalledRegvalVersion(%s)' %(e,d)
     else:
         return None
 
@@ -525,8 +527,8 @@ def getInstalledVersion(d):
     except KeyError as strerror:
         print 'd did not contain a "%s" entry' % strerror
         print 'when calling getInstalledVersion(%s)' %d
-    except:
-        print 'unkown error running getInstalledVersion(%s)' %d
+    except Exception, e:
+        print '%s while running getInstalledVersion(%s)' %(e,d)
     else:
         return None
 
@@ -548,8 +550,8 @@ def installPackage(d, location):
         # no silent flags for now 
 		#ret = os.system('"' + location + '" ' + d['silentflags'])
         ret = os.system('"' + location + '" ')
-    except:
-        print 'unknown error running installPackage(%s, %s)' %(d, location)
+    except Exception, e:
+        print '%s while running installPackage(%s, %s)' %(e,d, location)
     else:
         return ret
 
@@ -577,8 +579,8 @@ def downloadAndInstallLatest(d, location='downloads\\', keep=True):
         print 'could not remove the file, WindowsError({0}): {1}'.format(errno,
             strerror)
         print 'when calling installPackage(%s, %s)' %(d, location)
-    except:
-        print 'unknown error running installPackage(%s, %s)' %(d, location)
+    except Exception, e:
+        print '%s while running installPackage(%s, %s)' %(e, d, location)
     else:
         return ret
 
@@ -638,8 +640,8 @@ def installColl(catalog, collection, location='downloads\\', keep=True):
     try:
         for entry in collection:
             downloadAndInstallLatest(catalog[entry], location, keep)
-    except:
-        print 'unknown error running installColl(%s, %s)' %(catalog,
+    except Exception, e:
+        print '%s while running installColl(%s, %s)' %(e, catalog,
                 collection)
 
 def getCollInstalledVersions(catalog, collection):
@@ -660,6 +662,8 @@ def main(argv):
         return -1
 
     package_name=argv[2]
+    ourlogging.config(consoleLevel=ourlogging.DEBUG,debugInfo=True)
+       
     everything=(package_name=="all")
     if not everything:
         package = catalog.catalog[package_name]
@@ -687,4 +691,4 @@ def main(argv):
             
 
 if __name__ == "__main__":   
-    main(sys.argv)
+    main(['utils.py','version','TortoiseSVN-64'])
