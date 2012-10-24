@@ -29,8 +29,9 @@ alphabeta="Alpha|Beta|alpha|beta"
 minimal_list = [ 'Ghostscript', 'GSview 32bit', 'Gimp', 'ImageMagick',
     '7-Zip', 'Firefox', 'Scribus' ]
 
+##Taking out GPROLOGMSVC
 full_list=['Git', 'Mscgen', 'XNAGameStudio', 'ActiveTcl-64',
-           'GPrologMSVC', 'Notepad++', 'Synergy2', 'Pidgin',
+           'Notepad++', 'Synergy2', 'Pidgin',
            'WindowsSystemControlCenter', 'Flash-Firefox',
            'Alice2Textbook', 'MySQLJDBC', 'WindowsServer2003ResourceKitTools',
            'GPrologMinGW', 'Ghostscript', 'LyX', 'SketchUp',
@@ -53,7 +54,7 @@ full_list=['Git', 'Mscgen', 'XNAGameStudio', 'ActiveTcl-64',
            'GSview 32bit', 'MySQLWorkbench', 'DIA', 'MysqlODBC-64',
            'LeagueOfLegends', 'Povray', 'MyPaint-64', 'SQLiteDatabaseBrowser',
            'XEmacs', 'UMLet', 'SMLNJ', 'Povray-64', 'Uncrustify', 'Spin',
-           'InteractiveC', 'Groovy', 'TortoiseGit-x64', 'LeJOS', 'Love2d-64',
+           'InteractiveC', 'Groovy', 'TortoiseGit-64', 'LeJOS', 'Love2d-64',
            'GVim', 'GPrologMinGW64', 'VirtualDub', '7-Zip', 'Wings3D', 'DXSDK',
            'Blender-64', 'Tightvncviewer', 'Netbeans', 'Scratch', 'ViProlog',
            'SysinternalsSuite', 'UnrealDevelopmentKit', 'Inform7', 'Racket',
@@ -631,32 +632,54 @@ catalog={
             regexpos:0
             }
         },    
-
-#    'TortoiseSVN-64':{
-#        name:'TortoiseSVN',
-#        category:'Programming Tools',
-#        description:'TortoiseSVN is an Apache Subversion client, implemented as a windows shell extension.',
-#        url:'http://tortoisesvn.net/',
-#        version:{
-#            url:'http://tortoisesvn.net/downloads.html',
-#            regex:'The current version is ([0-9]+(?:\.[0-9]+)+)',
-#            regexpos:0},
-#        download:{
-#            downloadtype:'pagesearch',
-#            url:'http://sourceforge.net/projects/tortoisesvn/files/latest/download',
-#            regex:'url=(http://downloads.sourceforge.net/project/tortoisesvn/[0-9]+(?:\.[0-9]+)+/Application/TortoiseSVN-[0-9]+(?:\.[0-9]+)+-x64[^"]*)"',
-#            regexpos:0},
-#        silentflags:'/verysilent',
-#        installversion:{
-#            querytype:'',
-#            key:'HKLM',
-#            subkey:'SOFTWARE\\',
-#            value:'',
-#            regex:'([0-9]+(?:\.[0-9]+)+)',
-#            regexpos:0
-#            }
-#        },
-
+    'TortoiseSVN-64':{
+        name:'TortoiseSVN',
+        category:'Programming Tools',
+        description:'TortoiseSVN is an Apache Subversion client, implemented as a windows shell extension.',
+        url:'http://tortoisesvn.net/',
+        version:{
+            url:'http://tortoisesvn.net/downloads.html',
+            regex:'The current version is ([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
+        download:{
+            downloadtype:'pagesearch',
+            url:'http://sourceforge.net/projects/tortoisesvn/files/latest/download',
+            regex:'url=(http://downloads.sourceforge.net/project/tortoisesvn/[0-9]+(?:\.[0-9]+)+/Application/TortoiseSVN-[0-9]+(?:\.[0-9]+)+-x64[^"]*)"',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+'TortoiseGit-64':{
+        name:'TortoiseGit-64',
+        category:'Programming Tools',
+        description:'It is a port of TortoiseSVN for Git.',
+        url:'http://code.google.com/p/tortoisegit/',
+        version:{
+            url:'http://code.google.com/p/tortoisegit/',
+            regex:'<a href=\"/p/tortoisegit/wiki/Download\">([0-9]+(?:\.[0-9]+)+)<',
+            regexpos:0},
+        download:{
+            downloadtype:'pagesearch',
+            url:'http://code.google.com/p/tortoisegit/wiki/Download',
+            regex:'url=(http://tortoisegit.googlecode.com/files/TortoiseGit-[0-9]+(?:\.[0-9]+)+-64[^"]*)"',
+            regexpos:0},
+        silentflags:'/verysilent',
+        installversion:{
+            querytype:'',
+            key:'HKLM',
+            subkey:'SOFTWARE\\',
+            value:'',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
     'NASM':{
         name:'NASM',
         category:'Programming tool',
@@ -883,7 +906,7 @@ catalog={
         url:'http://get.adobe.com/reader/',
         version:{
             url:'http://get.adobe.com/reader/',
-            regex:'<span id="clientversion">X \(([0-9]+(?:\.[0-9]+)+)',
+            regex:'<span id="clientversion">...\(([0-9]+(?:\.[0-9]+)+)',
             regexpos:0},
         download:{
             downloadtype:'directurl', #not implemented yet
@@ -1026,30 +1049,31 @@ catalog={
             regexpos:0
             }
         },
-    'GSview32bit':{
-        name:'GSview 32bit',
-        category:'Utilities',
-        description:'GSview is a graphical interface for Ghostscript',
-        emulateuseragent:'True',
-        url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
-        version:{
-            url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
-            regex:'>Obtaining GSview ([0-9]+(?:\.[0-9]+)+)<',
-            regexpos:0},
-        download:{
-            downloadtype:'directurl',
-            url:'http://pages.cs.wisc.edu/~ghost/gsview/download/gsv##DOTLESSVERSION##w32.exe',
-            regex:'',
-            regexpos:0},
-        silentflags:'/auto',
-        installversion:{
-            querytype:'regvalname',
-            key:'HKLM',
-            subkey:'SOFTWARE\\Ghostgum\\GSView',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:-1
-            }
-        },
+    #Took out because we dont need -Jonah
+#    'GSview32bit':{
+#        name:'GSview 32bit',
+#        category:'Utilities',
+#        description:'GSview is a graphical interface for Ghostscript',
+#        emulateuseragent:'True',
+#        url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
+#        version:{
+#            url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
+#            regex:'>Obtaining GSview ([0-9]+(?:\.[0-9]+)+)<',
+#            regexpos:0},
+#        download:{
+#            downloadtype:'directurl',
+#            url:'http://pages.cs.wisc.edu/~ghost/gsview/download/gsv##DOTLESSVERSION##w32.exe',
+#            regex:'',
+#            regexpos:0},
+#        silentflags:'/auto',
+#        installversion:{
+#            querytype:'regvalname',
+#            key:'HKLM',
+#            subkey:'SOFTWARE\\Ghostgum\\GSView',
+#            regex:'([0-9]+(?:\.[0-9]+)+)',
+#            regexpos:-1
+#            }
+#        },
     'Ghostscript':{
         name:'Ghostscript',
         category:'Utilities',
@@ -1600,8 +1624,8 @@ catalog={
         emulateuseragent:'True',
         url:'netbeans.org',
         version:{
-            url:'http://netbeans.org/features/index.html',
-            regex:'NetBeans IDE ([0-9]+(?:\.[0-9]+)+) Features',
+            url:'http://netbeans.org/community/releases',
+            regex:'Release ([0-9]+(?:\.[0-9]+)) <',
             regexpos:0},
         download:{
             downloadtype:'directurl',
@@ -2402,8 +2426,8 @@ catalog={
         emulateuseragent:'True',
         url:'research.microsoft.com/en-us/um/redmond/projects/kinectsdk/',
         version:{
-            url:'http://www.microsoft.com/en-us/kinectforwindows/develop/developer-downloads.aspx',
-            regex:'Version ([0-9]+(?:\.[0-9]+)+)',
+            url:'http://msdn.microsoft.com/en-us/library/jj663803.aspx',
+            regex:'version ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0},
         download:{
             downloadtype:'directurl',
@@ -2427,9 +2451,9 @@ catalog={
         emulateuseragent:'True',
         url:'research.microsoft.com/en-us/um/redmond/projects/kinectsdk/',
         version:{
-            url:'http://www.microsoft.com/en-us/kinectforwindows/develop/developer-downloads.aspx',
-            regex:'Version ([0-9]+(?:\.[0-9]+)+)',
-            regexpos:1},
+            url:'http://msdn.microsoft.com/en-us/library/jj663803.aspx',
+            regex:'version ([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0},
         download:{
             downloadtype:'directurl',
             url:'http://download.microsoft.com/download/B/B/A/BBA5742E-8E6B-4C05-ADF2-B2F076DD7741/KinectDeveloperToolkit-v##VERSION##-Setup.exe',
@@ -3252,12 +3276,12 @@ catalog={
         emulateuseragent:'True',
         url:'',
         version:{
-            url:'',
-            regex:'',
+            url:'http://www.codeproject.com/Articles/8302/WinDiff-or-WinMerge-the-way-you-want-it',
+            regex:'Version ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0},
         download:{
             downloadtype:'pagesearch',
-            url:'',
+            url:'http://www.grigsoft.com/windiff.zip',
             regex:'',
             regexpos:0},
         silentflags:'/verysilent',
