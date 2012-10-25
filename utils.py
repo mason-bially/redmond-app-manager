@@ -292,6 +292,7 @@ def getInstalledRegkeyVersion(d):
         else:
             mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
     try:
+        d = d['installversion']
         # should do a lookup table here
         if d['key'] == 'HKLM':
             tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'],0,mask)
@@ -327,9 +328,12 @@ def getInstalledRegvalsearchVersion(d):
     version on the computer.
 
     @param d A installversion dictionary entry for a package containing at
-    least entries for 'key', 'subkey', 'regex', 'valsearchregex', and 'regexpos'
+    least entries for 'key', 'subkey', 'regex', 'valsearchregex', 'value', and 'regexpos'
     @return The version installed or None.
 
+    'value' specifies which value to search on DisplayName or DisplayIcon have been use, 'valsearchregex'
+    is the regex used on value to determine if key is correct package.
+    
     This function also will search all of the subkeys of a key as well as the key itself
     In order to handle the case of searching SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall
     Where Key names themselves can be cryptic, making it hard to find installed Versions
@@ -339,6 +343,7 @@ def getInstalledRegvalsearchVersion(d):
     Step 2: Regval the found key, match displayversion
 
     """
+    t = []
     if(platform.machine =='i386'):
         if ("-64" in d['name']):
             return None
@@ -351,12 +356,13 @@ def getInstalledRegvalsearchVersion(d):
             mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
             
     try:
+        
         d=d['installversion']
-        import pdb
-        pdb.set_trace()
+        #import pdb
+        #pdb.set_trace()
         #Open Uninstall
         if d['key'] == 'HKLM':
-            un = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'],0,mask)
+            un = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE,d['subkey'],0,mask)
         else:
             return None
         unlen = _winreg.QueryInfoKey(un)[0]
@@ -367,20 +373,20 @@ def getInstalledRegvalsearchVersion(d):
             vallen=_winreg.QueryInfoKey(key)[1]
             #Lp env: Enum each value of given subkey
             for j in range(vallen):
-
                 #Check Value Name. If it matches d['value'] we have the correct node
                 value=_winreg.EnumValue(key,j)
-                if value[0] == 'DisplayName':
-                    print value[1]
+                if value[0] == d['value']:
+                    #t.append(value[1])
+                    
                     #If we are at the correct key. 
-                    if(re.findall('TortoiseSVN',value[1])): #valsearchregex, what you want to find in the DisplayName
-                        #Gets a list of tuples to search through for DisplayVersion   
+                    if(re.search(d['valsearchregex'],value[1]) ): #valsearchregex, what you want to find in the DisplayName
+                        #Gets a list of tuples to search through for DisplayVersion
                         keynames = sorted([_winreg.EnumValue(key,l) for l in xrange(vallen)])
                         for key in keynames:
                             if key[0]=='DisplayVersion':
                                 version=re.search(d['regex'],key[1]).group(0)
                                 return version
-
+        
                     
  
     except TypeError as strerror:
@@ -421,6 +427,7 @@ def getInstalledRegvalnameVersion(d):
         else:
             mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
     try:
+        d=d['installversion']
         # should do a lookup table here
         if d['key'] == 'HKLM':
             tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'],0,mask)
@@ -460,19 +467,18 @@ def getInstalledRegvalVersion(d):
     @return The version installed or None.
     """
     if(platform.machine =='i386'):
-        if (pak.arch=='x86_64'):
+        if "-64" in d['name']:
             return None
         else:
             mask=_winreg.KEY_READ
     else:
-        if pak.arch=='x86_32':
-            mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
-        elif pak.arch=='x86_64':
+            
+        if "-64" in d['name']:
             mask= _winreg.KEY_READ|_winreg.KEY_WOW64_64KEY
         else:
-            print "sorry not implemented"
-            return None
+            mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
     try:
+        d= d['installversion']
         # should do a lookup table here
         if d['key'] == 'HKLM':
             tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'],mask)
@@ -514,13 +520,13 @@ def getInstalledVersion(d):
     try:
         querytype = d['installversion']['querytype']
         if querytype == 'regval':
-            return getInstalledRegvalVersion(d['installversion'])
+            return getInstalledRegvalVersion(d)
         elif querytype == 'regvalname':
-            return getInstalledRegvalnameVersion(d['installversion'])
+            return getInstalledRegvalnameVersion(d)
         elif querytype == 'regkey':
-            return getInstalledRegkeyVersion(d['installversion'])
+            return getInstalledRegkeyVersion(d)
         elif querytype=="regvalsearch":
-            return getInstalledRegvalsearchVersion(d['installversion'])
+            return getInstalledRegvalsearchVersion(d)
         else:
             print 'unknown querytype: %s' % querytype
             print 'when calling getInstalledVersion(%s)' %d

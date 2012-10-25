@@ -51,7 +51,7 @@ full_list=['Git', 'Mscgen', 'XNAGameStudio', 'ActiveTcl-64',
            'SMPlayer', 'MysqlODBC', 'Scribus', 'TrueCrypt', 'Audacity',
            'R', 'VioletUML', 'Firefox', 'HaskellPlatform', 'ActiveTcl',
            'GPrologMSVC64', 'Graphviz', 'KinectToolkit', 'CamStudio',
-           'GSview 32bit', 'MySQLWorkbench', 'DIA', 'MysqlODBC-64',
+           'MySQLWorkbench', 'DIA', 'MysqlODBC-64',
            'LeagueOfLegends', 'Povray', 'MyPaint-64', 'SQLiteDatabaseBrowser',
            'XEmacs', 'UMLet', 'SMLNJ', 'Povray-64', 'Uncrustify', 'Spin',
            'InteractiveC', 'Groovy', 'TortoiseGit-64', 'LeJOS', 'Love2d-64',
@@ -160,10 +160,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'Bison',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -308,10 +309,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'TortoiseSVN',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -332,10 +334,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            value:'DisplayName',
+            valsearchregex: 'TortoiseSVN',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -379,7 +382,7 @@ catalog={
             downloadtype:'pagesearch',
             url:'http://www.vtk.org/VTK/resources/software.html#latest',
             regex:'http://www.vtk.org/files/release/[0-9]+(?:\.[0-9]+)+/vtk-[0-9]+(?:\.[0-9]+)+-win32-x86.exe',
-			regexpos:0},
+	    regexpos:0},
         silentflags:'/verysilent',
         installversion:{
             querytype:'regval',
@@ -632,30 +635,6 @@ catalog={
             regexpos:0
             }
         },    
-    'TortoiseSVN-64':{
-        name:'TortoiseSVN',
-        category:'Programming Tools',
-        description:'TortoiseSVN is an Apache Subversion client, implemented as a windows shell extension.',
-        url:'http://tortoisesvn.net/',
-        version:{
-            url:'http://tortoisesvn.net/downloads.html',
-            regex:'The current version is ([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0},
-        download:{
-            downloadtype:'pagesearch',
-            url:'http://sourceforge.net/projects/tortoisesvn/files/latest/download',
-            regex:'url=(http://downloads.sourceforge.net/project/tortoisesvn/[0-9]+(?:\.[0-9]+)+/Application/TortoiseSVN-[0-9]+(?:\.[0-9]+)+-x64[^"]*)"',
-            regexpos:0},
-        silentflags:'/verysilent',
-        installversion:{
-            querytype:'',
-            key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0
-            }
-        },
 'TortoiseGit-64':{
         name:'TortoiseGit-64',
         category:'Programming Tools',
@@ -672,10 +651,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'TortoiseGit',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -756,7 +736,7 @@ catalog={
             }
         },
     'Paint.Net':{
-        name:'Paint.Net',
+        name:'Paint.Net-64',
         category:'Editor',
         description:'Proprietary freeware raster graphics editor',
         emulateuseragent:'True',
@@ -771,10 +751,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'Paint.NET',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -796,10 +777,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            value:'DisplayName',
+            valsearchregex: 'PDFCreator',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -990,12 +972,12 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'regvalsearch', #not yet implemented
+            querytype:'regvalsearch', 
             key:'HKLM',
 	    valsearchregex: 'GIMP',
             subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
             value:'DisplayName',
-            regex:'GIMP ([0-9]+(?:\.[0-9]+)+)',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:-1
             }
         },
@@ -1099,7 +1081,7 @@ catalog={
             }
         },
     '7-Zip':{
-        name:'7-Zip',
+        name:'7-Zip-64',
         category:'Utilities',
         description:'Multiple format file compression and decompression',
         emulateuseragent:'True',
@@ -1115,10 +1097,11 @@ catalog={
             regexpos:0},
         silentflags:'/S',
         installversion:{
-            querytype:'regval',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\7-Zip',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
             value:'DisplayName',
+            valsearchregex: '7-Zip',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1167,8 +1150,8 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Mozilla\\Mozilla Firefox', # I found this...\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Notepad++ --Camille
-            value:'CurrentVersion', # I found this....DisplayVersion  --Camille
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Notepad++',
+            value:'CurrentVersion', 
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1261,7 +1244,7 @@ catalog={
         installversion:{    
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\Adobe Flash Player Plugin',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Adobe Flash Player Plugin',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
@@ -1284,16 +1267,17 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'Mozilla Thunderbird',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
     'VirtualBox':{
-        name:'VirtualBox',
+        name:'VirtualBox-64',
         category:'Virtual Machine',
         description:'x86 and AMD64/Intel64 virtualization product',
         emulateuseragent:'True',
@@ -1309,10 +1293,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex:'Oracle VM VirtualBox',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1334,10 +1319,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            value:'DisplayIcon',
+            valsearchregex: 'Python2',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1359,10 +1345,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayIcon',
+            valsearchregex: 'Python3',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1409,16 +1396,17 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            value:'DisplayName',
+            valsearchregex: 'rwho',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
     'ScreenRecorder':{
-        name:'Screen Recorder',
+        name:'Screen Recorder-64',
         category:'Utilities',
         description:'For Recording Screens',
         emulateuseragent:'True',
@@ -1434,10 +1422,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'ScreenRecorder',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1684,10 +1673,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'MySQL Workbench',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -1734,10 +1724,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\LyX',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -2311,10 +2301,11 @@ catalog={
             },
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-             subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'Skype',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -2336,10 +2327,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            value:'DisplayName',
+            valsearchregex: 'Google SketchUp',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -2438,8 +2430,9 @@ catalog={
         installversion:{
             querytype:'',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'Microsoft Kinect',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -2762,10 +2755,10 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Cmake',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -2837,15 +2830,16 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'Microsoft XNA Game Studio',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },    
-		'Iview':{
+    'Iview':{
         name:'irfanview',
         category:'Multimedia',
         description:'Graphics View',
@@ -2912,16 +2906,17 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'Strawberry Perl',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
     'StrawberryPerl-64':{
-        name:'Strawberry Perl',
+        name:'Strawberry Perl-64',
         category:'Programming',
         description:'A programming language with a lot of operators',
         emulateuseragent:'True',
@@ -3112,10 +3107,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            value:'DisplayName',
+            valsearchregex: 'TortoiseHg',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -3160,10 +3156,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            value:'DisplayName',
+            valsearchregex: 'CamStudio OSS',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -3662,7 +3659,7 @@ catalog={
             querytype:'regval',
             key:'HKLM',
             subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Mscgen',
-            value:'DisplayBersion',
+            value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
@@ -3759,10 +3756,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            value:'DisplayName',
+            valsearchregex: 'IronPython',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
