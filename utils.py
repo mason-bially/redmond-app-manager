@@ -380,9 +380,7 @@ def getInstalledRegvalVersion(d):
         print 'unkown error running getInstalledRegvalVersion(%s)' %d
     else:
         return None
-
-#Pre: takes a catalog entry for a given package
-#Post: returns the version number
+    
 def getInstalledFilePathVersion(d):
     try:
        tempPath = os.listdir(d['path'])
@@ -395,15 +393,15 @@ def getInstalledFilePathVersion(d):
             print 'you are missing or have an invalid regex in %s' %d
         elif strerror == 'expected string or buffer':
             print 'your have no value being pulled from the registry'
-        print 'when calling getInstalledRegvalVersion(%s)' %d
+        print 'when calling getInstalledFilePathVersion(%s)' %d
     except WindowsError:
         print 'The registry key or value could not be found'
-        print 'when calling getInstalledRegvalVersion(%s)' %d
+        print 'when calling getInstalledFilePathVersion(%s)' %d
     except KeyError as strerror:
         print 'd did not contain a "%s" entry' % strerror
-        print 'when calling getInstalledRegvalVersion(%s)' %d
+        print 'when calling getInstalledFilePathVersion(%s)' %d
     except:
-        print 'unkown error running getInstalledRegvalVersion(%s)' %d
+        print 'unkown error running getInstalledFilePathVersion(%s)' %d
     else:
         return None
 
