@@ -514,6 +514,7 @@ catalog={
             regexpos:0
             }
         },
+		
         'SciLab-64':{
         name:'SciLab',
         category:'Utility',
@@ -531,11 +532,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'filepathname',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            path:'c:\\Program Files',
             value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regex:'scilab-([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
