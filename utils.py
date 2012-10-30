@@ -45,23 +45,6 @@ cj = cookielib.CookieJar()
 opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cj),red)
 opener.addheaders=userAgent
 
-##logger = logging.getLogger()
-##logger.setLevel(logging.DEBUG)
-##
-##formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-##
-##fh = logging.FileHandler('default_log.txt')
-##fh.setLevel(logging.DEBUG)
-##fh.setFormatter(formatter)
-##
-##logger.addHandler(fh)
-##
-##ch = logging.StreamHandler()
-##ch.setLevel(logging.DEBUG)
-##ch.setFormatter(formatter)
-##
-##logger.addHandler(ch)
-
 logger = ourlogging.config()
 
 
@@ -192,7 +175,7 @@ def getDownloadURL(d):
 
         opener.addheaders=userAgent + [('Referer', downurl)]
         fredirectedurl = opener.open(downurl)
-        
+    
         redirectedurl = fredirectedurl.geturl()
         fredirectedurl .close()
     except urllib2.URLError:
@@ -262,6 +245,7 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
                     buffer = furl.read(block_sz)
                     if not buffer:
                         break
+                    
                     #add blocks read to blocks downloaded
                     file_size_dl += len(buffer)
                     f.write(buffer)
@@ -279,8 +263,8 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
         furl.close()
     except IOError as (errno, strerror):
         logger.error('could not open file, I/O error({0}): {1}'.format(errno, strerror)+ ' when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
-    #except TypeError as strerror:
-     #   logger.error( 'TypeError: %s, location may not be a string when calling downloadLatest(%s, %s, %s)' %(strerror,d['name'], location, overwrite))
+    except TypeError as strerror:
+        logger.error( 'TypeError: %s, location may not be a string when calling downloadLatest(%s, %s, %s)' %(strerror,d['name'], location, overwrite))
     except urllib2.URLError:
         logger.error( 'could not connect to and read from %s, when calling downloadLatest(%s, %s, %s)' %(downurl,d['name'], location, overwrite))
     except KeyError:

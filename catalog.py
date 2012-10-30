@@ -306,9 +306,9 @@ catalog={
             regex:'current version is ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0},
         download:{
-            downloadtype:'directurl',
-            url:'',
-            regex:'',
+            downloadtype:'pagesearch',
+            url:'http://tortoisesvn.net/downloads.html',
+            regex:'a \"href=\'(.*) title =\"TortoiseSVN ##VERSION## - 64-bit',
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
