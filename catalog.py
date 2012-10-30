@@ -947,7 +947,7 @@ catalog={
             }
         },
     'Gimp':{
-        name:'Gimp',
+        name:'Gimp-64',
         category:'Multimedia',
         description:'GNU Image Manipulation Program.',
         emulateuseragent:'True',
@@ -966,10 +966,10 @@ catalog={
             querytype:'regvalsearch', 
             key:'HKLM',
 	    valsearchregex: 'GIMP',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
             value:'DisplayName',
             regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:-1
+            regexpos:0
             }
         },
 		
@@ -2328,9 +2328,9 @@ catalog={
             key:'HKLM',
             subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
             value:'DisplayName',
-            valsearchregex: 'Google SketchUp',
+            valsearchregex: 'SketchUp',
             regex:'([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0
+            regexpos:1
             }
         },
     'ViProlog':{
@@ -2929,10 +2929,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            value:'DisplayName',
+            valsearchregex: 'Strawberry Perl',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }

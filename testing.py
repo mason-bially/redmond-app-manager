@@ -47,6 +47,22 @@ def localVersionValidate():
             print package_str
     Log.write('local Version',failed_package)
 
+def localVersionSearchValidate():
+    package_str =''
+    failed_package = []
+    for entry in catalog.full_list:
+        if entry != 'EMPTY' and catalog.catalog[entry]['installversion']['querytype'] == 'regvalsearch':
+            test = utils.getInstalledVersion(catalog.catalog[entry])
+            print entry
+            print test
+            if test is None:
+                package_str += '     Has not been defined yet'
+                failed_package.append(package_str)
+    Log.write('local search',failed_package)
+				
+			
+		
+
 def runValidation(test_list):
     """ ie run runValidation(['web','local'])"""
     for test in test_list:
@@ -54,6 +70,8 @@ def runValidation(test_list):
             webVersionValidate()
         elif test == 'local':
             localVersionValidate()
+        elif test == 'search':
+            localVersionSearchValidate()
     Log.close()
         
     
