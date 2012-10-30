@@ -36,7 +36,7 @@ import sys
 import catalog
 import cookielib
 import platform
-import ourlogging
+import logging
 
 #We emulate Mozilla Firefox on Windows 7 64 bit as our UA
 red=urllib2.HTTPRedirectHandler()
@@ -44,6 +44,10 @@ userAgent=[('User-Agent',' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20
 cj = cookielib.CookieJar()
 opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cj),red)
 opener.addheaders=userAgent
+
+FORMAT = '%(packageorcommand)-16s %(levelname)-8s - %(message)s'
+logging.basicConfig(format=FORMAT)
+logger = logging.getLogger('main')
 
 
 def getPage(url):
@@ -60,9 +64,9 @@ def getPage(url):
         page = f.read()
         f.close()
     except urllib2.URLError:
-        print 'Couldn not connect to and read from %s' % url
+        logger.debug( 'Couldn not connect to and read from %s' % url)
     except Exception, e:
-        print ' %s while running  getPage(%s)' % (e,url)
+        logger.debug( ' %s while running  getPage(%s)' % (e,url))
         raise
     else:
         return page
@@ -82,15 +86,15 @@ def scrapePage(reg, url, pos=0):
         ret = re.findall(reg, getPage(url))[pos]
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            print 'you are missing or have an invalid regex in %s' % reg
+            logger.debug( 'you are missing or have an invalid regex in %s' % reg)
         elif strerror == 'expected string or buffer':
-            print 'your have no page being returned by getPage()'
-        print 'when calling scrapePage(%s, %s, %d)' %(reg, url, pos)
+            logger.debug( 'your have no page being returned by getPage()')
+        logger.debug( 'when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
     except IndexError:
-        print 'regexpos entry larger then the number of results mathing regex '
-        print 'when calling scrapePage(%s, %s, %d)' %(reg, url, pos)
+        logger.debug( 'regexpos entry larger then the number of results mathing regex ')
+        logger.debug( 'when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
     except Exception, e:
-        print '%s while running  scrapePage(%s, %s, %d)' % (e,reg, url, pos)
+        logger.debug( '%s while running  scrapePage(%s, %s, %d)' % (e,reg, url, pos))
         raise
     else:
         return ret
@@ -111,18 +115,18 @@ def scrapePageDict(d):
         ret = re.findall(d['regex'], getPage(d['url']))[d['regexpos']]
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            print 'you are missing or have an invalid regex in %s' %d
+            logger.debug( 'you are missing or have an invalid regex in %s' %d['name'])
         elif strerror == 'expected string or buffer':
-            print 'your have no page being returned by getPage()'
-        print 'when calling scrapePageDict(%s)' %d
+            logger.debug( 'your have no page being returned by getPage()')
+        logger.debug( 'when calling scrapePageDict(%s)' %d['name'])
     except IndexError:
-        print 'regexpos entry larger then the number of results mathing regex '
-        print 'when calling scrapePageDict(%s)' %d
+        logger.debug( 'regexpos entry larger then the number of results mathing regex ')
+        logger.debug( 'when calling scrapePageDict(%s)' %d['name'])
     except KeyError as strerror:
-        print 'd did not contain a "%s" entry' % strerror
-        print 'when calling scrapePage(%s)' %d
+        logger.debug( 'd did not contain a "%s" entry' % strerror)
+        logger.debug( 'when calling scrapePage(%s)' %d['name'])
     except Exception, e:
-        print '%s while running scrapePage(%s)' % (e,d)
+        logger.debug( '%s while running scrapePage(%s)' % (e,d['name']))
         raise
     else:
         return ret
@@ -144,10 +148,10 @@ def getWebVersion(d):
     try:
         ret = scrapePageDict(d['version'])
     except KeyError:
-        print 'd did not contain a "version" entry'
-        print 'when calling getWebVersion(%s)' %d
+        logger.debug( 'd did not contain a "version" entry')
+        logger.debug( 'when calling getWebVersion(%s)' %d['name'])
     except Exception, e:
-        print '%s while running getWebVersion(%s)' % (e,d)
+        logger.debug( '%s while running getWebVersion(%s)' % (e,d['name']))
         raise
     else:
         return ret
@@ -182,13 +186,13 @@ def getDownloadURL(d):
         redirectedurl = fredirectedurl.geturl()
         fredirectedurl .close()
     except urllib2.URLError:
-        print 'could not connect to %s' %d['download']['url']
-        print 'when calling getDownloadURL(%s)' %d
+        logger.debug( 'could not connect to %s' %d['download']['url'])
+        logger.debug( 'when calling getDownloadURL(%s)' %d['name'])
     except KeyError:
-        print 'd did not contain a "download" entry'
-        print 'when calling getDownloadURL(%s)' %d
+        logger.debug( 'd did not contain a "download" entry')
+        logger.debug( 'when calling getDownloadURL(%s)' %d['name'])
     except Exception, e:
-        print '%s while running getDownloadURL(%s)' % (e,d)
+        logger.debug( '%s while running getDownloadURL(%s)' % (e,d['name']))
         raise
     else:
         return redirectedurl
@@ -249,23 +253,23 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
                     block=furl.read(2**20)
                 print ""
         else:
-            print 'File already exists and overwriting was not enabled'
-            print 'when calling downloadLatest(%s, %s, %s)' %(d, location, overwrite)
+            logger.debug( 'File already exists and overwriting was not enabled')
+            logger.debug( 'when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
         furl.close()
     except IOError as (errno, strerror):
-        print 'could not open file, I/O error({0}): {1}'.format(errno, strerror)
-        print 'when calling downloadLatest(%s, %s, %s)' %(d, location, overwrite)
+        logger.debug( 'could not open file, I/O error({0}): {1}'.format(errno, strerror))
+        logger.debug( 'when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
     except TypeError as strerror:
-        print "TypeError: %s, location may not be a string" % strerror
-        print 'when calling downloadLatest(%s, %s, %s)' %(d, location, overwrite)
+        logger.debug( "TypeError: %s, location may not be a string" % strerror)
+        logger.debug( 'when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
     except urllib2.URLError:
-        print 'could not connet to and read from %s' % downurl
-        print 'when calling downloadLatest(%s, %s, %s)' %(d, location, overwrite)
+        logger.debug( 'could not connet to and read from %s' % downurl)
+        logger.debug( 'when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
     except KeyError:
-        print 'd did not contain a "name" entry'
-        print 'when calling downloadLatest(%s, %s, %s)' %(d, location, overwrite)
+        logger.debug( 'd did not contain a "name" entry')
+        logger.debug( 'when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
     except Exception, e:
-        print '%s while running downloadLatest(%s, %s, %s)' %(e,d, location, overwrite)
+        logger.debug( '%s while running downloadLatest(%s, %s, %s)' %(e,d['name'], location, overwrite))
         raise
     else:
         return newfileloc
@@ -305,18 +309,18 @@ def getInstalledRegkeyVersion(d):
         return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            print 'you are missing or have an invalid regex in %s' %d
+            logger.debug( 'you are missing or have an invalid regex in %s' %d['name'])
         elif strerror == 'expected string or buffer':
-            print 'your have no value being pulled from the registry'
-        print 'when calling getInstalledRegkeyVersion(%s)' %d
+            debug.logger( 'your have no value being pulled from the registry')
+        debug.logger( 'when calling getInstalledRegkeyVersion(%s)' %d['name'])
     except WindowsError:
         print 'The registry key or value could not be found'
         print 'when calling getInstalledRegkeyVersion(%s)' %d
     except KeyError as strerror:
-        print 'd did not contain a "%s" entry' % strerror
-        print 'when calling getInstalledRegkeyVersion(%s)' %d
+        logger.debug( 'd did not contain a "%s" entry' % strerror)
+        logger.debug( 'when calling getInstalledRegkeyVersion(%s)' %d['name'])
     except Exception, e:
-        print '%s while running getInstalledRegkeyVersion(%s)' % (e,d)
+        logger.debug( '%s while running getInstalledRegkeyVersion(%s)' %(e,d['name']))
     else:
         return None
 
@@ -386,23 +390,20 @@ def getInstalledRegvalsearchVersion(d):
                             if key[0]=='DisplayVersion':
                                 version=re.search(d['regex'],key[1]).group(0)
                                 return version
-        
-                    
- 
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            print ('you are missing or have an invalid regex')
+            logger.debug( 'you are missing or have an invalid regex in %s' %d['name'])
         elif strerror == 'expected string or buffer':
-            print ('your have no value being pulled from the registry')
-          
+            debug.logger( 'your have no value being pulled from the registry')
+        debug.logger( 'when calling getInstalledRegvalsearchVersion(%s)' %d['name'])
     except WindowsError:
-        print ('The registry key or value could not be found')
-      
+        print 'The registry key or value could not be found'
+        print 'when calling getInstalledRegvalsearchVersion(%s)' %d
     except KeyError as strerror:
-        print ('did not contain a key entry')
-       
+        logger.debug( 'd did not contain a "%s" entry' % strerror)
+        logger.debug( 'when calling getInstalledRegvalsearchVersion(%s)' %d['name'])
     except Exception, e:
-        print '%s while running getInstalledRegvalsearchVersion(%s)' % (e,d)
+        logger.debug( '%s while running getInstalledRegvalsearchVersion(%s)' %(e,d['name']))
     else:
         return None
 def getInstalledRegvalnameVersion(d):
@@ -441,18 +442,18 @@ def getInstalledRegvalnameVersion(d):
         return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            print 'you are missing or have an invalid regex in %s' %d
+            logger.debug( 'you are missing or have an invalid regex in %s' %d['name'])
         elif strerror == 'expected string or buffer':
-            print 'your have no value being pulled from the registry'
-        print 'when calling getInstalledRegvalnameVersion(%s)' %d
+            debug.logger( 'your have no value being pulled from the registry')
+        debug.logger( 'when calling getInstalledRegvalnameVersion(%s)' %d['name'])
     except WindowsError:
         print 'The registry key or value could not be found'
         print 'when calling getInstalledRegvalnameVersion(%s)' %d
     except KeyError as strerror:
-        print 'd did not contain a "%s" entry' % strerror
-        print 'when calling getInstalledRegvalnameVersion(%s)' %d
+        logger.debug( 'd did not contain a "%s" entry' % strerror)
+        logger.debug( 'when calling getInstalledRegvalnameVersion(%s)' %d['name'])
     except Exception, e:
-        print '%s while running getInstalledRegvalnameVersion(%s)' %(e,d)
+        logger.debug( '%s while running getInstalledRegvalnameVersion(%s)' %(e,d['name']))
     else:
         return None
 
@@ -487,42 +488,42 @@ def getInstalledRegvalVersion(d):
             return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            print 'you are missing or have an invalid regex in %s' %d
+            logger.debug( 'you are missing or have an invalid regex in %s' %d['name'])
         elif strerror == 'expected string or buffer':
-            print 'your have no value being pulled from the registry'
-        print 'when calling getInstalledRegvalVersion(%s)' %d
+            debug.logger( 'your have no value being pulled from the registry')
+        debug.logger( 'when calling getInstalledRegvalVersion(%s)' %d['name'])
     except WindowsError:
         print 'The registry key or value could not be found'
         print 'when calling getInstalledRegvalVersion(%s)' %d
     except KeyError as strerror:
-        print 'd did not contain a "%s" entry' % strerror
-        print 'when calling getInstalledRegvalVersion(%s)' %d
+        logger.debug( 'd did not contain a "%s" entry' % strerror)
+        logger.debug( 'when calling getInstalledRegvalVersion(%s)' %d['name'])
     except Exception, e:
-        print '%s while running getInstalledRegvalVersion(%s)' %(e,d)
+        logger.debug( '%s while running getInstalledRegvalVersion(%s)' %(e,d['name']))
     else:
         return None
     
 def getInstalledFilePathVersion(d):
     try:
-       tempPath = os.listdir(d['path'])
+       tempPath = os.listdir(d['installversion']['path'])
        valnames = sorted(tempPath)
        valnamesstr = "\n".join(valnames)
        version =re.findall(d['regex'], valnamesstr) [d['regexpos']]
        return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            print 'you are missing or have an invalid regex in %s' %d
+            logger.debug( 'you are missing or have an invalid regex in %s' %d['name'])
         elif strerror == 'expected string or buffer':
-            print 'your have no value being pulled from the registry'
-        print 'when calling getInstalledFilePathVersion(%s)' %d
+            debug.logger( 'your have no value being pulled from the registry')
+        debug.logger( 'when calling getInstalledFilePathVersion(%s)' %d['name'])
     except WindowsError:
         print 'The registry key or value could not be found'
         print 'when calling getInstalledFilePathVersion(%s)' %d
     except KeyError as strerror:
-        print 'd did not contain a "%s" entry' % strerror
-        print 'when calling getInstalledFilePathVersion(%s)' %d
-    except:
-        print 'unkown error running getInstalledFilePathVersion(%s)' %d
+        logger.debug( 'd did not contain a "%s" entry' % strerror)
+        logger.debug( 'when calling getInstalledFilePathVersion(%s)' %d['name'])
+    except Exception, e:
+        logger.debug( '%s while running getInstalledFilePathVersion(%s)' %(e,d['name']))
     else:
         return None
 
@@ -553,15 +554,15 @@ def getInstalledVersion(d):
         elif querytype=="regvalsearch":
             return getInstalledRegvalsearchVersion(d)
         elif querytype == 'filepathname':
-            return getInstalledFilePathVersion(d['installversion']) # camille working on
+            return getInstalledFilePathVersion(d) # camille working on
         else:
-            print 'unknown querytype: %s' % querytype
-            print 'when calling getInstalledVersion(%s)' %d
+            logger.debug( 'unknown querytype: %s' % querytype)
+            logger.debug('when calling getInstalledVersion(%s)' %d['name'])
     except KeyError as strerror:
-        print 'd did not contain a "%s" entry' % strerror
-        print 'when calling getInstalledVersion(%s)' %d
+        logger.debug( 'd did not contain a "%s" entry' % strerror)
+        logger.debug( 'when calling getInstalledVersion(%s)' %d['name'])
     except Exception, e:
-        print '%s while running getInstalledVersion(%s)' %(e,d)
+        logger.debug( '%s while running getInstalledVersion(%s)' %(e,d['name']))
     else:
         return None
 
@@ -584,7 +585,7 @@ def installPackage(d, location):
 		#ret = os.system('"' + location + '" ' + d['silentflags'])
         ret = os.system('"' + location + '" ')
     except Exception, e:
-        print '%s while running installPackage(%s, %s)' %(e,d, location)
+        logger.debug( '%s while running installPackage(%s, %s)' %(e,d, location))
     else:
         return ret
 
@@ -609,11 +610,11 @@ def downloadAndInstallLatest(d, location='downloads\\', keep=True):
         if not keep and ret == 0:
             os.remove(fpath)
     except WindowsError as (errno, strerror):
-        print 'could not remove the file, WindowsError({0}): {1}'.format(errno,
-            strerror)
-        print 'when calling installPackage(%s, %s)' %(d, location)
+        logger.debug( 'could not remove the file, WindowsError({0}): {1}'.format(errno,
+            strerror))
+        logger.debug ('when calling installPackage(%s, %s)' %(d['name'], location))
     except Exception, e:
-        print '%s while running installPackage(%s, %s)' %(e, d, location)
+        logger.debug( '%s while running installPackage(%s, %s)' %(e, d['name'], location))
     else:
         return ret
 
@@ -674,8 +675,8 @@ def installColl(catalog, collection, location='downloads\\', keep=True):
         for entry in collection:
             downloadAndInstallLatest(catalog[entry], location, keep)
     except Exception, e:
-        print '%s while running installColl(%s, %s)' %(e, catalog,
-                collection)
+        logger.debug( '%s while running installColl(%s, %s)' %(e, catalog,
+                collection))
 
 def getCollInstalledVersions(catalog, collection):
     """@todo: XXX: STUB NEEDS FILLED OUT"""
@@ -695,8 +696,6 @@ def main(argv):
         return -1
 
     package_name=argv[2]
-    ourlogging.config(consoleLevel=ourlogging.DEBUG,debugInfo=True)
-       
     everything=(package_name=="all")
     if not everything:
         package = catalog.catalog[package_name]
@@ -715,13 +714,13 @@ def main(argv):
             for i in catalog.catalog:
                 try:
                     package = catalog.catalog[i]
-                    print "Fetching:"+i
+                    logger.info("Fetching:"+i)
                     downloadLatest(package)
-                except Exception:
-                    print "Could not fetch:"+i
+                except Exception, e:
+                    logger.debug( "%s while trying to fetch: %s." %(e,i))
         else:
             downloadLatest(package)        
             
 
 if __name__ == "__main__":   
-    main(['utils.py','version','TortoiseSVN-64'])
+    main(['utils.py','fetch', 'all'])
