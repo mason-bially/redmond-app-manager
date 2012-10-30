@@ -63,7 +63,7 @@ full_list=['Git', 'Mscgen', 'XNAGameStudio', 'ActiveTcl-64',
 broken_localversion_minimal_list = [ 'Gimp', 'AdobeReader' ]
 broken_download_minimal_list = [ 'Inkscape', 'TrueCrypt', 'AdobeReader','Flash-InternetExplorer,OracleInstantBasic']
 broken_silent_minimal_list = [ 'GSview 32bit', 'AdobeReader' ]
-broken_list = ['TortoiseSVN-64']
+
 
 #### TODO major is add valsearchregex to all 
 catalog={
@@ -307,7 +307,7 @@ catalog={
             regexpos:0},
         download:{
             downloadtype:'directurl',
-            url:'http://voxel.dl.sourceforge.net/project/tortoisesvn/##VERSION##/Application/TortoiseSVN-##VERSION##.23248-x64-svn-1.7.6.msi',
+            url:'',
             regex:'',
             regexpos:0},
         silentflags:'/verysilent',
