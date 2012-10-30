@@ -118,6 +118,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --cc	
     'Mozart':{
         name:'Mozart',
         category:'Programming',
@@ -137,9 +138,9 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Mozart_is1',
-            value:'Inno Setup: Setup Version',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Mozart_is1',
+            value:'DisplayName',
+            regex:'Mozart ([0-9]+(?:\.[0-9]+)+)', 
             regexpos:0
             }
         },
@@ -194,6 +195,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --cc	
     'ImgBurn':{
         name:'ImgBurn',
         category:'Multimedia',
@@ -219,6 +221,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --cc	
     'GPG4Win':{
         name:'GPG4Win',
         category:'Encryption',
@@ -368,7 +371,8 @@ catalog={
             regexpos:0
             }
         },
- 'VTK':{
+	#local version works	
+	'VTK':{
         name:'Visualization Toolkit ',
         category:'Programming',
         description:'software system for 3D computer graphics, image processing and visualization',
@@ -393,6 +397,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion does not work	--Camille
     'Lazarus':{
         name:'Lazarus',
         category:'Editor',
@@ -567,6 +572,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --Camille	
     'LibreOffice':{
         name:'LibreOffice',
         category:'Editors and Viewers',
@@ -584,15 +590,16 @@ catalog={
         installversion:{
             querytype:'regkey',
             key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\LibreOffice\\LibreOffice',
+            subkey:'SOFTWARE\\LibreOffice\\LibreOffice',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:-1
             }
         },
+	#localversion FIXED --Camille
     'Emacs':{
         name:'Emacs',
         category:'Editors and Viewers',
-        description:'GNU Emacs is an extensible, customizable text editor and more.',
+        description:'GNU Emacs is an extensible, customizable text editor and more...',
         emulateuseragent:'True',
         url:'http://www.gnu.org/software/emacs/',
         version:{
@@ -606,10 +613,12 @@ catalog={
         installversion:{
             querytype:'filepathname',
             path:'c:\\Program Files (x86)\\',
-            regex:'Emacs ([0-9]+(?:\.[0-9]+)+)',
+            regex:'emacs-([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+		
+	#localversion works --cc	
     'Git':{
         name:'Git for Windows',
         category:'Programming Tools',
@@ -786,6 +795,7 @@ catalog={
             regexpos:0
             }
         },
+	#this is a duplicate?  Camille	
     'LibreOffice':{
         name:'LibreOffice',
         category:'Editors and Viewers',
@@ -808,6 +818,7 @@ catalog={
             regexpos:-1
             }
         },
+	#registry key or value could not be found.  Possibly in programfiles? 	
     'Tightvncviewer':{
         name:'TightVNCViewer',
         category:'Internet Tools',
@@ -827,7 +838,7 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TightVNC',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\TightVNC',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
@@ -858,27 +869,6 @@ catalog={
             regexpos:0
             }
         },
-    'Emacs':{
-        name:'Emacs',
-        category:'Editors and Viewers',
-        description:'GNU Emacs is an extensible, customizable text editor and more.',
-        emulateuseragent:'True',
-        url:'http://www.gnu.org/software/emacs/',
-        version:{
-            url:'http://www.gnu.org/software/emacs/',
-            regex:'The current stable release is ([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0},
-        download:{
-            downloadtype:'directurl',
-            url:'http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-##VERSION##-bin-i386.zip'},
-        silentflags:'/verysilent',
-        installversion:{
-            querytype:'filepathname',
-            path:'c:\\Program Files (x86)\\',
-            regex:'Emacs ([0-9]+(?:\.[0-9]+)+)',
-            regexpos:0
-            }
-        },
  
     'AdobeReader':{
         name:'AdobeReader',
@@ -905,6 +895,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works	
     'Scribus':{
         name:'Scribus',
         category:'Editors and Viewers',
@@ -924,12 +915,12 @@ catalog={
         installversion:{
             querytype:'regkey',
             key:'HKLM',
-            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
             regex:'Scribus ([0-9]+(?:\.[0-9]+)+)',
             regexpos:-1
             }
         },
-
+    #localversion works-cc
     'Inkscape':{
         name:'Inkscape',
         category:'Multimedia',
@@ -981,6 +972,7 @@ catalog={
             regexpos:-1
             }
         },
+		
     'TrueCrypt':{
         name:'TrueCrypt',
         category:'Encryption',
@@ -1006,7 +998,8 @@ catalog={
             regexpos:0
             }
         },
-    'ImageMagick':{
+    #Debug: local version does not work--Camille
+	'ImageMagick':{
         name:'ImageMagick',
         category:'Multimedia',
         description:'A software suite to create, edit, compose, or convert bitmap images.',
@@ -1031,31 +1024,32 @@ catalog={
             regexpos:0
             }
         },
-    #Took out because we dont need -Jonah
-#    'GSview32bit':{
-#        name:'GSview 32bit',
-#        category:'Utilities',
-#        description:'GSview is a graphical interface for Ghostscript',
-#        emulateuseragent:'True',
-#        url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
-#        version:{
-#            url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
-#            regex:'>Obtaining GSview ([0-9]+(?:\.[0-9]+)+)<',
-#            regexpos:0},
-#        download:{
-#            downloadtype:'directurl',
-#            url:'http://pages.cs.wisc.edu/~ghost/gsview/download/gsv##DOTLESSVERSION##w32.exe',
-#            regex:'',
-#            regexpos:0},
-#        silentflags:'/auto',
-#        installversion:{
-#            querytype:'regvalname',
-#            key:'HKLM',
-#            subkey:'SOFTWARE\\Ghostgum\\GSView',
-#            regex:'([0-9]+(?:\.[0-9]+)+)',
-#            regexpos:-1
-#            }
-#        },
+	#localversion okay --cc	
+    'GSview32bit':{
+        name:'GSview 32bit',
+        category:'Utilities',
+        description:'GSview is a graphical interface for Ghostscript',
+        emulateuseragent:'True',
+        url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
+        version:{
+            url:'http://pages.cs.wisc.edu/~ghost/gsview/index.htm',
+            regex:'>Obtaining GSview ([0-9]+(?:\.[0-9]+)+)<',
+            regexpos:0},
+        download:{
+            downloadtype:'directurl',
+            url:'http://pages.cs.wisc.edu/~ghost/gsview/download/gsv##DOTLESSVERSION##w32.exe',
+            regex:'',
+            regexpos:0},
+        silentflags:'/auto',
+        installversion:{
+            querytype:'regvalname',
+            key:'HKLM',
+            subkey:'SOFTWARE\\Ghostgum\\GSView',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regexpos:0
+            }
+        },
+	#localversion okay --cc	
     'Ghostscript':{
         name:'Ghostscript',
         category:'Utilities',
@@ -1181,6 +1175,7 @@ catalog={
             regexpos:0
             }
         }, 
+	#localversion okay --cc	
    'Flash-Firefox':{
         name:'Adobe Flash Player (Firefox)',
         category:'Multimedia',
@@ -1204,6 +1199,7 @@ catalog={
             regexpos:0
             }
         },
+	#localversion works --camille	
     'Pidgin':{
         name:'Pidgin',
         category:'Internet tool',
@@ -1227,6 +1223,7 @@ catalog={
             regexpos:0
             }
         },
+		#localversion works --camille	
     'Flash-InternetExplorer':{
         name:'Adobe Flash Player (IE)',
         category:'Multimedia',

@@ -501,6 +501,30 @@ def getInstalledRegvalVersion(d):
         print '%s while running getInstalledRegvalVersion(%s)' %(e,d)
     else:
         return None
+    
+def getInstalledFilePathVersion(d):
+    try:
+       tempPath = os.listdir(d['path'])
+       valnames = sorted(tempPath)
+       valnamesstr = "\n".join(valnames)
+       version =re.findall(d['regex'], valnamesstr) [d['regexpos']]
+       return version
+    except TypeError as strerror:
+        if strerror == 'first argument must be a string or compiled pattern':
+            print 'you are missing or have an invalid regex in %s' %d
+        elif strerror == 'expected string or buffer':
+            print 'your have no value being pulled from the registry'
+        print 'when calling getInstalledFilePathVersion(%s)' %d
+    except WindowsError:
+        print 'The registry key or value could not be found'
+        print 'when calling getInstalledFilePathVersion(%s)' %d
+    except KeyError as strerror:
+        print 'd did not contain a "%s" entry' % strerror
+        print 'when calling getInstalledFilePathVersion(%s)' %d
+    except:
+        print 'unkown error running getInstalledFilePathVersion(%s)' %d
+    else:
+        return None
 
 def getInstalledVersion(d):
     """Get the version of the installed package.
@@ -518,6 +542,7 @@ def getInstalledVersion(d):
     @return The version installed or None.
     """
     try:
+        #import ipdb; ipdb.set_trace(); #Remove when debuging finished. --Camille
         querytype = d['installversion']['querytype']
         if querytype == 'regval':
             return getInstalledRegvalVersion(d)
@@ -527,6 +552,8 @@ def getInstalledVersion(d):
             return getInstalledRegkeyVersion(d)
         elif querytype=="regvalsearch":
             return getInstalledRegvalsearchVersion(d)
+        elif querytype == 'filepathname':
+            return getInstalledFilePathVersion(d['installversion']) # camille working on
         else:
             print 'unknown querytype: %s' % querytype
             print 'when calling getInstalledVersion(%s)' %d
