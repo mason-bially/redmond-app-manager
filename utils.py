@@ -84,11 +84,11 @@ def scrapePage(reg, url, pos=0):
         ret = re.findall(reg, getPage(url))[pos]
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            logger.error( 'you are missing or have an invalid regex when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
+            logger.error( 'You are missing or have an invalid regex when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
         elif strerror == 'expected string or buffer':
-            logger.error( 'your have no page being returned by getPage()when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
+            logger.error( 'Your have no page being returned by getPage()when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
     except IndexError:
-        logger.error( 'regexpos entry larger then the number of results mathing regex when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
+        logger.error( 'Regexpos entry larger then the number of results mathing regex when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
     except Exception, e:
         logger.error( '%s while running  scrapePage(%s, %s, %d)' % (e,reg, url, pos))
         raise
@@ -111,12 +111,12 @@ def scrapePageDict(d):
         ret = re.findall(d['regex'], getPage(d['url']))[d['regexpos']]
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            logger.error( 'you are missing or have an invalid regex in %s' %d['name'])
+            logger.error( 'You are missing or have an invalid regex. When calling scrapePageDict(%s)' %d['name'])
         elif strerror == 'expected string or buffer':
-            logger.error( 'your have no page being returned by getPage()')
-        logger.error( 'when calling scrapePageDict(%s)' %d['name'])
+            logger.error( 'You have no page being returned by getPage() when calling scrapePageDict(%s)' %d['name'])
+        
     except IndexError:
-        logger.error( 'regexpos entry larger then the number of results mathing regex when calling scrapePageDict(%s)' %d['name'])
+        logger.error( 'Regexpos entry larger then the number of results mathing regex when calling scrapePageDict(%s)' %d['name'])
     except KeyError as strerror:
         logger.error( 'd did not contain a "%s" entry when calling scrapePage(%s)' %(strerror,d['name']))
     except Exception, e:
@@ -168,18 +168,17 @@ def getDownloadURL(d):
     try:
         expandedVersion=expandVersion(d)
         downurl=expandedVersion['download']['url']
-        
         #Here is a switch to determine action based on download type. Default is direct download
         if d['download']['downloadtype']=='pagesearch':
             downurl = scrapePageDict(expandedVersion['download'])
-
+        
         opener.addheaders=userAgent + [('Referer', downurl)]
         fredirectedurl = opener.open(downurl)
-    
         redirectedurl = fredirectedurl.geturl()
         fredirectedurl .close()
+     
     except urllib2.URLError:
-        logger.error( 'could not connect to %s when calling getDownloadURL(%s)' %(d['download']['url'],d['name']))
+        logger.error( 'Could not connect to %s when calling getDownloadURL(%s)' %(expandVersion['download']['url'],d['name']))
     except KeyError:
         logger.error( 'd did not contain a "download" entry when calling getDownloadURL(%s)' %d['name'])
     except Exception, e:
@@ -207,7 +206,7 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
         logger.info('getting %s web version' %d['name'])
         version = getWebVersion(d)
         downurl = getDownloadURL(d)
-
+ 
         #Sourceforge Antibot Hack
         if "sourceforge" in downurl:
             opener.addheaders=[]
@@ -261,12 +260,10 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
             logger.warning( 'File already exists and overwriting was not enabled \
                             when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
         furl.close()
-    except IOError as (errno, strerror):
-        logger.error('could not open file, I/O error({0}): {1}'.format(errno, strerror)+ ' when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
     except TypeError as strerror:
         logger.error( 'TypeError: %s, location may not be a string when calling downloadLatest(%s, %s, %s)' %(strerror,d['name'], location, overwrite))
     except urllib2.URLError:
-        logger.error( 'could not connect to and read from %s, when calling downloadLatest(%s, %s, %s)' %(downurl,d['name'], location, overwrite))
+        logger.error( 'Could not connect to and read from %s, when calling downloadLatest(%s, %s, %s)' %(downurl,d['name'], location, overwrite))
     except KeyError:
         logger.error( 'd did not contain a "name" entry when calling downloadLatest(%s, %s, %s)' %(d, location, overwrite))
     except Exception, e:
@@ -309,10 +306,9 @@ def getInstalledRegkeyVersion(d):
         return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            logger.error( 'you are missing or have an invalid regex in %s' %d['name'])
+            logger.error( 'You are missing or have an invalid regex. When calling getInstalledRegkeyVersion(%s)' %d['name'])
         elif strerror == 'expected string or buffer':
-            logger.error( 'your have no value being pulled from the registry')
-        logger.error( 'when calling getInstalledRegkeyVersion(%s)' %d['name'])
+            logger.error( 'You have no value being pulled from the registry. When calling getInstalledRegkeyVersion(%s)' %d['name'])
     except WindowsError:
         logger.error( 'The registry key or value could not be found when calling getInstalledRegkeyVersion(%s)' %d)
     except KeyError as strerror:
@@ -379,8 +375,6 @@ def getInstalledRegvalsearchVersion(d):
                 #Check Value Name. If it matches d['value'] we have the correct node
                 value=_winreg.EnumValue(key,j)
                 if value[0] == d['value']:
-                    #t.append(value[1])
-                    
                     #If we are at the correct key. 
                     if(re.search(d['valsearchregex'],value[1]) ): #valsearchregex, what you want to find in the DisplayName
                         #Gets a list of tuples to search through for DisplayVersion
@@ -391,10 +385,10 @@ def getInstalledRegvalsearchVersion(d):
                                 return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            logger.error( 'you are missing or have an invalid regex in %s' %d['name'])
+            logger.error( 'You are missing or have an invalid regex. When calling getInstalledRegvalsearchVersion(%s)' %d['name'])
         elif strerror == 'expected string or buffer':
-            logger.error( 'your have no value being pulled from the registry')
-        logger.error( 'when calling getInstalledRegvalsearchVersion(%s)' %d['name'])
+            logger.error( 'You have no value being pulled from the registry. When calling getInstalledRegvalsearchVersion(%s)' %d['name'])
+        
     except WindowsError:
         logger.error( 'The registry key or value could not be found when calling getInstalledRegvalsearchVersion(%s)' %d)
     except KeyError as strerror:
@@ -439,10 +433,10 @@ def getInstalledRegvalnameVersion(d):
         return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            logger.debug( 'you are missing or have an invalid regex in %s' %d['name'])
+            logger.debug( 'You are missing or have an invalid regex. When calling getInstalledRegvalnameVersion(%s)' %d['name'])
         elif strerror == 'expected string or buffer':
-            debug.logger( 'your have no value being pulled from the registry')
-        debug.logger( 'when calling getInstalledRegvalnameVersion(%s)' %d['name'])
+            debug.logger( 'You have no value being pulled from the registry. When calling getInstalledRegvalnameVersion(%s)' %d['name'])
+        
     except WindowsError:
         logger.error( 'The registry key or value could not be found when calling getInstalledRegvalnameVersion(%s)' %d)
     except KeyError as strerror:
@@ -483,10 +477,9 @@ def getInstalledRegvalVersion(d):
             return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            logger.error( 'you are missing or have an invalid regex in %s' %d['name'])
+            logger.error( 'You are missing or have an invalid regex. When calling getInstalledRegvalVersion(%s)' %d['name'])
         elif strerror == 'expected string or buffer':
-            logger.error( 'your have no value being pulled from the registry')
-        logger.error( 'when calling getInstalledRegvalVersion(%s)' %d['name'])
+            logger.error( 'You have no value being pulled from the registry. When calling getInstalledRegvalVersion(%s)' %d['name'])
     except WindowsError:
         logger.error( 'The registry key or value could not be found when calling getInstalledRegvalVersion(%s)' %d)
     except KeyError as strerror:
@@ -505,10 +498,9 @@ def getInstalledFilePathVersion(d):
        return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
-            logger.error( 'you are missing or have an invalid regex in %s' %d['name'])
+            logger.error( 'You are missing or have an invalid regex. When calling getInstalledFilePathVersion(%s)' %d['name'])
         elif strerror == 'expected string or buffer':
-            logger.error( 'your have no value being pulled from the registry')
-        logger.error( 'when calling getInstalledFilePathVersion(%s)' %d['name'])
+            logger.error( 'You have no value being pulled from the registry. When calling getInstalledFilePathVersion(%s)' %d['name'])
     except WindowsError:
         logger.error( 'The registry key or value could not be found when calling getInstalledFilePathVersion(%s)' %d)
     except KeyError as strerror:
@@ -547,7 +539,7 @@ def getInstalledVersion(d):
         elif querytype == 'filepathname':
             return getInstalledFilePathVersion(d) # camille working on
         else:
-            logger.warning( 'unknown querytype: %s when calling getInstalledVersion(%s)' %(querytype,d['name']))
+            logger.warning( 'Unknown querytype: %s when calling getInstalledVersion(%s)' %(querytype,d['name']))
     except KeyError as strerror:
         logger.error( 'd did not contain a "%s" entry when calling getInstalledVersion(%s)' %(strerror,d['name']))
     except Exception, e:
@@ -569,7 +561,7 @@ def installPackage(d, location):
     @return The value returned by the installer
     """
     try:
-        logger.info( "installing: %s" % location)
+        logger.info( "Installing: %s" % location)
         # no silent flags for now 
 		#ret = os.system('"' + location + '" ' + d['silentflags'])
         ret = os.system('"' + location + '" ')
@@ -599,8 +591,8 @@ def downloadAndInstallLatest(d, location='downloads\\', keep=True):
         if not keep and ret == 0:
             os.remove(fpath)
     except WindowsError as (errno, strerror):
-        logger.error( 'could not remove the file, WindowsError({0}): {1}'.format(errno,
-            strerror) + 'when calling installPackage(%s, %s)' %(d['name'], location))
+        logger.error( 'Could not remove the file, WindowsError({0}): {1}'.format(errno,
+            strerror) + 'When calling installPackage(%s, %s)' %(d['name'], location))
     except Exception, e:
         logger.error( '%s while running installPackage(%s, %s)' %(e, d['name'], location))
     else:

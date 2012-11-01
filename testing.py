@@ -59,8 +59,34 @@ def localVersionSearchValidate():
                 package_str += '     Has not been defined yet'
                 failed_package.append(package_str)
     Log.write('local search',failed_package)
-				
-			
+def downloadUrlValidate():
+    package_str =''
+    failed_package = []
+    for entry in catalog.full_list:
+        if entry != 'EMPTY':
+            try:
+                package_str = entry
+                test = utils.getDownloadURL(catalog.catalog[entry])
+                if test is None:
+                    package_str += '     Has not been defined yet'
+                    failed_package.append(package_str)
+            except Exception, e:
+                package_str += "    %s" % e
+                failed_package.append(package_str)
+    Log.write('downloadurl search',failed_package)
+
+def downloadValidate():
+    package_str =''
+    failed_package = []
+    for entry in catalog.full_list:
+        if entry != 'EMPTY':
+            try:
+                package_str = entry
+                utils.downloadLatest(catalog.catalog[entry])
+            except Exception, e:
+                package_str += "    %s" % e
+                failed_package.append(package_str)
+    Log.write('downloadlatest',failed_package)
 		
 
 def runValidation(test_list):
@@ -72,6 +98,12 @@ def runValidation(test_list):
             localVersionValidate()
         elif test == 'search':
             localVersionSearchValidate()
+        elif test =='downloadurl':
+            downloadUrlValidate()
+        elif test == 'download':
+            downloadValidate()
     Log.close()
+
+
         
     

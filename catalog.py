@@ -308,7 +308,7 @@ catalog={
         download:{
             downloadtype:'pagesearch',
             url:'http://tortoisesvn.net/downloads.html',
-            regex:'a \"href=\'(.*) title =\"TortoiseSVN ##VERSION## - 64-bit',
+            regex:'(?:http://\S*?x64)[^"\' ]+',
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
@@ -331,9 +331,9 @@ catalog={
             regex:'current version is ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0},
         download:{
-            downloadtype:'directurl',
-            url:'http://superb-sea2.dl.sourceforge.net/project/tortoisesvn/1.7.9/Application/TortoiseSVN-1.7.9.23248-win32-svn-1.7.6.msi',
-            regex:'',
+            downloadtype:'pagesearch',
+            url:'http://tortoisesvn.net/downloads.html',
+            regex:'(?:http://\S*?win32)[^"\' ]+',
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
@@ -830,9 +830,9 @@ catalog={
             regex:'Download TightVNC Version ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0},
         download:{
-            downloadtype:'directurl',
-            url:'http://www.tightvnc.com/download/##VERSION##/tightvnc-##VERSION##-setup-64bit.msi',
-            regex:'',
+            downloadtype:'pagesearch',
+            url:'http://www.tightvnc.com/download.html',
+            regex:'(?:http://\S*?32bit.msi)[^"\' ]+',
             regexpos:0},
         silentflags:'/quiet',
         installversion:{
@@ -844,8 +844,8 @@ catalog={
             regexpos:0
             }
         },
-		'Tightvncviewer-64':{
-        name:'TightVNCViewer',
+    'Tightvncviewer-64':{
+        name:'TightVNCViewer-64',
         category:'Internet Tools',
         description:'TightVNC is a free remote control software package.',
         emulateuseragent:'True',
@@ -856,8 +856,8 @@ catalog={
             regexpos:0},
         download:{
             downloadtype:'directurl',
-            url:'http://www.tightvnc.com/download/##VERSION##/tightvnc-##VERSION##-setup-64bit.msi',
-            regex:'',
+            url:'http://www.tightvnc.com/download.html',
+            regex:'(?:http://\S*?64bit.msi)[^"\' ]+',
             regexpos:0},
         silentflags:'/quiet',
         installversion:{
@@ -940,7 +940,7 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',           
-		   subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Inkscape',
+	    subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Inkscape',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
@@ -2241,7 +2241,7 @@ catalog={
             regexpos:0},
         download:{
             downloadtype:'directurl',
-            url:'www.alice.org/downloads/##VERSION##/Alice##VERSION##b.zip',
+            url:'www.alice.org/downloads/##VERSION##/Alice##VERSION##.zip',
             regex:'',
             regexpos:0},
         silentflags:'/verysilent',
@@ -2420,7 +2420,7 @@ catalog={
             regexpos:0},
         download:{
             downloadtype:'directurl',
-            url:'http://download.microsoft.com/download/0/B/C/0BC13867-7ECD-4AC8-9400-873FF267467D/KinectSDK-v##VERSION##-Setup.exe',
+            url:'',
             regex:'',
             regexpos:0},
         silentflags:'/verysilent',
@@ -3365,7 +3365,7 @@ catalog={
             }
         },
     'SDL-64':{
-        name:'Simple DirectMedia Layer',
+        name:'Simple DirectMedia Layer-64',
         category:'Programming',
         description:'Low Level Peripheral Library',
         emulateuseragent:'True',
@@ -3438,7 +3438,7 @@ catalog={
 ##            }
 ##        },
     'ArgoUML':{
-        name:'Argo UML',
+        name:'Argo UML-64',
         category:'Utilities',
         description:'UML Drawing',
         emulateuseragent:'True',
@@ -3488,7 +3488,7 @@ catalog={
             }
         },
     'SMPlayer':{
-        name:'MPlayer',
+        name:'SMPlayer-64',
         category:'Multimedia',
         description:'Movie Player',
         emulateuseragent:'True',
@@ -3563,7 +3563,7 @@ catalog={
             }
         },
     'MyPaint-64':{
-        name:'MyPaint',
+        name:'MyPaint-64',
         category:'Multimedia',
         description:'Open Source Graphics Editor',
         emulateuseragent:'True',
@@ -3748,10 +3748,10 @@ catalog={
             regex:'IronPython ([0-9]+(?:\.[0-9]+)+) Installer',
             regexpos:0},
         download:{
-            downloadtype:'directurl',
-            url:'http://download-codeplex.sec.s-thisdoesntworkl.com/Download/Release?ProjectName=ironpython&DownloadId=423690&FileTime=129858605577070000&Build=19383',
-            regex:'',
-            regexpos:0},
+            downloadtype:'pagesearch',
+            url:'http://ironpython.codeplex.com/releases/view/81726',
+            regex:'(?:http://ironpythin\.codeplex\.com/downloads/get\d*)[^"\' ]+',
+            regexpos:2},
         silentflags:'/verysilent',
         installversion:{
             querytype:'regvalsearch',
@@ -3774,8 +3774,8 @@ catalog={
             regex:'The latest release is <b>([0-9]+(?:\.[0-9]+)+)',
             regexpos:0},
         download:{
-            downloadtype:'pagesearch',
-            url:'http://softlayer.dl.sourceforge.net/project/freepascal/Win32/##VERSION##/fpc-##VERSION##.i386-win32.exe',
+            downloadtype:'directurl',
+            url:'http://sourceforge.net/projects/freepascal/files/latest/download?source=files',
             regex:'',
             regexpos:0},
         silentflags:'/verysilent',
@@ -3839,7 +3839,7 @@ catalog={
             }
         },
     'Erlang-64':{
-        name:'Erlang',
+        name:'Erlang-64',
         category:'Programming',
         description:'Soft Realtime systems language',
         emulateuseragent:'True',
