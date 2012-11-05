@@ -430,7 +430,7 @@ def getInstalledVersion(d):
         elif querytype == 'regkey':
             return getInstalledRegkeyVersion(d['installversion'])
         elif querytype == 'filepathname':
-            return getInstalledFilePathVersion(d['installversion']) # camille working on
+            return getInstalledFilePathVersion(d['installversion']) 
         else:
             print 'unknown querytype: %s' % querytype
             print 'when calling getInstalledVersion(%s)' %d

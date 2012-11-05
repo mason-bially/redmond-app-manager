@@ -88,6 +88,7 @@ catalog={
             regexpos:0
             }
         },
+	#local version works
     'Console':{
         name:'Console',
         category:'Programming',
@@ -105,11 +106,11 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'filepathname',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            path:'c:\\Program Files',
             value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regex:'Console([0-9])+(?:\.[0-9]+)*)',
             regexpos:0
             }
         },
