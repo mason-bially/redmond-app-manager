@@ -537,7 +537,7 @@ def getInstalledVersion(d):
         elif querytype=="regvalsearch":
             return getInstalledRegvalsearchVersion(d)
         elif querytype == 'filepathname':
-            return getInstalledFilePathVersion(d) # camille working on
+            return getInstalledFilePathVersion(d['installversion']) 
         else:
             logger.warning( 'Unknown querytype: %s when calling getInstalledVersion(%s)' %(querytype,d['name']))
     except KeyError as strerror:
@@ -702,4 +702,4 @@ def main(argv):
             
 
 if __name__ == "__main__":   
-    main(['utils.py','fetch', 'all'])
+    main(sys.argv)
