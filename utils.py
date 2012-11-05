@@ -62,7 +62,7 @@ def getPage(url):
         page = f.read()
         f.close()
     except urllib2.URLError:
-        logger.error( 'Couldn not connect to and read from %s' % url)
+        logger.error( 'Could not connect to and read from %s' % url)
     except Exception, e:
         logger.error( ' %s while running  getPage(%s)' % (e,url))
         raise
@@ -86,7 +86,7 @@ def scrapePage(reg, url, pos=0):
         if strerror == 'first argument must be a string or compiled pattern':
             logger.error( 'You are missing or have an invalid regex when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
         elif strerror == 'expected string or buffer':
-            logger.error( 'Your have no page being returned by getPage()when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
+            logger.error( 'You have no page being returned by getPage()when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
     except IndexError:
         logger.error( 'Regexpos entry larger then the number of results mathing regex when calling scrapePage(%s, %s, %d)' %(reg, url, pos))
     except Exception, e:

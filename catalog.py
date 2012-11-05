@@ -3094,15 +3094,15 @@ catalog={
         category:'Shell extention',
         description:'Windows shell extension',
         emulateuseragent:'True',
-        url:'http://tortoisesvn.net/downloads.html',
+        url:'http://tortoisehg.bitbucket.org/',
         version:{
-            url:'http://tortoisesvn.net/downloads.html',
-            regex:'The current version is ([0-9]+(?:\.[0-9]+)+)',
+            url:'http://tortoisehg.bitbucket.org/',
+            regex:'TortoiseHg ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0},
         download:{
-            downloadtype:'directurl',
-            url:'http://sourceforge.net/projects/tortoisesvn/files/latest/download',
-            regex:'',
+            downloadtype:'pagesearch',
+            url:'http://tortoisehg.bitbucket.org/download/index.html',
+            regex:'(?:http://\S*?x64)[^"\' ]+',
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
