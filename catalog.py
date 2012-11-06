@@ -17,7 +17,7 @@ value = 'value'
 querytype = "querytype"
 path = 'path'
 valsearchregex = 'valsearchregex'
-    
+versionkey = 'versionkey'
 
 #####ROLE YOUR OWN CAPTURING GROUPS
 months="Janurary|February|March|April|May|June|July|August|September|October|November|December"
@@ -3438,8 +3438,11 @@ catalog={
 ##            regexpos:0
 ##            }
 ##        },
+    #Web Version works
+    #Download Link works
+    #Local Version works - Jonah
     'ArgoUML':{
-        name:'Argo UML-64',
+        name:'Argo UML',
         category:'Utilities',
         description:'UML Drawing',
         emulateuseragent:'True',
@@ -3457,12 +3460,15 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\ArgoUML',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\ArgoUML',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Local Version works - Jonah
     'InteractiveC':{
         name:'Interactive C',
         category:'Programming',
@@ -3480,16 +3486,19 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'filepathname',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            path:'C:\Program Files (x86)',
             value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regex:'Interactive C ([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Local Version works - jonah
     'SMPlayer':{
-        name:'SMPlayer-64',
+        name:'SMPlayer',
         category:'Multimedia',
         description:'Movie Player',
         emulateuseragent:'True',
@@ -3507,12 +3516,15 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\SMPlayer',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\SMPlayer',
             value:'DisplayVersion',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #VERSION IS IN FILE.. new function? -Jonah
     'Boost':{
         name:'Boost',
         category:'Programming',
@@ -3538,6 +3550,9 @@ catalog={
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version can't find where to read  -- jonah
     'MyPaint':{
         name:'MyPaint',
         category:'Multimedia',
@@ -3563,6 +3578,9 @@ catalog={
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version can't find where to read -- jonah
     'MyPaint-64':{
         name:'MyPaint-64',
         category:'Multimedia',
@@ -3588,6 +3606,9 @@ catalog={
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'Blender':{
         name:'Blender',
         category:'Multipedia',
@@ -3600,21 +3621,25 @@ catalog={
             regexpos:2},
         download:{
             downloadtype:'directurl',
-            url:'http://download.blender.org/release/Blender##VERSION##/blender-##VERSION##-release-windows32.exe',
+            url:'http://download.blender.org/release/Blender##VERSION##/blender-##VERSION##a-release-windows32.exe',
             regex:'',
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Blender',
-            value:'DisplayVersion',
-            regex:'([0-9]+(?:\.[0-9]+)+)-release',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            valsearchregex: 'Blender',
+            value:'DisplayName',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'Blender-64':{
-        name:'Blender',
+        name:'Blender-64',
         category:'Multipedia',
         description:'3d Modeling',
         emulateuseragent:'True',
@@ -3624,20 +3649,24 @@ catalog={
             regex:'Blender ([0-9]+(?:\.[0-9]+)+)',
             regexpos:2},
         download:{
-            downloadtype:'pagesearch',
-            url:'http://download.blender.org/release/Blender##VERSION##/blender-##VERSION##-release-windows64.exe',
+            downloadtype:'directurl',
+            url:'http://ftp.nluug.nl/pub/graphics/blender/release//Blender##VERSION##/blender-##VERSION##a-release-windows64.exe',
             regex:'',
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'regval',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Blender',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\',
+            valsearchregex: 'Blender',
             value:'DisplayName',
-            regex:'([0-9]+(?:\.[0-9]+)+)-release',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'Mscgen':{
         name:'Mscgen',
         category:'Utility',
@@ -3663,6 +3692,9 @@ catalog={
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'Audacity':{
         name:'Audacity',
         category:'Multimedia',
@@ -3680,16 +3712,21 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'regval',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Audacity_is1',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
             value:'DisplayName',
-            regex:'Audacity ([0-9]+(?:\.[0-9]+)+)',
+            valsearchregex:'Audacity',
+            versionkey:'DisplayName',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'Vuze':{
-        name:'Vuze',
+        name:'Vuze-64',
         category:'BitTorrent',
         description:'Heavyweight Torrent Client',
         emulateuseragent:'True',
@@ -3705,14 +3742,18 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'regvalsearch',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
-            value:'',
+            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall',
+            valsearchregex:'Vuze',
+            value:'DisplayName',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'WxWidgits':{
         name:'wxWidgits',
         category:'Programming',
@@ -3732,12 +3773,15 @@ catalog={
         installversion:{
             querytype:'regval',
             key:'HKLM',
-            subkey:'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\wxWidgets_is1',
+            subkey:'SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\wxWidgets_is1',
             value:'DisplayName',
-            regex:'wxWidgets([0-9]+(?:\.[0-9]+)+)',
+            regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'IronPython':{
         name:'Iron Python',
         category:'Programming',
@@ -3764,6 +3808,9 @@ catalog={
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'Fpc':{
         name:'Free Pascal',
         category:'Programming',
@@ -3781,14 +3828,17 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'filepathname',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            path:'C:\FPC',
             value:'',
             regex:'([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #literally no local version in reg or file path - Jonah
     'SmartEiffel':{
         name:'Smart Eiffel',
         category:'Programming',
@@ -3814,6 +3864,9 @@ catalog={
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'Erlang':{
         name:'Erlang',
         category:'Programming',
@@ -3831,14 +3884,17 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'filepathname',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            path:'C:\Program Files (x86)',
             value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regex:'erl([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'Erlang-64':{
         name:'Erlang-64',
         category:'Programming',
@@ -3856,14 +3912,17 @@ catalog={
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'filepathname',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            path:'C:\Program Files',
             value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regex:'erl([0-9]+(?:\.[0-9]+)+)',
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Can't find install version, couldn't install Windows Installer can't verify it -jonah
     'SBCL':{
         name:'Steel Bank Common Lisp',
         category:'Programming',
@@ -3889,6 +3948,9 @@ catalog={
             regexpos:0
             }
         },
+    #Web Version works
+    #Download Link works
+    #Install Version Works -- jonah
     'Octave-MinGW':{
         name:'Octave',
         category:'Programming',
@@ -3896,21 +3958,21 @@ catalog={
         emulateuseragent:'True',
         url:'http://sourceforge.net/projects/octave',
         version:{
-            url:'http://sourceforge.net/projects/octave',
-            regex:'mechanics-([0-9]+(?:\.[0-9]+)+)',
+            url:'http://sourceforge.net/projects/octave/files/Octave%20Windows%20binaries/',
+            regex:'Octave ([0-9]+(?:\.[0-9]+)+) for Windows MinGW installer',
             regexpos:0},
         download:{
             downloadtype:'pagesearch',
-            url:'http://sourceforge.net/projects/octave/files/Octave Windows binaries/Octave 3.6.2 for Windows Microsoft Visual Studio/octave-3.6.2-optiminterp-0.3.3-vs2010-setup.exe/download',
-            regex:'"a href=\"(http://.+) class=\"direct-download\""',   
+            url:'http://sourceforge.net/projects/octave/files/Octave%20Windows%20binaries/Octave%203.6.2%20for%20Windows%20MinGW%20installer/',
+            regex:'(?:http://\S*?gcc\d\.\d\.\d*_\d)[^"\' ]+',   
             regexpos:0},
         silentflags:'/verysilent',
         installversion:{
-            querytype:'',
+            querytype:'filepathname',
             key:'HKLM',
-            subkey:'SOFTWARE\\',
+            path:'C:\Octave',
             value:'',
-            regex:'([0-9]+(?:\.[0-9]+)+)',
+            regex:'([0-9]+(?:\.[0-9]+)+)_gcc',
             regexpos:0
             }
         },

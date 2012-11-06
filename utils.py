@@ -355,13 +355,17 @@ def getInstalledRegvalsearchVersion(d):
             
     try:
         
-        d=d['installversion']
+        package = d['installversion']
+        if not package.has_key('versionkey'):
+            versionKey = 'DisplayVersion'
+        else:
+            versionKey = package['versionkey']
         #import pdb
         #pdb.set_trace()
         
         #Open Uninstall
-        if d['key'] == 'HKLM':
-            un = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE,d['subkey'],0,mask)
+        if package['key'] == 'HKLM':
+            un = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE,package['subkey'],0,mask)
         else:
             return None
         unlen = _winreg.QueryInfoKey(un)[0]
@@ -374,14 +378,14 @@ def getInstalledRegvalsearchVersion(d):
             for j in range(vallen):
                 #Check Value Name. If it matches d['value'] we have the correct node
                 value=_winreg.EnumValue(key,j)
-                if value[0] == d['value']:
+                if value[0] == package['value']:
                     #If we are at the correct key. 
-                    if(re.search(d['valsearchregex'],value[1]) ): #valsearchregex, what you want to find in the DisplayName
+                    if(re.search(package['valsearchregex'],value[1]) ): #valsearchregex, what you want to find in the DisplayName
                         #Gets a list of tuples to search through for DisplayVersion
                         keynames = sorted([_winreg.EnumValue(key,l) for l in xrange(vallen)])
                         for key in keynames:
-                            if key[0]=='DisplayVersion':
-                                version=re.search(d['regex'],key[1]).group(0)
+                            if key[0]==versionKey:
+                                version=re.search(package['regex'],key[1]).group(0)
                                 return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
@@ -419,17 +423,17 @@ def getInstalledRegvalnameVersion(d):
         else:
             mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
     try:
-        d=d['installversion']
+        package = d['installversion']
         # should do a lookup table here
-        if d['key'] == 'HKLM':
-            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'],0,mask)
+        if package['key'] == 'HKLM':
+            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, package['subkey'],0,mask)
         else:
             return None
         vals = _winreg.QueryInfoKey(tempkey)[1]
         valnames = [_winreg.EnumValue(tempkey,i)[0] for i in xrange(vals)]
         valnames = sorted(valnames)
         valnamesstr = "\n".join(valnames)
-        version = re.findall(d['regex'], valnamesstr)[d['regexpos']]
+        version = re.findall(package['regex'], valnamesstr)[package['regexpos']]
         return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
@@ -466,14 +470,14 @@ def getInstalledRegvalVersion(d):
         if "-64" in d['name']:
             mask= _winreg.KEY_READ|_winreg.KEY_WOW64_64KEY
         else:
-            mask=_winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
+            mask= _winreg.KEY_READ|_winreg.KEY_WOW64_32KEY
     try:
-        d= d['installversion']
+        package = d['installversion']
         # should do a lookup table here
-        if d['key'] == 'HKLM':
-            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, d['subkey'],mask)
-            value = str(_winreg.QueryValueEx(tempkey, d['value'])[0])
-            version = re.findall(d['regex'], value)[d['regexpos']]
+        if package['key'] == 'HKLM':
+            tempkey = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, package['subkey'],mask)
+            value = str(_winreg.QueryValueEx(tempkey, package['value'])[0])
+            version = re.findall(package['regex'], value)[package['regexpos']]
             return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
@@ -481,7 +485,7 @@ def getInstalledRegvalVersion(d):
         elif strerror == 'expected string or buffer':
             logger.error( 'You have no value being pulled from the registry. When calling getInstalledRegvalVersion(%s)' %d['name'])
     except WindowsError:
-        logger.error( 'The registry key or value could not be found when calling getInstalledRegvalVersion(%s)' %d)
+        logger.error( 'The registry key or value could not be found when calling getInstalledRegvalVersion(%s)' %d['name'])
     except KeyError as strerror:
         logger.error( 'd did not contain a "%s" entry when calling getInstalledRegvalVersion(%s)' %(strerror,d['name']))
     except Exception, e:
@@ -491,18 +495,19 @@ def getInstalledRegvalVersion(d):
     
 def getInstalledFilePathVersion(d):
     try:
-       tempPath = os.listdir(d['installversion']['path'])
-       valnames = sorted(tempPath)
-       valnamesstr = "\n".join(valnames)
-       version =re.findall(d['regex'], valnamesstr) [d['regexpos']]
-       return version
+        package=d['installversion']
+        tempPath = os.listdir(package['path'])
+        valnames = sorted(tempPath)
+        valnamesstr = "\n".join(valnames)
+        version =re.findall(package['regex'], valnamesstr) [package['regexpos']]
+        return version
     except TypeError as strerror:
         if strerror == 'first argument must be a string or compiled pattern':
             logger.error( 'You are missing or have an invalid regex. When calling getInstalledFilePathVersion(%s)' %d['name'])
         elif strerror == 'expected string or buffer':
             logger.error( 'You have no value being pulled from the registry. When calling getInstalledFilePathVersion(%s)' %d['name'])
     except WindowsError:
-        logger.error( 'The registry key or value could not be found when calling getInstalledFilePathVersion(%s)' %d)
+        logger.error( 'The registry key or value could not be found when calling getInstalledFilePathVersion(%s)' %d['name'])
     except KeyError as strerror:
         logger.error( 'd did not contain a "%s" entry when calling getInstalledFilePathVersion(%s)' %(strerror,d['name']))
     except Exception, e:
@@ -537,7 +542,7 @@ def getInstalledVersion(d):
         elif querytype=="regvalsearch":
             return getInstalledRegvalsearchVersion(d)
         elif querytype == 'filepathname':
-            return getInstalledFilePathVersion(d['installversion']) 
+            return getInstalledFilePathVersion(d) 
         else:
             logger.warning( 'Unknown querytype: %s when calling getInstalledVersion(%s)' %(querytype,d['name']))
     except KeyError as strerror:
