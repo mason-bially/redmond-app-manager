@@ -45,7 +45,8 @@ cj = cookielib.CookieJar()
 opener=urllib2.build_opener(urllib2.HTTPCookieProcessor(cj),red)
 opener.addheaders=userAgent
 
-logger = ourlogging.config()
+ourlogging.config()
+logger = ourlogging.logger("utils")
 
 
 def getPage(url):
@@ -210,6 +211,7 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
         #Sourceforge Antibot Hack
         if "sourceforge" in downurl:
             opener.addheaders=[]
+            logger.debug( "Sourceforge hack activated" )
         else:
             opener.addheaders=userAgent + [('Referer', downurl)]
         
@@ -225,6 +227,7 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
 
         #create Downloads folder if doesn't exist
         if not os.path.exists(location):
+            logger.info( "Making dir: %s" % location)
             os.mkdir(location)
         
         newfileloc = location + name + '---' + version + '---' + filename
