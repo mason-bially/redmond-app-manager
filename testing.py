@@ -6,7 +6,7 @@ import datetime
 
 class simpleLog():
     def __init__(self):
-        self.fo = open('validateLog.txt','w')
+        self.fo = open('validateLog.log','w')
     def write(self,function,package_list):
         self.fo.write(('#'*20)+str.upper(function)+('#'*20)+'\n')
         for item in package_list:
