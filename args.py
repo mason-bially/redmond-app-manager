@@ -7,18 +7,19 @@ logger = ourlogging.logger("command")
 class Packages():
     def __init__(self, args):
         self.packages = args.packages
+        self.args = args
 
     def dofor(self, func):
         #TODO make paralle version
         d = {}
         for p in self.packages:
-            d[p] = func(p)
+            d[p] = func(p, self.args)
         return d
 
 
 
 def fetch(args):
-    def dofetch(package):
+    def dofetch(package, args):
         r = {}
         
         print "Downloading ", package + "..."
@@ -39,7 +40,7 @@ def fetch(args):
 
 
 def version(args):
-    def doversion(package):
+    def doversion(package, args):
         r = {'update': False}
         
         print "###", package, "###"
@@ -113,22 +114,23 @@ def valid(args):
 
 def main():
     parser = argparse.ArgumentParser()
-    shared_parser = argparse.ArgumentParser(add_help=False)
-    shared_parser.add_argument('--foo', action='store_true')
+    packages_parser = argparse.ArgumentParser(add_help=False)
+    parser_fetch.add_argument('packages', nargs='*', default=catalog.full_list
+                              help="""The list of packages to execute the command with. Defaults to all.""")    
     subparsers = parser.add_subparsers()
 
     # create the parser for the "fetch" command
-    parser_fetch = subparsers.add_parser('fetch', parents=[shared_parser])
-    parser_fetch.add_argument('packages', nargs='*', default=catalog.full_list)
+    parser_fetch = subparsers.add_parser('fetch', parents=[packages_parser])
+    parser_fetch.add_argument('-d', default=catalog.full_list,
+                              help="The download directory")
     parser_fetch.set_defaults(func=fetch)
 
     # create the parser for the "version" command
-    parser_version = subparsers.add_parser('version', parents=[shared_parser])
-    parser_version.add_argument('packages', nargs='*', default=catalog.full_list)
+    parser_version = subparsers.add_parser('version', parents=[packages_parser])
     parser_version.set_defaults(func=version)
     
     # create the parser for the "valid" command
-    parser_valid = subparsers.add_parser('valid', parents=[shared_parser])
+    parser_valid = subparsers.add_parser('valid', parents=[packages_parser])
     parser_valid.set_defaults(func=valid)
     
     args = parser.parse_args(sys.argv[1:])
