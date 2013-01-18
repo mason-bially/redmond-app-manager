@@ -260,8 +260,7 @@ def downloadLatest(d, location='downloads\\', overwrite=False):
                     
                 f.close()
         else:
-            logger.warning( 'File already exists and overwriting was not enabled \
-                            when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
+            logger.info( 'File already exists and overwriting was not enabled when calling downloadLatest(%s, %s, %s)' %(d['name'], location, overwrite))
         furl.close()
     except TypeError as strerror:
         logger.error( 'TypeError: %s, location may not be a string when calling downloadLatest(%s, %s, %s)' %(strerror,d['name'], location, overwrite))
