@@ -18,7 +18,7 @@ def config(consoleLevel=WARN, fileName='default.log', debugInfo=False):
 
     #The formmatter
     #vf = Formatter('%(module)-14s:%(lineno)-3s ++ %(packageorcommand)-16s %(levelname)-8s - %(message)s')
-    cf = Formatter('%(asctime)s   %(lineno)-3s@%(packageorcommand)-8s %(levelname)-8s:\n\\_\t%(message)s')
+    cf = Formatter('  * %(asctime)s   %(lineno)-3s@%(packageorcommand)-8s %(levelname)-8s:\n  * \\_\t%(message)s')
     ff = Formatter('%(asctime)s   %(lineno)-3s@%(packageorcommand)-8s %(levelname)-8s: \t %(message)s')
     #f = Formatter('%(asctime)s - %(levelname)s - %(message)s')
    

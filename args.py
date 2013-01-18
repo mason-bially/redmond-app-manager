@@ -4,13 +4,24 @@ import ourlogging
 
 logger = ourlogging.logger("command")
 
+def all_packages():
+    return catalog.full_list
+            
 class Packages():
+    @staticmethod
+    def calc_packages(args):
+        if args['all-except']:
+            return list(set(all_packages()) - set(args['packages']))
+        else:
+            return args['packages']
+    
     def __init__(self, args):
-        self.packages = args.packages
+        self.packages = self.calc_packages(args)
+
         self.args = args
 
     def dofor(self, func):
-        #TODO make paralle version
+        #TODO make parallel version
         d = {}
         for p in self.packages:
             d[p] = func(p, self.args)
@@ -25,7 +36,7 @@ def fetch(args):
         print "Downloading ", package + "..."
         loc = None
         try:
-            loc = utils.downloadLatest(catalog.catalog[package])
+            loc = utils.downloadLatest(catalog.catalog[package], location=args['dir']+'\\', overwrite=args['overwrite'])
         except:
             pass
 
@@ -115,14 +126,19 @@ def valid(args):
 def main():
     parser = argparse.ArgumentParser()
     packages_parser = argparse.ArgumentParser(add_help=False)
-    parser_fetch.add_argument('packages', nargs='*', default=catalog.full_list
-                              help="""The list of packages to execute the command with. Defaults to all.""")    
+    packages_parser.add_argument('packages', nargs='*', default=all_packages(),
+                                 help="""The list of packages to execute the command with. Defaults to all.""")    
+    packages_parser.add_argument('--all-except', dest='all-except', action='store_true',
+                                 help="Executes all packages, EXCPET those specified in 'packages'.")
     subparsers = parser.add_subparsers()
 
     # create the parser for the "fetch" command
     parser_fetch = subparsers.add_parser('fetch', parents=[packages_parser])
-    parser_fetch.add_argument('-d', default=catalog.full_list,
+    parser_fetch.add_argument('-d', '--download-directory', dest="dir",
+                              default="downloads",
                               help="The download directory")
+    parser_fetch.add_argument('--overwrite', dest="overwrite", action='store_true',
+                              help="Allow overwriting of files.")
     parser_fetch.set_defaults(func=fetch)
 
     # create the parser for the "version" command
@@ -134,7 +150,7 @@ def main():
     parser_valid.set_defaults(func=valid)
     
     args = parser.parse_args(sys.argv[1:])
-    args.func(args)
+    args.func(vars(args))
 
 if __name__ == "__main__":
     main()
