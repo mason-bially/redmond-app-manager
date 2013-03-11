@@ -33,10 +33,18 @@ def find_file(package, location):
         if filename.startswith(package['name']):
             return location + filename
 
+def need_update(package):
+    webV = utils.getWebVersion(catalog.catalog[package])
+    localV = utils.getInstalledVersion(catalog.catalog[package])
+    return webV != localV
+
 
 def fetch(args):
     def dofetch(package, args):
         r = {}
+
+        if args['updateonly'] and not need_update(package):
+            return r
         
         print "Downloading ", package + "..."
         loc = None
@@ -58,6 +66,9 @@ def fetch(args):
 def install(args):
     def doinstall(package, args):
         r = {}
+
+        if args['updateonly'] and not need_update(package):
+            return r
 
         catapackage = catalog.catalog[package]
         path = args['dir']+'\\'
@@ -167,7 +178,9 @@ def main():
                               help="The download directory")
     fetching_parser.add_argument('--overwrite', dest="overwrite", action='store_true',
                               help="Allow overwriting of files.")
-    
+    fetching_parser.add_argument('-u', '--update-only', dest="updateonly",
+                              action='store_true',
+                              help="Only download files that need updating.")
     subparsers = parser.add_subparsers()
 
     # create the parser for the "fetch" command
